@@ -10,6 +10,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    font-size: 16px;
+}
 /* Styling the heading of the Landing Page */
 #logo {
     width: 180px;
@@ -57,9 +60,56 @@ z-index: 10;
 }
 
 /* Styling the first Section wich contains the silder of our website entry */
+#bigHeader , #mainPara , #firstJoinButt {
+    position: absolute;
+    z-index: 2;
+}
+#bigHeader {
+    top: 10%;
+    left: 15%;
+}
+#mainPara{
+    top: 47.5%;
+    left: 8%;
+    color: var(--white-color);
+    letter-spacing: 10px;
+    font-size: 2vw;
+}
+#firstJoinButt{
+    top: 70%;
+    left: 40%;
+    padding: 1%;
+    width: 20vw;
+    letter-spacing: 4px;
+    border: 3px solid var(--orange-color);
+    border-radius: 200px;
+    color: var(--white-color);
+    background: transparent;
+}
+.orangeH{
+    color: var(--orange-color);
+}
+.whiteH{
+    color: var(--white-color);
+}
+.orangeH , .whiteH {
+    font-size: 5vw;
+} 
+.silderImg {
+    opacity: 0.7;
+}
+.swiper{
+    height: fit-content;
+}
 
-.first-section {
-    height: 85vh;
-    background: #796F69;
+.swiper-slide img {
+width: 100%;
+}
+
+.swiper .swiper-button-prev , .swiper .swiper-button-next{
+    color: var(--white-color);
+}
+.swiper .swiper-pagination-bullet-active {
+    background: var(--white-color);
 }
 
