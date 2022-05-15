@@ -110,16 +110,30 @@
         </div>
       </nav>
     </header>
-    <section class="container first-section">
+    <section class="container-fluid position-relative">
+        <h1 id="bigHeader"><span class="whiteH">BUILD</span><span class="orangeH mx-5">YOUR</span><span class="whiteH">BODY</span><span class="orangeH ms-5">STRONG</span></h1>
+        <p id="mainPara">Ready to change your physique,but can't work out in the gym?</p>
+        <button id="firstJoinButt">JOIN WITH US</button>
       <!-- Slider main container -->
       <div class="swiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          ...
+          <div class="swiper-slide">
+            <img
+              src="imgs/pexels-victor-freitas-841131.jpg"
+              alt="Image slider 1"
+            />
+          </div>
+          <div class="swiper-slide">
+            <img class="silderImg" src="imgs/boxingGirl.jpg" alt="Image slider 2" />
+          </div>
+          <div class="swiper-slide">
+            <img class="silderImg" src="imgs/traction.jpg" alt="Image slider 3" />
+          </div>
+          <div class="swiper-slide">
+            <img class="silderImg" src="imgs/armlifting.jpg" alt="Image slider 4" />
+          </div>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -127,9 +141,6 @@
         <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-
-        <!-- If we need scrollbar -->
-        <div class="swiper-scrollbar"></div>
       </div>
     </section>
     <script
@@ -139,5 +150,27 @@
     ></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/index.js"></script>
+    <script>
+      // Instantiated the Swiper object from the swipejs.com website that contains the silding code
+
+      const swiper = new Swiper(".swiper", {
+
+        autoplay: {
+            delay : 3000,
+            disableOnInteraction: false,
+        },
+        loop: true,
+
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true ,
+        },
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
   </body>
 </html>
