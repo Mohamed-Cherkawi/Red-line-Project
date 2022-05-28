@@ -8,18 +8,18 @@
 /************ Styling the Schedule page ****************/
 
 .ScheduleContainer {
-    position: relative;
     background-image: url("../imgs/lifting.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow-y: scroll;
+    background-size: 100% 100%;
+    overflow-x: scroll;
 }
 #scheduleImage {
     width: 100%;
     height: 100%;
 }
 .ScheduleContent {
-    position: absolute;
+    color: var(--white-color);
     width: 90%;
     height: 90%;
     top: 5%;

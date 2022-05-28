@@ -250,11 +250,11 @@ border-radius: 50%;
     width: 20vw;
     letter-spacing: 4px;
     border: 3px solid var(--orange-color);
-    border-radius: 200px;
+    box-shadow: -7px -8px 9px 0px black ;
     transition: 0.5s;
 }
 #calculateBtn:hover {
-    box-shadow: 5px 5px 3px 2px black ;
+    box-shadow: 0px 0px 0px 0px black;
 }
 @media only screen and (max-width: 642px) {
     #bmiInput1 {
@@ -267,3 +267,56 @@ border-radius: 50%;
         margin-top: 2rem !important;
     }
 }
+
+/************* Styling the 6 section of the Landing page ***************/
+
+.section5 {
+    background-color: #080707b5;
+    width: 95%;
+    margin: 0 auto;
+}
+.section5Heading {
+    letter-spacing: 8px;
+    font-weight: bolder;
+}
+#CardsPrice {
+    color: var(--orange-color);
+    font-size: 60px;
+}
+#perMonth {
+    color: var(--grey-color);
+    font-weight: bolder;
+}
+.cardsOffers {
+    color: var(--black-color);
+    font-weight: 400;
+    font-size: 30px;
+}
+.section5 article {
+    width: 400px;
+    height: 700px;
+    vertical-align: bottom;
+}
+.detailsButt {
+    font-weight: bolder;
+    margin-top: 2rem;
+    padding: 1rem;
+    width: 50%;
+    background: transparent;
+    border: 2px solid var(--orange-color);
+    border-radius: 200px;
+}
+.PricingCardTitle{
+font-size: 50px;
+}
+@media only screen and (min-device-width: 991px) and (max-device-width: 1338px) {
+    .section5 #article2{
+        margin-bottom: 5rem !important;
+    }
+}
+@media only screen and (max-width: 917px) {
+.pricingContainer {
+    text-align: center;
+}
+}
+
