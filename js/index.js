@@ -16,7 +16,9 @@ icon.onclick = function () {
   search.classList.toggle("active");
 };
 
+// Events :
 calculateBtn.addEventListener("click", CalculBmi);
+
 
 function CalculBmi() {
   const bmiInput1V = bmiInput1.value;
@@ -42,13 +44,13 @@ function CalculBmi() {
   // Start of conditions :
   if (bmi < 18.5) {
     BodyState.innerText = "Underweight";
-  } else if (bmi > 18.5 && bmi < 24.9) {
+  } else if (bmi >= 18.5 && bmi <= 24.9) {
     BodyState.innerText = "Normal Weight";
-  } else if (bmi > 25.0 && bmi < 29.9) {
+  } else if (bmi >= 25.0 && bmi <= 29.9) {
     BodyState.innerText = "Pre-Obesity";
-  } else if (bmi > 30.0 && bmi < 34.9) {
+  } else if (bmi >= 30.0 && bmi <= 34.9) {
     BodyState.innerText = "Obesity Class 1";
-  } else if (bmi > 35.0 && bmi < 39.9) {
+  } else if (bmi >= 35.0 && bmi <= 39.9) {
     BodyState.innerText = "Obesity Class 2";
   } else {
     BodyState.innerText = "Obesity Class 3";
