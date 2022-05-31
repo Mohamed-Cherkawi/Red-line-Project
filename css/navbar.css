@@ -4,10 +4,7 @@
     --black-color : #0F0E0D;
     --grey-color : #796F69;
 }
-/* Styling the heading of the Landing Page */
-#logo {
-    width: 180px;
-}
+/* Styling the navbar of the Landing Page */
 .search {
     position: relative;
     width: 60px;

@@ -1,0 +1,110 @@
+/***************** Styling the Sign up and Login Page *****************/
+:root {
+  --orange-color : #FF6600;
+  --white-color : #FFFFFF;
+  --black-color : #0F0E0D;
+  --grey-color : #796F69;
+}
+body {
+  background-color:#cac3c3;
+}
+.firstDiv , .imageContainer {
+  height: 94vh;
+}
+.firstDiv {
+  width: 35%;
+  background-color: var(--white-color);
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+@media only screen and (max-width: 770px) {
+  .firstDiv {
+    width: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1399px) {
+  .firstDiv {
+    width: 70%;
+  }
+}
+
+.imageContainer {
+  width: 29%;
+}
+.imageContainer {
+  background-image: url("../imgs/confidentMan.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ h3 {
+  letter-spacing: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+ input {
+  border: none;
+  border-bottom: 2px solid var(--black-color) ;
+  background: transparent;
+}
+main input:focus {
+  outline: 0;
+}
+button {
+    letter-spacing: 5px;
+    padding: 15px 30px;
+    white-space: nowrap;
+    font-family: "Questrial Bold", sans-serif;
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,102,0,1) 100%);
+    color: white;
+  }
+button:hover {
+    transform: scale(0.9);
+  }
+
+#separator1 {
+  height: 3px;
+  width: 100px;
+  background-color: var(--black-color);
+}
+#separator2 {
+  height: 100%;
+  width: 3px;
+  background-color: var(--black-color);
+}
+#seconContainer {
+  height: 28vh;
+} 
+.iconsContainer{
+  width: 80%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.facebookContainer{
+  background-color: #4A658F;
+}
+.googleContainer{
+  background-color: #F34434;
+}
+.mediaIcons {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.FacebookIco {
+  background-color: #25487F;
+}
+.GoogleIco {
+  background-color: #CF3C3C;
+}
+.iconsContainer span {
+  color: var(--white-color);
+  font-size: 14px;
+}

@@ -40,6 +40,15 @@ html {
 
 
 /* Styling the first Section wich contains the silder of our website entry */
+.carousel-control-prev , .carousel-control-next {
+    top: calc(50% -25px);
+}
+.carousel-control-prev {
+    left: 5%;
+}
+.carousel-control-next {
+    right: 5%;
+}
 #bigHeader , #mainPara , #firstJoinButt {
     position: absolute;
     z-index: 2;
@@ -53,7 +62,7 @@ html {
     left: 8%;
     color: var(--white-color);
     letter-spacing: 10px;
-    font-size: 1.8vw;
+    font-size: 1vw;
 }
 #firstJoinButt{
     top: 70%;
@@ -73,26 +82,11 @@ html {
     color: var(--white-color);
 }
 .orangeH , .whiteH {
-    font-size: 5vw;
+    font-size: 4vw;
 } 
 .silderImg {
     opacity: 0.7;
 }
-.swiper{
-    height: fit-content;
-}
-
-.swiper-slide img {
-width: 100%;
-}
-
-.swiper .swiper-button-prev , .swiper .swiper-button-next , #scheduleHead{
-    color: var(--white-color);
-}
-.swiper .swiper-pagination-bullet-active {
-    background: var(--white-color);
-}
-
 /* Styling the second Section wich contains image and the some infos */
 
 .section2imgPlaceHolder {
@@ -133,24 +127,6 @@ width: 100%;
     width: 40vw;
     background: var(--black-color);
 }
-.arrowIcoHolder {
-    padding: 0.5rem;
-    background: #FF6600;
-}
-.rotatedArrow {
-    transform: rotate(180deg);
-}
-.triangle {
-    margin: 0 5px;
-  }
-  .triangle-3 {
-    width: 1vw;
-    height: 60px;
-    border-left: solid 30px var(--white-color);
-    border-bottom: solid 30px transparent;
-    border-top: solid 30px transparent;
-  }
-
   /* Style for the 3 section that contains all the classes available */
 
  .section3Articles {

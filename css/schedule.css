@@ -14,6 +14,9 @@
     background-size: 100% 100%;
     overflow-x: scroll;
 }
+#scheduleHead{
+    letter-spacing: 9px;
+}
 #scheduleImage {
     width: 100%;
     height: 100%;
