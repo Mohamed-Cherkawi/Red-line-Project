@@ -6,25 +6,33 @@
   --grey-color : #796F69;
 }
 body {
-  background-color:#cac3c3;
+  background: linear-gradient(202deg, rgba(0,0,0,1) 0%, rgba(255,102,0,1) 100%);
 }
-.firstDiv , .imageContainer {
+/* .firstDiv , .imageContainer {
   height: 94vh;
-}
+} */
 .firstDiv {
   width: 35%;
   background-color: var(--white-color);
   border-top-left-radius: 18px;
   border-bottom-left-radius: 18px;
+  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.685);
+
 }
 @media only screen and (max-width: 770px) {
+  main {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
   .firstDiv {
     width: 100%;
+    border-radius: 18px;
   }
 }
 @media (min-width: 769px) and (max-width: 1399px) {
   .firstDiv {
     width: 70%;
+    border-radius: 18px;
   }
 }
 
@@ -35,6 +43,7 @@ body {
   background-image: url("../imgs/confidentMan.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.685);
 }
  h3 {
   letter-spacing: 8px;
@@ -107,4 +116,5 @@ button:hover {
 .iconsContainer span {
   color: var(--white-color);
   font-size: 14px;
+  font-weight: bolder;
 }
