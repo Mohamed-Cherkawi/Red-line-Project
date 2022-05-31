@@ -1,7 +1,6 @@
 // Toggling the search bar icon js Code .
 const icon = document.querySelector(".searchIcon");
 const search = document.querySelector(".search");
-
 // Bmi inputs .
 const bmiInput1 = document.getElementById("bmiInput1");
 const bmiInput2 = document.getElementById("bmiInput2");
@@ -10,15 +9,13 @@ const BodyMass = document.getElementById("bodyMass");
 const BodyState = document.getElementById("bodyState");
 // Calcuate btn .
 const calculateBtn = document.getElementById("calculateBtn");
-// Bmi inputs' Values
 
 icon.onclick = function () {
   search.classList.toggle("active");
-};
+    };
 
 // Events :
 calculateBtn.addEventListener("click", CalculBmi);
-
 
 function CalculBmi() {
   const bmiInput1V = bmiInput1.value;
