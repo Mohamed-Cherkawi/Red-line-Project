@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 :root {
   --header-height: 3rem;
   --nav-width: 80px;
-  --first-color: #F77E21;
   --first-color-light: #afa5d9;
   --white-color: #f7f6fb;
   --body-font: "Nunito", sans-serif;
@@ -10,12 +8,11 @@
 }
 *{
   box-sizing: border-box;
-}
+}   
 body {
   position: relative;
   margin: var(--header-height) 0 0 0;
   padding: 0 1rem;
-  font-family: var(--body-font);
   transition: 0.5s;
 }
 a {
@@ -31,7 +28,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  background-color: var(--white-color);
+  background-color: #d3d3d3c7;
   z-index: var(--z-fixed);
   transition: 0.5s;
 }
@@ -57,7 +54,7 @@ a {
   left: -30%;
   width: var(--nav-width);
   height: 100vh;
-  background-color: var(--first-color);
+  background:linear-gradient(180deg, #cecac7, #ff710487, #FF7004);
   padding: 0.5rem 1rem 0 0;
   transition: 0.5s;
   z-index: var(--z-fixed);
@@ -85,12 +82,12 @@ a {
   color: var(--white-color);
 }
 .nav_logo-name {
-  color: var(--white-color);
+  color: black;
   font-weight: 700;
 }
 .nav_link {
   position: relative;
-  color: black;
+  color: grey;
   font-weight: bold;
   margin-bottom: 1.5rem;
   transition: 0.3s;
@@ -118,10 +115,11 @@ a {
   height: 32px;
   background-color: var(--white-color);
 }
-.height-100 {
-  height: 100vh;
+.userImageC{
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
 }
-
 @media screen and (min-width: 768px) {
   body {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
