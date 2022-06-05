@@ -39,13 +39,13 @@
                             <div class="w-25">
                                 <img src="imgs/facebook.png" class="mediaIcons FacebookIco" alt="Facebook icon">
                             </div>
-                            <span class="ms-3">Login With Facebook</span>
+                            <span class="ms-1 ms-md-3 ms-xxl-1">Login With Facebook</span>
                         </div>
                         <div class="googleContainer iconsContainer d-flex align-items-center">
                             <div class="w-25">
                                 <img src="imgs/google.png" class="mediaIcons GoogleIco" alt="google icon">
                             </div>
-                            <span class="ms-3">Login With Google</span>
+                            <span class="ms-2 ms-md-4 ms-xxl-2">Login With Google</span>
                         </div>
                     </div>
             </div>        

@@ -32,7 +32,7 @@
                     <div class="d-flex flex-column align-items-center mt-5">
                         <span>Don't have an account ?</span>
                         <div id="separator1" class="mt-4"></div>
-                        <a href="" class="text-dark mt-4 fw-bolder">Sign up here</a>
+                        <a href="signUp.php" class="text-dark mt-4 fw-bolder">Sign up here</a>
                     </div>
                 </div>
             </div>
