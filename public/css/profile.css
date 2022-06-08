@@ -1,0 +1,68 @@
+  section {
+    margin-top: 8rem;
+    height: 75vh;
+    box-shadow: 0px 0px 15px 0px black;
+  }
+  section h3 {
+      margin-top: -4rem;
+  }
+ #greetingHead {
+      margin-top: -2rem;
+      letter-spacing: 5px;
+  }
+.cardsC{
+  padding: 2rem;
+  box-shadow: 0px 3px 18px 0px ;
+  flex-basis: 25em;
+  border-radius: 15px;
+  position: relative;
+}
+#AdminImage{
+  background-color: white;
+  border-radius: 50%;
+  width: 66%;
+  margin-top: 5rem;
+}
+.statics {
+font-size: 60px;
+font-weight: bolder;
+color: grey;
+}
+.iconsC{
+position: absolute;
+left: 65%;
+width: 0;
+}
+@media only screen and (max-width: 1199px) {
+  section{
+      padding: 0;
+      margin-top: 5rem;
+      height: auto;
+  }
+  section h3 {
+      margin-top: 0;
+  }
+  .cardsC {
+      flex-basis: auto;
+  }
+  #greetingHead{
+      margin-top: 5rem;
+  }
+}
+.ProfileInfosC{
+    padding: 1rem;
+    width: 538px;
+    margin-top: 2rem;
+    box-shadow: 0px 0px 9px 0px black;
+}
+.profileButtons{
+    font-weight: bolder;
+    font-size: large;
+    padding: 0.8rem;
+    width: 168px;
+    color: white;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(232,100,13,1) 100%);
+}
+#deleteProfileButt{
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(236,16,16,1) 100%);
+}
