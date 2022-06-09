@@ -21,15 +21,16 @@
             <form action="<?php echo URLROOT?>/Users/register" method="POST">
                 <div class="d-flex flex-column mt-3">
                 <h3>Create Account</h3>
-                <label class="d-inline-block" for="username">Username<span class="ms-5" id="usernameError"></span></label>
+                <?php if(isset($data['email-err'])) { echo $data['email-err'] ;}?>
+                <label class="d-inline-block" for="username">Username<span class="ms-5 errorMessagesCont" id="usernameError"></span></label>
                 <input type="text" id="username" class="mb-3" name="username" onkeyup="validateUserName()">
-                <label for="email">Email<span class="ms-5" id="emaiError"></span></label>
+                <label for="email">Email<span class="ms-5 errorMessagesCont" id="emaiError"></span></label>
                 <input type="email" id="email" class="mb-3" name="email" onkeyup="validateUserName()">
-                <label for="Password">Password</label><span id="passwordError"></span>
+                <label for="Password">Password<span class="ms-5 errorMessagesCont" id="passwordError"></span></label>
                 <input type="password" id="Password" class="mb-3" name="password" onkeyup="validatePassword()">    
                 <div class="d-flex flex-column position-relative" id="CopasswordContaSignUp">
-                <label for="cPassword">ConfirmPassword</label><span id="confirmPerror" onkeyup="validateCPassword()"></span>
-                <input type="password" id="cPassword">
+                <label for="cPassword">ConfirmPassword<span class="ms-5 errorMessagesCont" id="confirmPerror"></span></label>
+                <input type="password" id="cPassword" onkeyup="validateCPassword()">
                 <i class="bi bi-eye-slash passw-mask-eye" onclick="toogleEyePassword()"></i>
                 </div>
                 <span class="text-center" id="submitError"></span>

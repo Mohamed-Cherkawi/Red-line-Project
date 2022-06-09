@@ -1,4 +1,7 @@
-
+  // Form Resubmission
+  if(window.history.replaceState) {
+    window.history.replaceState(null , null ,window.location.href);
+  }
 // inputs :
 const username = document.getElementById("username");
 const email = document.getElementById("email");
@@ -52,7 +55,7 @@ function validateEmail() {
     }
     if (!emailV.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z]+$/)) {
       emailError.innerText =
-        "Try something like letters between 3 and 20";
+        "Try something like userN@email.com";
       email.setAttribute("style", "border-bottom : 2px solid red");
       return false;
     }
@@ -100,7 +103,7 @@ function validateCPassword() {
 }
 
 function validateForm() {
-  if (!validateUserName() || !validatePassword() || !validateCPassword()) {
+  if (!validateUserName() || !validatePassword() || !validateCPassword() || !validateEmail()) {
     submitError.innerText = "Please Fix Error To Submit";
     setTimeout(function () {
       submitError.style.display = "none";

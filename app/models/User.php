@@ -36,15 +36,13 @@ class User {
           return false;
         }
       }
-  
       // Find user by email
       public function findUserByEmail($email){
-        $this->db->query('SELECT * FROM admins WHERE Email = :email');
+        $this->db->query('SELECT * FROM users WHERE Email = :email');
         // Bind value
         $this->db->bind(':email', $email);
   
-        $row = $this->db->single();
-  
+        $this->db->execute();
         // Check row
         if($this->db->rowCount() > 0){
           return true;
