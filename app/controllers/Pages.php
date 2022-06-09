@@ -6,25 +6,11 @@
     }
     
     public function index(){     
-      $this->view('pages/index');
+      $this->view('pages/signUp');
     }
 
       public function signUp(){
-        function filter_inputF($data) {
-          $data = trim($data);
-          $data = htmlspecialchars($data);
-          return $data;
-        }
-        if(isset($_POST['signUp'])){
-        
-          $data = [
-            'Email' => filter_inputF($_POST['email']),
-            'Password' => filter_inputF(trim($_POST['password']))
-          ];
-    
-
-          redirect('pages/logIn');
-      }
+      $this->view('pages/signUp');
     }
     public function logIn(){
       $this->view('pages/logIn');

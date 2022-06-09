@@ -14,24 +14,26 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/LoginSignup.css"/>
     <title>Sign Up</title>
 </head>
-<body class=" d-flex align-items-center vh-100">
+<body class=" d-flex align-items-center vh-100 overflow-hidden">
     <main class="d-flex justify-content-center container-fluid">
         <div class="p-4 firstDiv">
             <a href="index.php"><img src="<?php echo URLROOT.'/img/logo.png'?>" alt="Logo" width="140"></a>
-            <form action="<?php echo URLROOT?>/pages/signUp" method="POST">
+            <form action="<?php echo URLROOT?>/Users/register" method="POST">
                 <div class="d-flex flex-column mt-3">
                 <h3>Create Account</h3>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" class="mb-3" name="email">
-                <label for="Password">Password</label>
-                <input type="password" id="Password" class="mb-3" name="password">    
+                <label class="d-inline-block" for="username">Username<span class="ms-5" id="usernameError"></span></label>
+                <input type="text" id="username" class="mb-3" name="username" onkeyup="validateUserName()">
+                <label for="email">Email<span class="ms-5" id="emaiError"></span></label>
+                <input type="email" id="email" class="mb-3" name="email" onkeyup="validateUserName()">
+                <label for="Password">Password</label><span id="passwordError"></span>
+                <input type="password" id="Password" class="mb-3" name="password" onkeyup="validatePassword()">    
                 <div class="d-flex flex-column position-relative" id="CopasswordContaSignUp">
-                <label for="cPassword">ConfirmPassword</label>
+                <label for="cPassword">ConfirmPassword</label><span id="confirmPerror" onkeyup="validateCPassword()"></span>
                 <input type="password" id="cPassword">
                 <i class="bi bi-eye-slash passw-mask-eye" onclick="toogleEyePassword()"></i>
                 </div>
-                <button type="submit" class="mt-4" name="signUp">Sign up</button>
+                <span class="text-center" id="submitError"></span>
+                <button type="submit" class="mt-4" name="signUp" onclick="return validateForm()">Sign up</button>
                 
             </div>
             </form>
