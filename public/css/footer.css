@@ -16,7 +16,6 @@ footer > #footerInfo {
 }
 .iconsContainer {
     opacity: 0.7;
-    background: var(--grey-color);
     margin: 0.5rem;
     cursor: pointer;
 }

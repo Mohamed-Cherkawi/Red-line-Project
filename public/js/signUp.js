@@ -79,8 +79,8 @@ function validatePassword() {
     password.setAttribute("style", "border-bottom : 2px solid red");
     return false;
   }
-  if (passwordV.length > 30) {
-    passwordError.innerText = "Must be less than 30 Chars";
+  if (passwordV.length > 50) {
+    passwordError.innerText = "Must be less than 50 ?!";
     password.setAttribute("style", "border-bottom : 2px solid red");
     return false;
   }

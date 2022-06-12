@@ -21,7 +21,7 @@
             <form action="<?php echo URLROOT?>/Users/register" method="POST">
                 <div class="d-flex flex-column mt-3">
                 <h3>Create Account</h3>
-                <?php if(isset($data['email-err'])) { echo $data['email-err'] ;}?>
+                <div class="alert text-center <?php if(isset($data['email_err'])) { echo "alert-danger" ;}?>" role="alert"><?php if(isset($data['email_err'])) { echo $data['email_err'] ;}?></div>
                 <label class="d-inline-block" for="username">Username<span class="ms-5 errorMessagesCont" id="usernameError"></span></label>
                 <input type="text" id="username" class="mb-3" name="username" onkeyup="validateUserName()">
                 <label for="email">Email<span class="ms-5 errorMessagesCont" id="emaiError"></span></label>
@@ -33,7 +33,7 @@
                 <input type="password" id="cPassword" onkeyup="validateCPassword()">
                 <i class="bi bi-eye-slash passw-mask-eye" onclick="toogleEyePassword()"></i>
                 </div>
-                <span class="text-center" id="submitError"></span>
+                <span class="text-center errorMessagesCont" id="submitError"></span>
                 <button type="submit" class="mt-4" name="signUp" onclick="return validateForm()">Sign up</button>
                 
             </div>
@@ -42,7 +42,7 @@
                     <div class="d-flex flex-column justify-content-evenly align-items-center h-100 w-50">
                         <span>Already have an account ?</span>
                         <div id="separator1"></div>
-                        <a href="" class="text-dark fw-bolder">Log in here</a>
+                        <a href="<?php echo URLROOT ?>/pages/logIn" class="text-dark fw-bolder">Log in here</a>
                     </div>
                     <div id="separator2">.</div>
                     <div class="d-flex flex-column justify-content-around align-items-center w-50">

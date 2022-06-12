@@ -28,7 +28,7 @@
       <p id="mainPara">
         Ready to change your physique,but can't work out in the gym?
       </p>
-      <a href=""><button id="firstJoinButt">JOIN WITH US</button></a>
+      <a href="<?php echo URLROOT ?>/pages/signUp"><button id="firstJoinButt">JOIN WITH US</button></a>
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -66,7 +66,7 @@
         </h1>
         <img
           id="sittingManImg"
-          src="imgs/sitting.png"
+          src="<?php echo URLROOT ?>/img/sitting.png"
           alt="A men sitting in yoga position"
         />
       </div>
@@ -76,7 +76,7 @@
         <div class="d-flex">
           <img
             class="infoIcons"
-            src="imgs/updownArrow.png"
+            src="<?php echo URLROOT ?>/img/updownArrow.png"
             alt="updown Arrow"
           />
           <div class="ms-3">
@@ -90,7 +90,7 @@
           </div>
         </div>
         <div class="d-flex mt-5">
-          <img class="infoIcons" src="imgs/running.png" alt="Running image" />
+          <img class="infoIcons" src="<?php echo URLROOT ?>/img/running.png" alt="Running image" />
           <div class="ms-3">
             <h1 class="articlesHeading">Running</h1>
             <p class="articlesParag">
@@ -101,7 +101,7 @@
           </div>
         </div>
         <div class="d-flex mt-5">
-          <img class="infoIcons" src="imgs/yoga.png" alt="yoga" />
+          <img class="infoIcons" src="<?php echo URLROOT ?>/img/yoga.png" alt="yoga" />
           <div class="ms-3">
             <h1 class="articlesHeading">Yoga</h1>
             <p class="articlesParag">
@@ -122,28 +122,28 @@
         <div class="row mt-5 justify-content-around">
           <article class="card section3Articles col-4 float-start">
             <img
-              src="imgs/cyclingMachines.png"
+              src="<?php echo URLROOT ?>/img/cyclingMachines.png"
               class="card-img-top"
               alt="PeopleCycling"
             />
             <div class="card-body">
               <h3 class="card-title">Cycling</h3>
               <div class="d-flex align-items-center mt-4">
-                <img class="coachIcon" src="imgs/coach.png" alt="coach Icon" />
+                <img class="coachIcon" src="<?php echo URLROOT ?>/img/coach.png" alt="coach Icon" />
                 <span class="ms-4 coaches"> Coach Abd l ilah ,Da Hmad</span>
               </div>
             </div>
           </article>
           <article class="card section3Articles col-4 float-end">
             <img
-              src="imgs/cyclingMachines.png"
+              src="<?php echo URLROOT ?>/img/cyclingMachines.png"
               class="card-img-top"
               alt="PeopleCycling"
             />
             <div class="card-body">
               <h3 class="card-title">Cycling</h3>
               <div class="d-flex align-items-center mt-4">
-                <img class="coachIcon" src="imgs/coach.png" alt="coach Icon" />
+                <img class="coachIcon" src="<?php echo URLROOT ?>/img/coach.png" alt="coach Icon" />
                 <span class="ms-4 coaches"> Coach Abd l ilah ,Da Hmad</span>
               </div>
             </div>
@@ -152,14 +152,14 @@
             class="card section3Articles lastArticlesSection3 col-4 float-end"
           >
             <img
-              src="imgs/cyclingMachines.png"
+              src="<?php echo URLROOT ?>/img/cyclingMachines.png"
               class="card-img-top"
               alt="PeopleCycling"
             />
             <div class="card-body">
               <h3 class="card-title">Cycling</h3>
               <div class="d-flex align-items-center mt-4">
-                <img class="coachIcon" src="imgs/coach.png" alt="coach Icon" />
+                <img class="coachIcon" src="<?php echo URLROOT ?>/img/coach.png" alt="coach Icon" />
                 <span class="ms-4 coaches">Coach Nada , Khalid</span>
               </div>
             </div>
@@ -172,7 +172,7 @@
       <div class="d-flex flex-column flex-lg-row mt-5">
         <article class="me-5">
           <div class="d-flex">
-            <img src="imgs/user1.jpg" class="usersImage" alt="user1 Image" />
+            <img src="<?php echo URLROOT ?>/img/user1.jpg" class="usersImage" alt="user1 Image" />
             <div class="ms-5">
               <h1 class="fw-bolder">Fouad</h1>
               <div class="lineBreaker mt-4"></div>
@@ -188,7 +188,7 @@
         <article>
           <div class="d-flex">
             <img
-              src="imgs/user1.jpg"
+              src="<?php echo URLROOT ?>/img/user1.jpg"
               class="usersImage"
               alt="user1 Image"
               id="user2Img"
@@ -210,7 +210,7 @@
 
     <section class="container-fluid bmiHolderSection position-relative d-none d-md-block">
       <div class="text-center">
-        <img src="imgs/Bmi-pic.jpeg" alt="2 persons Running" id="bmiPicture" />
+        <img src="<?php echo URLROOT ?>/img/Bmi-pic.jpeg" alt="2 persons Running" id="bmiPicture" />
       </div>
       <div class="bmiContent d-flex flex-column justify-content-between h-75">
         <h1 id="bmiHeader">CALCULATE YOUR BMI !</h1>
@@ -294,11 +294,6 @@
       </div>
     </section>
     <?php  require_once APPROOT."/views/inc/footer.php"; ?>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
     <script src="<?php echo URLROOT; ?>/js/index.js"></script>
   </body>
 </html>

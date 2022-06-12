@@ -9,9 +9,10 @@ class User {
   
      // Regsiter user
       public function register($data){
-        $this->db->query('INSERT INTO users (user_name, Password) VALUES(:name, :email, :password)');
+        $this->db->query('INSERT INTO users (user_name, Email , Password) VALUES(:name, :email , :password)');
         // Bind values
         $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email',$data['email']);
         $this->db->bind(':password', $data['password']);
   
         // Execute
@@ -24,7 +25,7 @@ class User {
   
       // Login User
       public function login($email, $password){
-        $this->db->query('SELECT * FROM admins WHERE Email = :email AND Pwd = :password ');
+        $this->db->query('SELECT * FROM users WHERE Email = :email AND Password = :password');
         $this->db->bind(':email', $email);
         $this->db->bind(':password', $password);
   

@@ -14,9 +14,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
   <style>
-    body {
-      overflow: hidden;
-    }
     section {
       margin-top: 10rem;
     }
@@ -34,8 +31,8 @@
 }
 .iconsC{
   position: absolute;
+  top: 30%;
   left: 65%;
-  width: 0;
 }
 @media only screen and (max-width: 991px) {
     section{
@@ -57,34 +54,34 @@
   <section>
   <div class="container d-flex flex-column flex-lg-row justify-content-between flex-wrap  ">
     <div class="d-flex justify-content-between cardsC mt-5 mb-4 mt-lg-0 mb-lg-5">
-      <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-column justify-content-between align-items-center">
         <h1>Users</h1>
         <span class="statics">30</span>
       </div>
-      <div class="iconsC"><img src="icons/user.png" alt="users Icon" width="500" height="500"></div>
+      <div class="iconsC"><img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/92/undefined/external-user-advertising-kiranshastry-lineal-color-kiranshastry-7.png"/></div>
     </div>
     <div class= "d-flex justify-content-between cardsC mt-5 mb-4 mt-lg-0 mb-lg-5">
-      <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-column justify-content-between align-items-center">
         <h1>Trainers</h1>
         <span class="statics">5</span>
       </div>
-      <div class="iconsC"><img src="icons/medal.png" alt="Medal icon" width="500" height="500"></div>
+      <div class="iconsC"><img src="https://img.icons8.com/cotton/92/undefined/olympic-medal-silver.png"/></div>
     </div>
     </div>
     <div class="container d-flex flex-column flex-lg-row justify-content-between flex-wrap  ">
     <div class=" d-flex justify-content-between cardsC mt-5   mb-4 mt-lg-0 mb-lg-5">
-      <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-column justify-content-between align-items-center">
         <h1>Admins</h1>
         <span class="statics">3</span>
       </div>
-      <div class="iconsC"><img src="icons/clamonite.png" alt="Clamonite icon" width="500" height="500"></div>
+      <div class="iconsC"><img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/92/undefined/external-user-advertising-kiranshastry-lineal-color-kiranshastry-4.png"/></div>
     </div>
     <div class=" d-flex justify-content-between cardsC mt-5  mb-4 mt-lg-0 mb-lg-5">
       <div class="d-flex flex-column justify-content-between">
         <h1>Products</h1>
         <span class="statics">15</span>
       </div>
-      <div class="iconsC"><img src="icons/basket.png" alt="Basket Icon" width="500" height="500"></div>
+      <div class="iconsC"><img src="https://img.icons8.com/color-glass/96/undefined/shopping-basket-2.png"/></div>
     </div>
   </div>
 </section>

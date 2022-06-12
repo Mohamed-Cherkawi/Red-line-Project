@@ -17,31 +17,29 @@
         <main class="d-flex justify-content-center container-fluid">
             <div class="imageContainerLog d-none d-xxl-block"></div>
             <div class="p-4 firstDiv firstDivLog">
-                <a href="index.php"><img src="imgs/logo.png" alt="Logo" width="140"></a>
-                <div class="d-flex flex-column mt-3">
+                <a href="<?php echo URLROOT; ?>/pages/index"><img src="<?php echo URLROOT; ?>/img/logo.png" alt="Logo" width="140"></a>
+                <form action="<?php echo URLROOT ?>/Users/login" method="POST" class="d-flex flex-column mt-3">
                     <h3>Log to your account</h3>
-                    <span class="mt-3">Email</span>
-                    <input type="email" class="mb-3">
-                    <span>Password</span>
-                    <input type="password" class="mb-3">
+                    <div class="alert text-center <?php if(isset($data['email_err']) || isset($data['password_err']) || isset($data['query_error'])) { echo "alert-danger" ;}?>" role="alert"><?php if(isset($data['email_err'])) { echo $data['email_err'] ;} if(isset($data['password_err'])) { echo $data['password_err'] ;} if(isset($data['query_error'])) { echo $data['query_error'] ;}?></div>
+                    <label for="email" class="mt-3">Email<span class="ms-5 errorMessagesCont" id="emailError"></span></label>
+                    <input type="email" name="email" id="email" class="mb-3" onkeyup="validateEmail()">
+                    <label for="password">Password<span class="ms-5 errorMessagesCont" id="passwordError"></span></label>
+                    <input type="password" name="password" id="password" class="mb-3" onkeyup="validatePassword()">
                     <div class="d-flex align-items-center mt-4">
-                        <input type="checkbox" name="" id="RememberMe">
+                        <input type="checkbox" name="RememberUser" id="RememberMe">
                         <label class="ms-3 fw-bold" id="Remember" for="RememberMe">Remember me</label>
                     </div>
-                    <button class="mt-4">Log in</button>
+                    <span class="text-center errorMessagesCont" id="submitError"></span>
+                    <button type="submit" name="logIn" class="mt-4" onclick="return validateForm()">Log in</button>
                     <div class="d-flex flex-column align-items-center mt-5">
                         <span>Don't have an account ?</span>
                         <div id="separator1" class="mt-4"></div>
-                        <a href="signUp.php" class="text-dark mt-4 fw-bolder">Sign up here</a>
+                        <a href="<?php echo URLROOT; ?>/pages/signUp" class="text-dark mt-4 fw-bolder">Sign up here</a>
                     </div>
-                </div>
+                </form>
             </div>
         </main>
     </body>
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-  ></script>
+    <script src="<?php echo URLROOT; ?>/js/logIn.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ const  headerpd = document.getElementById("header")
     // Validate that all variables exist
     toggle.addEventListener('click', ()=>{
     // show navbar
-    nav.classList.toggle('show')
+    nav.classList.toggle('show-sec')
     // // change icon
     toggle.classList.toggle('bx-x')
     // // add padding to body
