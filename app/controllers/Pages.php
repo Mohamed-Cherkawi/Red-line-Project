@@ -2,7 +2,7 @@
   class Pages extends Controller {
 
     public function __construct(){
-     $this->mainModel = $this->model('Main');
+     $this->userModel = $this->model('UserDash');
     }
     
     public function index(){     
@@ -22,7 +22,7 @@
       $this->view('pages/dashboard');
     }
     public function usersDash(){
-      $users =  $this->mainModel->showUsers();
+      $users =  $this->userModel->showUsers();
       $this->view('pages/usersDash',$users);
     }
     public function trainersDash(){

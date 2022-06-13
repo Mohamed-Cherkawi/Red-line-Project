@@ -71,7 +71,10 @@
         </tr>
       </thead>
       <tbody>
-      <?php  foreach ($data as $value) :?>
+      <?php  
+      $counter = 2;
+      foreach ($data as $value) :
+      ?>
         <tr class="trCss">
           <th >
             <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" width="50" height="50"/>
@@ -80,17 +83,21 @@
           <td><?php echo $value-> Email ;?></td>
           <td><?php echo $value-> Date_inscription ;?></td>
           <td>  
-                                       <!-- Button trigger modal -->
-          <button class="button"><img src="<?php echo URLROOT ?>/icons/editPenSvg.svg" alt="EditIcon"></button>
+                          <!-- Trigger/Open The Modal -->
+              <button class="modal-button" href="#myModal-<?php echo $counter; ?>"><img src="<?php echo URLROOT ?>/icons/editPenSvg.svg" alt="EditIcon"></button>
 
-            <div class="modal-2">
-              <div class="modal-content-2">
-                <div class="modal-header-2">
-                  <span class="close-2">&times;</span>
-                  <h2>Modal Header</h2>
-                </div>
-                <div class="modal-body-2">
-                <form action="<?php echo URLROOT; ?>/UsersDash/editUser" method="POST">     
+              <!-- The Modal -->
+              <div id="myModal-<?php echo $counter++ ; ?>" class="modal-update">
+
+                <!-- Modal content -->
+                <div class="modal-content-update">
+                  <div class="modal-header-update d-flex justify-content-between align-items-center">
+                  <h5>Modal Header</h5>
+                  <span class="close-update">×</span>
+                  </div>
+                  <div class="modal-body-update">
+                  <form action="<?php echo URLROOT; ?>/UsersDash/editUser" method="POST">
+                    <input type="hidden" name="user_id" value="<?php echo $value-> user_id ;?>">     
                   <div class="input-group">
                     <input type="file" name="userImage" class="form-control" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
@@ -104,14 +111,15 @@
                     <input type="text" name="email" value="<?php echo $value-> Email ;?>" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
                   </div>
                 </div>
-                <div class="modal-footer-2">
-                <button type="submit" name="addUser" class="btn btn-primary w-100">Save changes</button>
+                <div class="modal-footer-update">
+                <button type="submit" name="editUser" class="btn btn-primary w-100">Save changes</button>
                 </div>
                 </form>
+                </div>
+
               </div>
-            </div>
           </td>
-          <td><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></td>
+          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteUser?id=<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
           <th></th>

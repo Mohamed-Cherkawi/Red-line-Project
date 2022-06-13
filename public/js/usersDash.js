@@ -1,30 +1,35 @@
-// Get DOM Elements
-const modal = document.querySelectorAll('.modal-2');
-const modalBtn = document.querySelectorAll('.button');
-const closeBtn = document.querySelectorAll('.close-2');
+// Get the button that opens the modal
+let btn = document.querySelectorAll("button.modal-button");
 
-modal.forEach(function(btnOpen) {
-  btnOpen.addEventListener('click', openModal);
-  // Open
-function openModal() {
-  modal.style.display = 'block';
+// All page modals
+let modals = document.querySelectorAll('.modal-update');
+
+// Get the <span> element that closes the modal
+let spans = document.getElementsByClassName("close-update");
+
+// When the user clicks the button, open the modal
+for (let i = 0; i < btn.length; i++) {
+ btn[i].onclick = function(e) {
+    e.preventDefault();
+   let modal = document.querySelector(e.target.getAttribute("href"));
+    modal.style.display = "block";
+ }
 }
 
-
-});
-modalBtn.forEach(function(btnClose) {
-  btnClose.addEventListener('click', closeModal);
-  // Close
-function closeModal() {
-  modal.style.display = 'none';
+// When the user clicks on <span> (x), close the modal
+for (let i = 0; i < spans.length; i++) {
+ spans[i].onclick = function() {
+    for (let index in modals) {
+      if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+    }
+ }
 }
-})
-// Events
-window.addEventListener('click', outsideClick);
 
-// Close If Outside Click
-function outsideClick(e) {
-  if (e.target == modal) {
-    modal.style.display = 'none';
-  }
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+     for (let index in modals) {
+      if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+     }
+    }
 }

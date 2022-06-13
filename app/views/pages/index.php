@@ -246,7 +246,7 @@
     <section class="section5 mt-5 p-5">
       <div>
         <h1 class="text-white section5Heading">OUR PRICING PLAN</h1>
-        <div class="row mt-5 justify-content-between pricingContainer">
+        <div class="row mt-5 justify-content-between align-items-center pricingContainer">
           <article
             class="d-flex flex-column align-items-center bg-light col-lg-3 mb-5 mb-lg-0"
           >

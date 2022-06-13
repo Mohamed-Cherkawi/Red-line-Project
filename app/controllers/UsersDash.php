@@ -28,4 +28,33 @@
                       }
             }
         }
+
+        public function editUser() {
+            
+            if(isset($_POST['editUser'])) {
+                $data =[
+                    'id' => $_POST['user_id'],
+                    'userName' => $_POST['username'],
+                    'email' => $_POST['email'],
+                ];
+                if($this->userDashModel->editUser($data)) {
+                    redirect('pages/usersDash');
+                } else {
+                    die('Something went wrong');
+                }
+            }
+        }
+
+        public function deleteUser() {
+                if(isset($_GET['id'])) {
+
+                    $id = $_GET['id'];
+
+                    if($this->userDashModel->deleteUser($id)) {
+                        redirect('pages/usersDash');
+                    } else {
+                        die('Something went wrong');
+                    }
+                }
+        }
     }
