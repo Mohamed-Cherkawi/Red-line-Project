@@ -19,8 +19,19 @@ section h1 {
 td > img {
     cursor: pointer;
 }
+.btn-primary {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,117,0,1) 100%);
+  box-shadow: none;
+  border: none;
+}
+.btn-primary:focus {
+  box-shadow: none !important;
+}
+#addButton{
+  width: 200px;
+}
 .modal-button{
-  padding: 0.8rem;
+  padding: 1rem;
   background: transparent;
   border: none;
 }   

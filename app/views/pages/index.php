@@ -167,7 +167,7 @@
         </div>
       </section>
     </div>
-    <section class="container mt-5">
+    <section class="mt-5 w-75 m-auto">
       <h1 class="mb-5 fw-bolder">What Clients Say</h1>
       <div class="d-flex flex-column flex-lg-row mt-5">
         <article class="me-5">

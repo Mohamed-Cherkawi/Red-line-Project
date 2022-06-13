@@ -19,6 +19,7 @@
                     $data =[
                         'userName' => filter_inputF($_POST['username']),
                         'email' => filter_inputF($_POST['email']),
+                        'password' => filter_inputF($_POST['password'])
                       ];
                     
                       if($this->userDashModel->addUser($data)) {
@@ -36,6 +37,7 @@
                     'id' => $_POST['user_id'],
                     'userName' => $_POST['username'],
                     'email' => $_POST['email'],
+                    'password' => $_POST['password']
                 ];
                 if($this->userDashModel->editUser($data)) {
                     redirect('pages/usersDash');
@@ -56,5 +58,36 @@
                         die('Something went wrong');
                     }
                 }
+        }
+
+        public function addAdmin() {
+            if(isset($_POST['addAdmin'])) {
+                $data =[
+                    'adminName' => $_POST['adminName'],
+                    'email'    => $_POST['email'],
+                    'password' => $_POST['password']
+                ];
+                if($this->userDashModel->addAdmin($data)) {
+                    redirect('pages/AdminsDash');
+                } else {
+                    die('Something went wrong');
+                }
+            }
+        }
+
+        public function editAdmin() {
+            if(isset($_POST['editAdmin'])) {
+                $data =[
+                    'id' => $_POST['user_id'],
+                    'adminName' => $_POST['adminName'],
+                    'email' => $_POST['email'],
+                    'password' => $_POST['password']
+                ];
+                if($this->userDashModel->editAdmin($data)) {
+                    redirect('pages/AdminsDash');
+                } else {
+                    die('Something went wrong');
+                }
+            }
         }
     }

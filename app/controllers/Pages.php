@@ -3,6 +3,7 @@
 
     public function __construct(){
      $this->userModel = $this->model('UserDash');
+     $this->trainerModel = $this->model('TrainerDash');
     }
     
     public function index(){     
@@ -15,8 +16,9 @@
     public function logIn(){
       $this->view('pages/logIn');
     }
-    public function adminDash(){
-      $this->view('pages/adminDash');
+    public function adminsDash(){
+      $admins = $this->userModel->showAdmins();
+      $this->view('pages/adminsDash',$admins);
     }
     public function dashboard(){
       $this->view('pages/dashboard');
@@ -26,7 +28,8 @@
       $this->view('pages/usersDash',$users);
     }
     public function trainersDash(){
-      $this->view('pages/trainersDash');
+      $trainers = $this->trainerModel->showTrainers();
+      $this->view('pages/trainersDash',$trainers);
     }
     public function profile(){
       $this->view('pages/profile');
