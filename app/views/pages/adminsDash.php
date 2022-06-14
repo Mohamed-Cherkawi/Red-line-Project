@@ -51,13 +51,13 @@ td > img {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-           <form action="<?php echo URLROOT; ?>/UsersDash/addAdmin" method="POST">     
+           <form action="<?php echo URLROOT; ?>/AdminsDash/addAdmin" method="POST">     
           <div class="input-group">
-            <input type="file" name="userImage" class="form-control" id="inputGroupFile02">
+            <input type="file" name="adminImage" class="form-control" id="inputGroupFile02">
             <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
           </div>
           <div class="input-group my-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
+            <span class="input-group-text" id="basic-addon1">Admin</span>
             <input type="text" name="adminName" class="form-control" placeholder="adminName" aria-label="adminName" aria-describedby="basic-addon1">
           </div>
           <div class="input-group">
@@ -114,10 +114,10 @@ td > img {
                   <span class="close-update">×</span>
                   </div>
                   <div class="modal-body-update">
-                  <form action="<?php echo URLROOT; ?>/UsersDash/editAdmin" method="POST">
-                    <input type="hidden" name="user_id" value="<?php echo $value-> user_id ;?>">     
+                  <form action="<?php echo URLROOT; ?>/AdminsDash/editAdmin" method="POST">
+                    <input type="hidden" name="admin_id" value="<?php echo $value-> user_id ;?>">     
                   <div class="input-group">
-                    <input type="file" name="userImage" class="form-control" id="inputGroupFile02">
+                    <input type="file" name="adminImage" class="form-control" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
                   </div>
                   <div class="input-group my-3">
@@ -141,7 +141,7 @@ td > img {
 
               </div>
           </td>
-          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteUser?id=<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
+          <td><a href="<?php echo URLROOT ; ?>/AdminsDash/deleteAdmin?id=<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
           <th></th>
