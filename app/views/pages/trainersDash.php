@@ -50,10 +50,6 @@ td > img {
               </div>
               <div class="modal-body">
            <form action="<?php echo URLROOT; ?>/TrainersDash/addTrainer" method="POST">     
-          <div class="input-group">
-            <input type="file" name="userImage" class="form-control" id="inputGroupFile02">
-            <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
-          </div>
           <div class="input-group my-3">
             <span class="input-group-text" id="basic-addon1">Trainer</span>
             <input type="text" name="trainername" class="form-control" placeholder="Trainer Name" aria-label="trainerName" aria-describedby="basic-addon1">
@@ -84,12 +80,19 @@ td > img {
       <tbody>
       <?php  
       $counter = 2;
-      foreach ($data as $value) :
+      foreach ($data["trainers"] as $value) :
       ?>
         <tr class="trCss">
           <th >
-            <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" width="50" height="50"/>
-            <span><?php echo $value-> trainer_name ;?></span>
+            <?php 
+             if ($data['trainersStatus'] == 0) {
+              echo "<img src='".URLROOT."/uploads/profile".$value-> trainer_id.".jpg?".mt_rand()."' width='50' height='50' alt='no photo found'>";
+          } else {
+              // if we don't have any photo set
+              echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";
+          }      
+            ?>
+            <span class="ms-2"><?php echo $value-> trainer_name ;?></span>
           </th>
           <td><?php echo $value-> Sport ;?></td>
           <td><?php echo $value-> Join_Date ;?></td>
@@ -107,8 +110,12 @@ td > img {
                   <span class="close-update">×</span>
                   </div>
                   <div class="modal-body-update">
-                  <form action="<?php echo URLROOT; ?>/TrainersDash/editTrainer" method="POST">
+                  <form action="<?php echo URLROOT; ?>/TrainersDash/editTrainer" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="trainer_id" value="<?php echo $value-> trainer_id ;?>">
+                    <div class="input-group">
+                      <input type="file" name="trainerImage" class="form-control" id="inputGroupFile02">
+                      <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
+                    </div>
                   <div class="input-group my-3">
                     <span class="input-group-text" id="basic-addon1">Trainer</span>
                     <input type="text" name="trainerName" value="<?php echo $value-> trainer_name ;?>" class="form-control" placeholder="Trainer Name" aria-label="Trainer Name" aria-describedby="basic-addon1">

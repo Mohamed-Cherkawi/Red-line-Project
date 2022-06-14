@@ -29,7 +29,12 @@
     }
     public function trainersDash(){
       $trainers = $this->trainerModel->showTrainers();
-      $this->view('pages/trainersDash',$trainers);
+      $trainersStatus = $this->trainerModel->selectTrainerStatus($trainers->trainer_id);
+      $data = [
+        'trainers' => $trainers,
+        'trainersStatus' => $trainersStatus
+      ];
+      $this->view('pages/trainersDash',$data);
     }
     public function profile(){
       $this->view('pages/profile');

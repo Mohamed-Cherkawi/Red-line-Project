@@ -50,4 +50,34 @@
               return false;
             }
           }
+          public function selectTrainerStatus($trainerId){
+            $this->db->query('SELECT status FROM profileimg WHERE user_id = :id');
+            $this->db->bind(':id', $trainerId);
+            $rows = $this->db->single();
+            return $rows;
+          }
+          public function insertIdToProfileImgTable($id) {
+            $this->db->query('INSERT INTO profileimg (user_id) VALUES(:id)');
+            // Bind values
+            $this->db->bind(':id', $id);      
+            // Execute
+            if($this->db->execute()){
+              return true;
+            } else {
+              return false;
+            }
+          }
+
+          public function changePhotoStatus($id) {
+            $this->db->query('UPDATE profileimg SET status = 0 WHERE user_id = :id');
+            // Bind values
+            $this->db->bind(':id', $id);
+      
+            // Execute
+            if($this->db->execute()){
+              return true;
+            } else {
+              return false;
+            }
+          }
     }
