@@ -42,7 +42,8 @@
                 $data =[
                     'id' => filter_inputF($_POST['trainer_id']),
                     'trainerName' => filter_inputF($_POST['trainerName']),
-                    'sport' => filter_inputF($_POST['sport'])
+                    'sport' => filter_inputF($_POST['sport']),
+                    'imgFullName' => ''
                 ];
                 // if this condition is not true than it means a file has uploaded , not an empty field file input .
                 if(!($_FILES['trainerImage']['error'] == UPLOAD_ERR_NO_FILE)) {
@@ -51,11 +52,11 @@
                 $photo = $_FILES['trainerImage'];
 
                 // $_files array contains  : name/ type / tmp_name / error / size
-                $fileName = $_FILES['trainerImage']['name'];
-                $fileTmpName = $_FILES['trainerImage']['tmp_name'];
-                $fileSize = $_FILES['trainerImage']['size'];
-                $fileError = $_FILES['trainerImage']['error'];
-                $fileType = $_FILES['trainerImage']['type'];
+                $fileName = $photo['name'];
+                $fileTmpName = $photo['tmp_name'];
+                $fileSize = $photo['size'];
+                $fileError = $photo['error'];
+                $fileType = $photo['type'];
             
                 // to get the extension of the file
                 $fileExt = explode('.', $fileName);
@@ -69,7 +70,7 @@
                     // if the file error is equal to 0 that means that we had no erros uploading this file 
                     if($fileError == 0){
             
-                        if($fileSize < 1000000){
+                        if($fileSize < 2000000){
                             /* Before we upload the file we have to make sure that when we do upload the file it gets
                             a proper name because for example a file called test.JPEG to uploads folder and someone 
                             else later on uploads a image that has the exact same name test.JPEG it will actually 
@@ -78,11 +79,13 @@
                             create a unique id wich gets inserted and replaced with the actual name of the file when
                             it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                             bunch of numbers .JPEG */
-                            $fileNameNew = "profile".$data['id'].".". $fileActualExt;
-                            $fileDestination = URLROOT ."/uploads" . $fileNameNew ;
+                            $fileNameNew = "/trainersProfile/profile".$data['id'].".". $fileActualExt;
+                            $fileDestination = UPLOADFOLDER  . $fileNameNew ;
                             move_uploaded_file($fileTmpName,$fileDestination);
-                            
-                            if($this->trainerDashModel->editTrainer($data) AND $this->trainerDashModel->changePhotostatus($data['id'])) {
+                            // echo "hellow";
+                            // exit;
+                            $data['imgFullName'] = $fileNameNew;
+                            if($this->trainerDashModel->editTrainer($data)) {
                                 redirect('pages/trainersDash');
                             } else {
                                 die('Something went wrong');

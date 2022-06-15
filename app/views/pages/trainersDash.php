@@ -34,6 +34,29 @@ td > img {
   require_once APPROOT."/views/inc/sidebar.php";
   require_once APPROOT."/views/inc/navbar.php"; ?>
    <section class="mt-5">
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal2" data-bs-target="#exampleModal2">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal2" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal2">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-end mt-5">
         <h1>Trainers Dashboard</h1>
         <div>
@@ -80,13 +103,13 @@ td > img {
       <tbody>
       <?php  
       $counter = 2;
-      foreach ($data["trainers"] as $value) :
+      foreach ($data as $value) :
       ?>
         <tr class="trCss">
-          <th >
+          <th>
             <?php 
-             if ($data['trainersStatus'] == 0) {
-              echo "<img src='".URLROOT."/uploads/profile".$value-> trainer_id.".jpg?".mt_rand()."' width='50' height='50' alt='no photo found'>";
+             if ($value-> imgFullName !== null) {
+              echo '<img src="'.URLROOT.'/uploads/trainersProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="no photo found">';
           } else {
               // if we don't have any photo set
               echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";

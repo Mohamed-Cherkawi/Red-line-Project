@@ -9,5 +9,6 @@
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
   define('URLROOT', 'http://localhost/Red-line-Project');
+  define('UPLOADFOLDER', 'C:\xampp\htdocs\Red-line-Project\public\uploads');
   // Site Name
   define('SITENAME', 'Gym Edge');
