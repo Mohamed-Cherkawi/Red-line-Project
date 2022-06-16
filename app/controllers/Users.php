@@ -88,7 +88,7 @@ class Users extends Controller {
     }
 
     public function createUserSession($user){
-      $_SESSION['user_id'] = $user->id;
+      $_SESSION['user_id'] = $user->user_id;
       $_SESSION['user_email'] = $user->Email;
       $_SESSION['user_name'] = $user->user_name;
       $_SESSION['inscription_date'] = $user->Date_inscription;

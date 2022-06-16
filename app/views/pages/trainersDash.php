@@ -1,8 +1,3 @@
-  <?php
-  
-  if($data['isLoggedIn']):
-  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,29 +34,6 @@ td > img {
   require_once APPROOT."/views/inc/sidebar.php";
   require_once APPROOT."/views/inc/navbar.php"; ?>
    <section class="mt-5">
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal2" data-bs-target="#exampleModal2">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal2" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal2">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-end mt-5">
         <h1>Trainers Dashboard</h1>
         <div>
@@ -80,11 +52,11 @@ td > img {
            <form action="<?php echo URLROOT; ?>/TrainersDash/addTrainer" method="POST">     
           <div class="input-group my-3">
             <span class="input-group-text" id="basic-addon1">Trainer</span>
-            <input type="text" name="trainername" class="form-control" placeholder="Trainer Name" aria-label="trainerName" aria-describedby="basic-addon1">
+            <input type="text" name="trainername" class="form-control" placeholder="Trainer Name" aria-label="trainerName" aria-describedby="basic-addon1" required>
           </div>
           <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Sport</span>
-            <input type="text" name="sport" class="form-control" placeholder="Sport" aria-label="Sport" aria-describedby="basic-addon1">
+            <input type="text" name="sport" class="form-control" placeholder="Sport" aria-label="Sport" aria-describedby="basic-addon1" required>
           </div>
           
               </div>
@@ -108,12 +80,12 @@ td > img {
       <tbody>
       <?php  
       $counter = 2;
-      foreach ($data['trainers'] as $value) :
+      foreach ($data as $value) :
       ?>
         <tr class="trCss">
           <th>
             <?php 
-             if ($value-> imgFullName !== null) {
+             if ($value-> imgFullName != null) {
               echo '<img src="'.URLROOT.'/uploads/trainersProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="no photo found">';
           } else {
               // if we don't have any photo set
@@ -146,11 +118,11 @@ td > img {
                     </div>
                   <div class="input-group my-3">
                     <span class="input-group-text" id="basic-addon1">Trainer</span>
-                    <input type="text" name="trainerName" value="<?php echo $value-> trainer_name ;?>" class="form-control" placeholder="Trainer Name" aria-label="Trainer Name" aria-describedby="basic-addon1">
+                    <input type="text" name="trainerName"  value="<?php echo $value-> trainer_name ;?>" class="form-control" placeholder="Trainer Name" aria-label="Trainer Name" aria-describedby="basic-addon1" required>
                   </div>
                   <div class="input-group">
                     <span class="input-group-text" id="basic-addon1">Sport</span>
-                    <input type="text" name="sport" value="<?php echo $value-> Sport ;?>" class="form-control" placeholder="Sport" aria-label="Sport" aria-describedby="basic-addon1">
+                    <input type="text" name="sport" value="<?php echo $value-> Sport ;?>" class="form-control" placeholder="Sport" aria-label="Sport" aria-describedby="basic-addon1" required>
                   </div>
                 </div>
                 <div class="modal-footer-update">
@@ -159,7 +131,7 @@ td > img {
                 </form>
                 </div>
               </div>
-          </td>
+          </td> 
           <td><a href="<?php echo URLROOT ; ?>/TrainersDash/deleteTrainer?id=<?php echo $value-> trainer_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
@@ -178,7 +150,3 @@ td > img {
   <script src="<?php echo URLROOT; ?>/js/modal.js"></script>
 </body>
 </html>
-<?php   
-else:
-    redirect('pages/index');
-endif;

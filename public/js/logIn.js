@@ -57,6 +57,7 @@ function validatePassword() {
     password.setAttribute("style", "border-bottom : 2px solid red");
     return false;
   }
+  password.setAttribute("style","border-bottom : 2px solid black");
   passwordError.innerText = "";
   return true;
 }

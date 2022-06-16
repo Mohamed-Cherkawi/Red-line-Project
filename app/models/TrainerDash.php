@@ -52,10 +52,11 @@
             }
           }
           
-          public function insertIdToProfileImgTable($id) {
-            $this->db->query('INSERT INTO profileimg (user_id) VALUES(:id)');
+          public function editImageName($imageName, $id) {
+            $this->db->query('UPDATE trainers SET = :imageName WHERE  trainer_id = :id');
             // Bind values
-            $this->db->bind(':id', $id);      
+            $this->db->bind(':imageName', $imageName);
+            $this->db->bind(':id', $id);
             // Execute
             if($this->db->execute()){
               return true;

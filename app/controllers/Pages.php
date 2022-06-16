@@ -4,6 +4,7 @@
     public function __construct(){
      $this->userModel = $this->model('UserDash');
      $this->trainerModel = $this->model('TrainerDash');
+     $this->mainModel = $this->model('MainDash');
     }
     
     public function index(){     
@@ -21,25 +22,32 @@
       $this->view('pages/adminsDash',$admins);
     }
     public function dashboard(){
-      $this->view('pages/dashboard');
+      $totalUsers = $this->mainModel->totalUsers();
+      $totalAdmins = $this->mainModel->totalAdmins();
+      $totalTrainers = $this->mainModel->totalTrainers();
+      $data = [
+        'totalUsers' => $totalUsers -> totalUsers ,
+        'totalTrainers' => $totalAdmins -> totalAdmins ,
+        'totalAdmins' =>   $totalTrainers -> totalTrainers
+        // 'totalProducts' => $this->mainModel->totalProducts(),
+      ];
+      $this->view('pages/dashboard',$data);
     }
     public function usersDash(){
-      $users =  $this->userModel->showUsers();
-      $this->view('pages/usersDash',$users);
+      if($this->isLoggedIn()){
+        $users = $this->userModel->showUsers();
+        $this->view('pages/usersDash',$users);
+      } else {
+      redirect('pages/index');
+      }
     }
     public function trainersDash(){
-      $trainers = $this->trainerModel->showTrainers();
-
-       if($this->isLoggedIn()){
-        $isLoggedIn = true ;
-      } else {
-        $isLoggedIn = false ;
-      }
-      $data = [
-        'trainers' => $trainers,
-        'isLoggedIn' => $isLoggedIn
-      ];
-      $this->view('pages/trainersDash',$data);
+        if($this->isLoggedIn()){
+          $trainers = $this->trainerModel->showTrainers();
+          $this->view('pages/trainersDash',$trainers);
+        } else {
+        redirect('pages/index');
+        }
     }
     public function profile(){
       $this->view('pages/profile');

@@ -25,7 +25,7 @@
   
   <section class="d-flex flex-column flex-xl-row justify-content-around align-items-center container mb-5">
     <div class=" d-flex flex-column align-items-center">
-        <h3 id="greetingHead">Welcome Mohamed</h3>
+        <h3 id="greetingHead">Welcome <?php if(isset($_SESSION['user_name'])) { echo $_SESSION['user_name'];} ?></h3>
         <div id="AdminImage">
             <img src="icons/userIco.png" alt="AdminImage" width="250" height="250"/>
         </div>
@@ -35,11 +35,11 @@
         <div class="mt-5">
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Username</h4>
-            <span>Mohamed</span>
+            <span><?php if(isset($_SESSION['user_name'])) { echo $_SESSION['user_name'];} ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Sign-up Date</h4>
-            <span>20-04-2022 08:30</span>
+            <span><?php if(isset($_SESSION['user_name'])) { echo $_SESSION['inscription_date'];} ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>LastLogin</h4>

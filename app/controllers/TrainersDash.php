@@ -45,6 +45,8 @@
                     'sport' => filter_inputF($_POST['sport']),
                     'imgFullName' => ''
                 ];
+
+                
                 // if this condition is not true than it means a file has uploaded , not an empty field file input .
                 if(!($_FILES['trainerImage']['error'] == UPLOAD_ERR_NO_FILE)) {
 
@@ -82,8 +84,6 @@
                             $fileNameNew = "/trainersProfile/profile".$data['id'].".". $fileActualExt;
                             $fileDestination = UPLOADFOLDER  . $fileNameNew ;
                             move_uploaded_file($fileTmpName,$fileDestination);
-                            // echo "hellow";
-                            // exit;
                             $data['imgFullName'] = $fileNameNew;
                             if($this->trainerDashModel->editTrainer($data)) {
                                 redirect('pages/trainersDash');
@@ -110,8 +110,9 @@
                 }
             }
         }
+        
 
-        public function deleteTrainer() {
+             public function deleteTrainer() {
                 if(isset($_GET['id'])) {
 
                     $id = $_GET['id'];
@@ -123,5 +124,6 @@
                         die('Something went wrong');
                     }
                 }
+            }
         }
-    }    
+       
