@@ -117,6 +117,7 @@
                     $id = $_GET['id'];
 
                     if($this->trainerDashModel->deleteTrainer($id)) {
+                        unlink(UPLOADFOLDER . "/trainersProfile/profile".$id.".jpg");
                         redirect('pages/trainersDash');
                     } else {
                         die('Something went wrong');

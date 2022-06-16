@@ -25,7 +25,7 @@
         ><span class="whiteH">BODY</span
         ><span class="orangeH ms-5">STRONG</span>
       </h1>
-      <p id="mainPara">
+      <p id="mainPara" class="d-none d-lg-block">
         Ready to change your physique,but can't work out in the gym?
       </p>
       <a href="<?php echo URLROOT ?>/pages/signUp"><button id="firstJoinButt">JOIN WITH US</button></a>

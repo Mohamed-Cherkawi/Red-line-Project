@@ -1,3 +1,8 @@
+  <?php
+  
+  if($data['isLoggedIn']):
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +108,7 @@ td > img {
       <tbody>
       <?php  
       $counter = 2;
-      foreach ($data as $value) :
+      foreach ($data['trainers'] as $value) :
       ?>
         <tr class="trCss">
           <th>
@@ -137,7 +142,7 @@ td > img {
                     <input type="hidden" name="trainer_id" value="<?php echo $value-> trainer_id ;?>">
                     <div class="input-group">
                       <input type="file" name="trainerImage" class="form-control" id="inputGroupFile02">
-                      <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
+                      <label class="input-group-text" for="inputGroupFile02">Upload Image</label>
                     </div>
                   <div class="input-group my-3">
                     <span class="input-group-text" id="basic-addon1">Trainer</span>
@@ -173,3 +178,7 @@ td > img {
   <script src="<?php echo URLROOT; ?>/js/modal.js"></script>
 </body>
 </html>
+<?php   
+else:
+    redirect('pages/index');
+endif;

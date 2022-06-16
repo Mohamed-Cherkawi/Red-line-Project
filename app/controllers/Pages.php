@@ -29,12 +29,29 @@
     }
     public function trainersDash(){
       $trainers = $this->trainerModel->showTrainers();
-      $this->view('pages/trainersDash',$trainers);
+
+       if($this->isLoggedIn()){
+        $isLoggedIn = true ;
+      } else {
+        $isLoggedIn = false ;
+      }
+      $data = [
+        'trainers' => $trainers,
+        'isLoggedIn' => $isLoggedIn
+      ];
+      $this->view('pages/trainersDash',$data);
     }
     public function profile(){
       $this->view('pages/profile');
     }
     public function app(){
       echo APPROOT;
+    }
+    public function isLoggedIn(){
+      if(isset($_SESSION['user_id'])){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
