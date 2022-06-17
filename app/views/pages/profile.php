@@ -39,7 +39,7 @@
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Sign-up Date</h4>
-            <span><?php if(isset($_SESSION['user_name'])) { echo $_SESSION['inscription_date'];} ?></span>
+            <span><?php if(isset($_SESSION['inscription_date'])) { echo $_SESSION['inscription_date'];} ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>LastLogin</h4>

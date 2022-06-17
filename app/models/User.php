@@ -9,7 +9,7 @@ class User {
   
      // Regsiter user
       public function register($data){
-        $this->db->query('INSERT INTO users (user_name, Email , Password) VALUES(:name, :email , :password)');
+        $this->db->query('INSERT INTO users (user_id, Email , Password) VALUES(:name, :email , :password)');
         // Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email',$data['email']);

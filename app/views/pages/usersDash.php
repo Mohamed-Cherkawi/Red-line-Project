@@ -1,7 +1,3 @@
-<?php
-  
-  if($data['isLoggedIn']):
-  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,7 +146,3 @@
   <script src="<?php echo URLROOT; ?>/js/modal.js"></script>
 </body>
 </html>
-<?php   
-else:
-    redirect('pages/index');
-endif;

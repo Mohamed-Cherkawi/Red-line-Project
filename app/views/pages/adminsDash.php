@@ -1,7 +1,3 @@
-<?php
-  
-  if($data['isLoggedIn']):
-  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,10 +52,6 @@ td > img {
               </div>
               <div class="modal-body">
            <form action="<?php echo URLROOT; ?>/AdminsDash/addAdmin" method="POST">     
-          <div class="input-group">
-            <input type="file" name="adminImage" class="form-control" id="inputGroupFile02">
-            <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
-          </div>
           <div class="input-group my-3">
             <span class="input-group-text" id="basic-addon1">Admin</span>
             <input type="text" name="adminName" class="form-control" placeholder="adminName" aria-label="adminName" aria-describedby="basic-addon1">
@@ -98,8 +90,15 @@ td > img {
       ?>
         <tr class="trCss">
           <th >
-            <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" width="50" height="50"/>
-            <span><?php echo $value-> user_name ;?></span>
+          <?php 
+             if ($value-> imgNameAd != null) {
+              echo '<img src="'.URLROOT.'/uploads/adminsProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="no photo found">';
+          } else {
+              // if we don't have any photo set
+              echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";
+          }      
+            ?>            
+          <span><?php echo $value-> user_name ;?></span>
           </th>
           <td><?php echo $value-> Email ;?></td>
           <td><?php echo $value-> Password ; ?></td>
@@ -164,7 +163,3 @@ td > img {
   <script src="<?php echo URLROOT; ?>/js/modal.js"></script>
 </body>
 </html>
-<?php   
-else:
-    redirect('pages/index');
-endif;

@@ -2,6 +2,7 @@
   class Pages extends Controller {
 
     public function __construct(){
+    $this->AdminModel = $this->model('AdminDash');
      $this->userModel = $this->model('UserDash');
      $this->trainerModel = $this->model('TrainerDash');
      $this->mainModel = $this->model('MainDash');
