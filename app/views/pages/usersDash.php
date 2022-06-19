@@ -13,7 +13,7 @@
   />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/dashboard.css" />
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/modal.css" />
 </head>
 <body id="body-pd">
 <?php 
@@ -132,6 +132,7 @@
         </tr>
         <tr>
           <th></th>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>

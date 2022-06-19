@@ -56,12 +56,17 @@ width: 0;
     box-shadow: 0px 0px 9px 0px black;
 }
 .profileButtons{
+    border: none;
     font-weight: bolder;
     font-size: large;
     padding: 0.8rem;
     width: 168px;
     color: white;
+    transition: 0.3s ease;
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(232,100,13,1) 100%);
+}
+.profileButtons:hover{
+  transform: scale(0.9);
 }
 #deleteProfileButt{
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(236,16,16,1) 100%);

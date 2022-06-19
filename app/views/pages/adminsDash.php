@@ -13,7 +13,7 @@
   />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/dashboard.css" />
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/modal.css" />
   <style>
 section h1 {
     margin-top: 6rem ;
@@ -92,7 +92,7 @@ td > img {
           <th >
           <?php 
              if ($value-> imgNameAd != null) {
-              echo '<img src="'.URLROOT.'/uploads/adminsProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="no photo found">';
+              echo '<img src="'.URLROOT.'/uploads/adminsProfile/profile'.$value-> user_id.'.jpg" width="100" height="100" alt="no photo found">';
           } else {
               // if we don't have any photo set
               echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";
@@ -117,10 +117,10 @@ td > img {
                   <span class="close-update">×</span>
                   </div>
                   <div class="modal-body-update">
-                  <form action="<?php echo URLROOT; ?>/AdminsDash/editAdmin" method="POST">
+                  <form action="<?php echo URLROOT; ?>/AdminsDash/editAdmin" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="admin_id" value="<?php echo $value-> user_id ;?>">     
                   <div class="input-group">
-                    <input type="file" name="adminImage" class="form-control" id="inputGroupFile02">
+                    <input type="file" name="admin_image" class="form-control" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
                   </div>
                   <div class="input-group my-3">
@@ -129,7 +129,7 @@ td > img {
                   </div>
                   <div class="input-group">
                     <span class="input-group-text" id="basic-addon1">Email</span>
-                    <input type="text" name="email" value="<?php echo $value-> Email ;?>" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                    <input type="email" name="email" value="<?php echo $value-> Email ;?>" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
                   </div>
                   <div class="input-group my-3">
                     <span class="input-group-text" id="basic-addon1">Password</span>

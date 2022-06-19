@@ -65,9 +65,4 @@
             }
           }
 
-          public function insertToGallery($imageName){
-            $this->db->query('INSERT INTO trainers (imgFullName) VALUES (:imgFullName)');
-            $this->db->bind(':imgFullName', $imageName);
-            $this->db->execute();
-          }
     }

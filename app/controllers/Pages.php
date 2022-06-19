@@ -2,7 +2,7 @@
   class Pages extends Controller {
 
     public function __construct(){
-    $this->AdminModel = $this->model('AdminDash');
+    $this->adminModel = $this->model('AdminDash');
      $this->userModel = $this->model('UserDash');
      $this->trainerModel = $this->model('TrainerDash');
      $this->mainModel = $this->model('MainDash');
@@ -19,8 +19,12 @@
       $this->view('pages/logIn');
     }
     public function adminsDash(){
-      $admins = $this->userModel->showAdmins();
+      if($this->isLoggedIn()){
+      $admins = $this->adminModel->showAdmins();
       $this->view('pages/adminsDash',$admins);
+      }else{
+        redirect('pages/index');
+      }
     }
     public function dashboard(){
       $totalUsers = $this->mainModel->totalUsers();
@@ -50,12 +54,17 @@
         redirect('pages/index');
         }
     }
+    public function productsDash() {
+      $this->view('pages/productsDash');
+    }
     public function profile(){
-      $this->view('pages/profile');
-    }
-    public function app(){
-      echo APPROOT;
-    }
+      if($this->isLoggedIn()){
+        $this->view('pages/profile');
+      } else {
+        redirect('pages/index');
+          }
+    }      
+
     public function isLoggedIn(){
       if(isset($_SESSION['user_id'])){
         return true;

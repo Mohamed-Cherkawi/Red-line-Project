@@ -43,7 +43,7 @@
                     'id' => filter_inputF($_POST['trainer_id']),
                     'trainerName' => filter_inputF($_POST['trainerName']),
                     'sport' => filter_inputF($_POST['sport']),
-                    'imgFullName' => ''
+                    'imgFullName' => null
                 ];
 
                 
@@ -58,7 +58,6 @@
                 $fileTmpName = $photo['tmp_name'];
                 $fileSize = $photo['size'];
                 $fileError = $photo['error'];
-                $fileType = $photo['type'];
             
                 // to get the extension of the file
                 $fileExt = explode('.', $fileName);
@@ -68,7 +67,7 @@
                 // inside this array we gonna tell it wich type of files we want to allow inside the website
                 $allowed = array('jpg' , 'jpeg' , 'png');
             
-                if( in_array($fileActualExt , $allowed)) {
+                if(in_array($fileActualExt , $allowed)) {
                     // if the file error is equal to 0 that means that we had no erros uploading this file 
                     if($fileError == 0){
             

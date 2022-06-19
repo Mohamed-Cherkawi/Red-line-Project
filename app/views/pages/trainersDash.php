@@ -13,7 +13,7 @@
   />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/dashboard.css" />
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/modal.css" />
   <style>
 section h1 {
     margin-top: 6rem ;
@@ -89,7 +89,7 @@ td > img {
               echo '<img src="'.URLROOT.'/uploads/trainersProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="no photo found">';
           } else {
               // if we don't have any photo set
-              echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";
+              echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50' alt='defaultUserImg'>";
           }      
             ?>
             <span class="ms-2"><?php echo $value-> trainer_name ;?></span>

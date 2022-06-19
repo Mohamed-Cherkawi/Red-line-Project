@@ -46,7 +46,7 @@
             <span>20-04-2022 08:30</span>
         </div>
         </div>
-        <div class="mt-5 mb-5 mb-xl-0 d-flex flex-column flex-md-row align-items-center"><button class="profileButtons">Edit</button><button class="profileButtons mx-3 my-3 my-md-0">Logout</button><button id="deleteProfileButt" class="profileButtons">Delete</button></div>
+        <div class="mt-5 mb-5 mb-xl-0 d-flex flex-column flex-md-row align-items-center"><button class="profileButtons">Edit</button><a href="<?php echo  URLROOT; ?>/Users/logout" onclick="return confirm('Log out ?')"><button class="profileButtons mx-3 my-3 my-md-0">Logout</button></a><button id="deleteProfileButt" class="profileButtons">Delete</button></div>
     </div>
   </section>
 </main>

@@ -55,9 +55,6 @@
   <div class="container d-flex flex-column flex-lg-row justify-content-between flex-wrap  ">
     <div class="d-flex justify-content-between cardsC mt-5 mb-4 mt-lg-0 mb-lg-5">
       <div class="d-flex flex-column justify-content-between align-items-center">
-        <?php if(isset($_SESSION['user_id'])) { echo "all is good !" ;}else {
-          echo "you are not logged in";
-        } ?>
         <h1>Users</h1>
         <span class="statics"><?php echo $data['totalUsers']; ?></span>
       </div>
@@ -80,7 +77,7 @@
       <div class="iconsC"><img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/92/undefined/external-user-advertising-kiranshastry-lineal-color-kiranshastry-4.png"/></div>
     </div>
     <div class=" d-flex justify-content-between cardsC mt-5  mb-4 mt-lg-0 mb-lg-5">
-      <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-column justify-content-between align-items-center">
         <h1>Products</h1>
         <span class="statics">15</span>
       </div>
