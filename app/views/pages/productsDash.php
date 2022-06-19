@@ -39,7 +39,7 @@
                 <div class="modal-body">
                   <div class="mb-3">
                     <label for="image" class="form-label">Choose Image (jpg , jpeg , png)</label>
-                    <input type="file" name="product_image" class="form-control" id="image">
+                    <input type="file" name="product_image" class="form-control" id="image" required>
                   </div>
                   <div class="mb-3">
                     <label for="productName" class="form-label">Product Name <span class="requiredFiels ms-3">Required *</span></label>
