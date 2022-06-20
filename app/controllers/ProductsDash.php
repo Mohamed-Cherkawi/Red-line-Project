@@ -3,7 +3,7 @@
     class ProductsDash extends Controller{
 
         public function __construct(){
-            $this->productDashModel = $this->model('productDash');
+            $this->productDashModel = $this->model('ProductDash');
         }
 
         public function addProduct() {
@@ -21,7 +21,8 @@
                         'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
                         'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
                         'pOriginalrPrice' => filter_inputF($_POST['pOriginalrPrice']),
-                        ''
+                        'productDescription' => filter_inputF($_POST['productDescription']),
+                        'imgFullName' => ''
                       ];
                     
                       // if this condition is not true than it means a file has uploaded , not an empty field file input .
@@ -57,12 +58,12 @@
                                 create a unique id wich gets inserted and replaced with the actual name of the file when
                                 it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                                 bunch of numbers .JPEG */
-                                $fileNameNew = "/productsProfile/profile".$data['id'].".". $fileActualExt;
-                                $fileDestination = UPLOADFOLDER  . $fileNameNew ;
+                                $fileNameNew = "product".uniqid().".". $fileActualExt;
+                                $fileDestination = UPLOADFOLDER  . "/productsFolder/" . $fileNameNew ;
                                 move_uploaded_file($fileTmpName,$fileDestination);
                                 $data['imgFullName'] = $fileNameNew;
-                                if($this->productDashModel->editTrainer($data)) {
-                                    redirect('pages/trainersDash');
+                                if($this->productDashModel->addProduct($data)) {
+                                    redirect('pages/productsDash');                                  
                                 } else {
                                     die('Something went wrong');
                                 }
@@ -78,11 +79,7 @@
                         echo "You can not upload files of this type !";
                     }
                 }
-                      if($this->productDashModel->addTrainer($data)) {
-                          redirect('pages/trainersDash');
-                      } else {
-                          die('Something went wrong');
-                      }
+             
             }
         }
 
@@ -97,18 +94,18 @@
                     return $data;
                 }
                 $data =[
-                    'id' => filter_inputF($_POST['trainer_id']),
-                    'trainerName' => filter_inputF($_POST['trainerName']),
-                    'sport' => filter_inputF($_POST['sport']),
+                    'productName' => filter_inputF($_POST['productName']),
+                    'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
+                    'pOriginalrPrice' => filter_inputF($_POST['pOriginalrPrice']),
                     'imgFullName' => null
                 ];
 
                 
                 // if this condition is not true than it means a file has uploaded , not an empty field file input .
-                if(!($_FILES['trainerImage']['error'] == UPLOAD_ERR_NO_FILE)) {
+                if(!($_FILES['product_image']['error'] == UPLOAD_ERR_NO_FILE)) {
 
                 // This file superglobal gets all the information from the file that we want to upload using an input from a form
-                $photo = $_FILES['trainerImage'];
+                $photo = $_FILES['product_image'];
 
                 // $_files array contains  : name/ type / tmp_name / error / size
                 $fileName = $photo['name'];
@@ -137,12 +134,12 @@
                             create a unique id wich gets inserted and replaced with the actual name of the file when
                             it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                             bunch of numbers .JPEG */
-                            $fileNameNew = "/trainersProfile/profile".$data['id'].".". $fileActualExt;
+                            $fileNameNew = "/productsProfile/product".$data['id'].".". $fileActualExt;
                             $fileDestination = UPLOADFOLDER  . $fileNameNew ;
                             move_uploaded_file($fileTmpName,$fileDestination);
                             $data['imgFullName'] = $fileNameNew;
-                            if($this->productDashModel->editTrainer($data)) {
-                                redirect('pages/trainersDash');
+                            if($this->productDashModel->addProduct($data)) {
+                                redirect('pages/productsDash');
                             } else {
                                 die('Something went wrong');
                             }
@@ -159,8 +156,8 @@
                 }
             }
 
-                if($this->productDashModel->editTrainer($data)) {
-                    redirect('pages/trainersDash');
+                if($this->productDashModel->addProduct($data)) {
+                    redirect('pages/productsDash');
                 } else {
                     die('Something went wrong');
                 }
@@ -168,18 +165,15 @@
         }
         
 
-             public function deleteProduct() {
-                if(isset($_GET['id'])) {
-
-                    $id = $_GET['id'];
-
-                    if($this->productDashModel->deleteTrainer($id)) {
-                        unlink(UPLOADFOLDER . "/trainersProfile/profile".$id.".jpg");
-                        redirect('pages/trainersDash');
+             public function deleteProduct($id , $imgName) {
+                
+                    if($this->productDashModel->deleteProduct($id)) {
+                        unlink(UPLOADFOLDER . "/productsFolder/" . $imgName);
+                        redirect('pages/productsDash');
                     } else {
                         die('Something went wrong');
                     }
-                }
+                
             }
         }
        

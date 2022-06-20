@@ -32,7 +32,7 @@ td > img {
   width: 85%;
   /* border: none; */
   padding: 2rem;
-  box-shadow: 7px 8px 23px 0px brown;
+  box-shadow: 7px 8px 15px 0px brown;
   transition: 0.5s;
 }
 .productContentC:hover {

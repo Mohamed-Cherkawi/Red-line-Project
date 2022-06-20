@@ -13,14 +13,13 @@
           return $rows;
         }
 
-        public function addAdmin($data){
-          $this->db->query('INSERT INTO users (user_name, Email, Password , Sport, Role) VALUES (:adminName, :email, :password, :sport, :admin)');
-          $this->db->bind(':adminName', $data['adminName']);
-          $this->db->bind(':email', $data['email']);
-          $this->db->bind(':password', $data['password']);
-          $this->db->bind(':sport', $data['sport']);
-          $this->db->bind(':admin', 'Admin');
-
+        public function addProduct($data){
+          $this->db->query('INSERT INTO products (product_name, product_original_price , product_offer_price , product_description , product_img_name) VALUES (:productName, :productOrigName, :productOffName, :productDesc , :productImageName)');
+          $this->db->bind(':productName', $data['productName']);
+          $this->db->bind(':productOrigName', $data['pRegularPrice']." $");
+          $this->db->bind(':productOffName', $data['pOriginalrPrice']." $");
+          $this->db->bind(':productDesc', $data['productDescription']);
+          $this->db->bind(':productImageName', $data['imgFullName']);
 
           if($this->db->execute()){
             return true;
@@ -29,7 +28,7 @@
           }
         }
 
-        public function editAdmin($data){
+        public function editProduct($data){
           $this->db->query('UPDATE users SET user_name = :adminName, Email = :email, Password = :password, imgNameAd = :imgName WHERE user_id = :id');
           $this->db->bind(':adminName', $data['adminName']);
           $this->db->bind(':email', $data['email']);
@@ -44,8 +43,8 @@
           }
         }
 
-        public function deleteAdmin($id){
-          $this->db->query('DELETE FROM users WHERE user_id = :id');
+        public function deleteProduct($id){
+          $this->db->query('DELETE FROM products WHERE product_id = :id');
           $this->db->bind(':id', $id);
 
           if($this->db->execute()){
@@ -55,10 +54,10 @@
           }
         }
 
-        public function gettingMaxid(){
-          $this->db->query('SELECT MAX(product_id) AS maxid FROM products');
-          $row = $this->db->single();
-          return $row;
-        }
+        // public function gettingMaxid(){
+        //   $this->db->query('SELECT MAX(product_id) AS maxid FROM products');
+        //   $row = $this->db->single();
+        //   return $row;
+        // }
           
     }

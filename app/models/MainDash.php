@@ -26,4 +26,10 @@
             $totalAdmins = $this->db->single();
             return $totalAdmins;
         }
+
+        public function totalProducts() {
+            $this->db->query('SELECT COUNT(product_id) AS "totalProducts" FROM products');
+            $totalProducts = $this->db->single();
+            return $totalProducts;
+        }
     }

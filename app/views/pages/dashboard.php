@@ -79,7 +79,7 @@
     <div class=" d-flex justify-content-between cardsC mt-5  mb-4 mt-lg-0 mb-lg-5">
       <div class="d-flex flex-column justify-content-between align-items-center">
         <h1>Products</h1>
-        <span class="statics">15</span>
+        <span class="statics"><?php echo $data['totalProducts']; ?></span>
       </div>
       <div class="iconsC"><img src="https://img.icons8.com/color-glass/96/undefined/shopping-basket-2.png"/></div>
     </div>
