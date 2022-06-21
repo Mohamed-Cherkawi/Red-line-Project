@@ -15,12 +15,18 @@
                         $data = htmlspecialchars($data);
                         return $data;
                     }
-
+                    // Checking if product offer input is empty or not
+                    if(empty($_POST['productOffer'])) {
+                        $productOffer = "none";
+                    } else {
+                        $productOffer = filter_inputF($_POST['productOffer']) . "$";
+                    }
                     $data =[
                         'productName' => filter_inputF($_POST['productName']),
                         'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
                         'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
-                        'pOriginalrPrice' => filter_inputF($_POST['pOriginalrPrice']),
+                        'pOfferPrice' => $productOffer,
+                        'category' => filter_inputF($_POST['category']),
                         'productDescription' => filter_inputF($_POST['productDescription']),
                         'imgFullName' => ''
                       ];
@@ -49,7 +55,7 @@
                         // if the file error is equal to 0 that means that we had no erros uploading this file 
                         if($fileError == 0){
                 
-                            if($fileSize < 2000000){
+                            if($fileSize < 5000000){
                                 /* Before we upload the file we have to make sure that when we do upload the file it gets
                                 a proper name because for example a file called test.JPEG to uploads folder and someone 
                                 else later on uploads a image that has the exact same name test.JPEG it will actually 
@@ -125,7 +131,7 @@
                     // if the file error is equal to 0 that means that we had no erros uploading this file 
                     if($fileError == 0){
             
-                        if($fileSize < 2000000){
+                        if($fileSize < 5000000){
                             /* Before we upload the file we have to make sure that when we do upload the file it gets
                             a proper name because for example a file called test.JPEG to uploads folder and someone 
                             else later on uploads a image that has the exact same name test.JPEG it will actually 

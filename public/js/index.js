@@ -34,7 +34,7 @@ function CalculBmi() {
   // Adding some style to the element
   BodyMass.classList.add('text-dark');
   // i used the toFixed function because i just need to numbers after the semicolon .
-  BodyMass.innerText = bmi.toFixed(2);
+  BodyMass.innerText = bmi.toFixed(1);
   
   BodyState.classList.add('text-dark');
 

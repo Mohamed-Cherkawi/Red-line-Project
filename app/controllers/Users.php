@@ -71,7 +71,9 @@ class Users extends Controller {
          
           if($loggedInUser){
               // Create Session
-              $this->createUserSession($loggedInUser); 
+              date_default_timezone_set("Africa/Casablanca");
+              $Currentdate = date(" Y-m-d  H:i A");
+              $this->createUserSession($loggedInUser , $Currentdate); 
           } else {
               $data['password_err'] = 'Password incorrect';
               $this->view('pages/logIn', $data);
@@ -87,11 +89,12 @@ class Users extends Controller {
       }
     }
 
-    public function createUserSession($user){
+    public function createUserSession($user , $lastLogin){
       $_SESSION['user_id'] = $user->user_id;
       $_SESSION['user_email'] = $user->Email;
       $_SESSION['user_name'] = $user->user_name;
       $_SESSION['inscription_date'] = $user->Date_inscription;
+      $_SESSION['login_date'] = $lastLogin ;
       if($user->Role == 'User'){
         redirect('pages/index');
       } else {
@@ -104,6 +107,7 @@ class Users extends Controller {
       unset($_SESSION['user_email']);
       unset($_SESSION['user_name']);
       unset($_SESSION['inscription_date']);
+      unset($_SESSION['login_date']);
       session_destroy();
       redirect('pages/index');
     }

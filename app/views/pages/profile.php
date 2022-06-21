@@ -35,15 +35,15 @@
         <div class="mt-5">
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Username</h4>
-            <span><?php if(isset($_SESSION['user_name'])) { echo $_SESSION['user_name'];} ?></span>
+            <span><?php echo $_SESSION['user_name']; ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Sign-up Date</h4>
-            <span><?php if(isset($_SESSION['inscription_date'])) { echo $_SESSION['inscription_date'];} ?></span>
+            <span><?php echo $_SESSION['inscription_date']; ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>LastLogin</h4>
-            <span>20-04-2022 08:30</span>
+            <span><?php echo $_SESSION['login_date']; ?></span>
         </div>
         </div>
         <div class="mt-5 mb-5 mb-xl-0 d-flex flex-column flex-md-row align-items-center"><button class="profileButtons">Edit</button><a href="<?php echo  URLROOT; ?>/Users/logout" onclick="return confirm('Log out ?')"><button class="profileButtons mx-3 my-3 my-md-0">Logout</button></a><button id="deleteProfileButt" class="profileButtons">Delete</button></div>

@@ -14,10 +14,11 @@
         }
 
         public function addProduct($data){
-          $this->db->query('INSERT INTO products (product_name, product_original_price , product_offer_price , product_description , product_img_name) VALUES (:productName, :productOrigName, :productOffName, :productDesc , :productImageName)');
+          $this->db->query('INSERT INTO products (product_name, product_original_price , product_offer_price , product_category, product_description , product_img_name) VALUES (:productName, :productOrigPrice, :productOffPrice, :pCategory, :productDesc , :productImageName)');
           $this->db->bind(':productName', $data['productName']);
-          $this->db->bind(':productOrigName', $data['pRegularPrice']." $");
-          $this->db->bind(':productOffName', $data['pOriginalrPrice']." $");
+          $this->db->bind(':productOrigPrice', $data['pRegularPrice']." $");
+          $this->db->bind(':productOffPrice', $data['pOfferPrice']);
+          $this->db->bind(':pCategory', $data['category']);
           $this->db->bind(':productDesc', $data['productDescription']);
           $this->db->bind(':productImageName', $data['imgFullName']);
 

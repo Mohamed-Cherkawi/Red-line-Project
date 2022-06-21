@@ -40,16 +40,19 @@ td > img {
   
 }
 .svgIconEdit{
-  position: absolute;
-  left: 20%;
-  top: 5%;
+  top: 1%;
+  left: 1%;
+  transform: rotate(-86deg);
+
 }
 .svgIconDelete{
-  position: absolute;
   top: 3%;
   right: 2%;
 }
 .svgIconDelete , .svgIconEdit{
+  position: absolute;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   opacity: 0.6;
 }
@@ -58,4 +61,7 @@ td > img {
 }
 .requiredFiels {
   color: red;
+}
+textarea {
+  resize: none;
 }

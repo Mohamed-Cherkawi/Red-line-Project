@@ -13,6 +13,10 @@
       $this->view('pages/index');
     }
 
+    public function schedule(){
+      $this->view('pages/schedule');
+    }
+
       public function signUp(){
       $this->view('pages/signUp');
     }

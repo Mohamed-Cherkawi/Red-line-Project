@@ -3,8 +3,8 @@ echo '
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
-        <a class="navbar-brand w-25" href="'. APPROOT .'/pages/index"
-          ><img src="'. URLROOT .'/img/logo.png" class="ms-4" alt="logo" width="180"
+        <a class="navbar-brand w-25" href="'. URLROOT .'/pages/index"
+          ><img src="'. URLROOT .'/img/logo.png" class="ms-4" alt="logo" width="150"
         /></a>
         <button
           class="navbar-toggler"
@@ -20,7 +20,7 @@ echo '
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active fw-bolder" href="'. APPROOT .'/pages/index">Home</a>
+              <a class="nav-link active fw-bolder" href="'. URLROOT .'/pages/index">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">ABOUT</a>
@@ -29,7 +29,7 @@ echo '
               <a class="nav-link" href="#">CLASSES</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="schedule.php">SCHEDULE</a>
+              <a class="nav-link" href="'. URLROOT .'/pages/schedule">SCHEDULE</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">TRAINERS</a>
