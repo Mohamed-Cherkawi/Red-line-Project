@@ -53,7 +53,7 @@ function validateEmail() {
       email.setAttribute("style", "border-bottom : 2px solid red");
       return false;
     }
-    if (!emailV.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z]+$/)) {
+    if (!emailV.match(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/)) {
       emailError.innerText =
         "Try something like userN@email.com";
       email.setAttribute("style", "border-bottom : 2px solid red");
