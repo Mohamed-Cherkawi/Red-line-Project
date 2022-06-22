@@ -23,15 +23,14 @@
   <!--Container Main start-->
 <main>
   
-  <section class="d-flex flex-column flex-xl-row justify-content-around align-items-center container mb-5">
+  <section class="d-flex flex-column flex-xl-row justify-content-around align-items-center container mb-5 position-relative">
     <div class=" d-flex flex-column align-items-center">
-        <h3 id="greetingHead">Welcome <?php if(isset($_SESSION['user_name'])) { echo $_SESSION['user_name'];} ?></h3>
+        <h3 id="greetingHead">Welcome <?php  echo $_SESSION['user_name']; ?></h3>
         <div id="AdminImage">
-            <img src="icons/userIco.png" alt="AdminImage" width="250" height="250"/>
+            <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="AdminImage" width="250" height="250"/>
         </div>
     </div>
     <div>
-        <h3 class="text-center">Your Profile</h3>
         <div class="mt-5">
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Username</h4>
@@ -42,11 +41,55 @@
             <span><?php echo $_SESSION['inscription_date']; ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
+            <h4>User Email</h4>
+            <span><?php echo $_SESSION['user_email']; ?></span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>LastLogin</h4>
             <span><?php echo $_SESSION['login_date']; ?></span>
         </div>
         </div>
-        <div class="mt-5 mb-5 mb-xl-0 d-flex flex-column flex-md-row align-items-center"><button class="profileButtons">Edit</button><a href="<?php echo  URLROOT; ?>/Users/logout" onclick="return confirm('Log out ?')"><button class="profileButtons mx-3 my-3 my-md-0">Logout</button></a><button id="deleteProfileButt" class="profileButtons">Delete</button></div>
+        <div class="mt-5 mb-5 mb-xl-0 d-flex flex-column flex-md-row align-items-center">
+                    <!-- Button trigger modal -->
+          <button type="button" class="profileButtons" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                <div class="mb-3">
+                    <label for="image" class="form-label">Choose Image (jpg , jpeg , png)</label>
+                    <input type="file" name="admin_image" class="form-control" id="image">
+                    <div class="input-group my-3">
+                    <label for="adminName" class="input-group-text">Admin Name</label>
+                    <input type="text" name="adminName" value="<?php echo $data-> user_name ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
+                  </div>
+                  <div class="input-group my-3">
+                    <label for="email" class="input-group-text">Email</label>
+                    <input type="email" name="adminEmail" value="<?php echo $data-> Email ;?>" class="form-control"  aria-label="email" aria-describedby="basic-addon1" id="email" required>
+                  </div>
+                  <div class="input-group my-3">
+                    <label for="adminName" class="input-group-text">Change Password</label>
+                    <input type="text" name="adminPassword" value="<?php echo $data-> Password ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
+                  </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" name="editAdminProfile" class="profileButtons w-100">Save changes</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <a href="<?php echo  URLROOT; ?>/Users/logout" onclick="return confirm('Log out ?')"><button class="profileButtons mx-3 my-3 my-md-0">Logout</button></a>
+          <button id="deleteProfileButt" class="profileButtons">Delete</button>
+        </div>
     </div>
   </section>
 </main>

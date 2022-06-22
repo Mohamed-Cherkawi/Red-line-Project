@@ -94,6 +94,7 @@ class Users extends Controller {
       $_SESSION['user_email'] = $user->Email;
       $_SESSION['user_name'] = $user->user_name;
       $_SESSION['inscription_date'] = $user->Date_inscription;
+      $_SESSION['user_email'] = $user-> Email ;
       $_SESSION['login_date'] = $lastLogin ;
       if($user->Role == 'User'){
         redirect('pages/index');
@@ -107,6 +108,7 @@ class Users extends Controller {
       unset($_SESSION['user_email']);
       unset($_SESSION['user_name']);
       unset($_SESSION['inscription_date']);
+      unset($_SESSION['user_email']);
       unset($_SESSION['login_date']);
       session_destroy();
       redirect('pages/index');

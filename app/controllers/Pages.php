@@ -73,13 +73,6 @@
       redirect('pages/index'); 
       }
     }
-    public function profile(){
-      if($this->isLoggedIn()){
-        $this->view('pages/profile');
-      } else {
-        redirect('pages/index');
-          }
-    }      
 
     public function isLoggedIn(){
       if(isset($_SESSION['user_id'])){
