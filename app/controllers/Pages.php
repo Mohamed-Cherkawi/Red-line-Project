@@ -31,7 +31,6 @@
         redirect('pages/index');
       }
     }
-
     public function dashboard(){
       if($this->isLoggedIn()){
       $totalUsers = $this->mainModel->totalUsers();

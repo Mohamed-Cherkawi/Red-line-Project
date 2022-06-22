@@ -21,7 +21,7 @@ function CalculBmi() {
   const bmiInput1V = bmiInput1.value;
   const bmiInput2V = bmiInput2.value;
 
-  if( bmiInput1V === "" || bmiInput2V === "" ) {
+  if( bmiInput1V == "" || bmiInput2V == "" ) {
     return ;
   }
   // Changing the type of the given data as string to an integers to begin the operations and stocking them to a variables .
