@@ -55,7 +55,7 @@
                     <input type="number" name="pOriginalrPrice" class="form-control" id="productOprice">
                   </div>
                   <div class="form-group">
-                      <label for="categories" class="mb-2 d-block">Select a Category</label>
+                      <label for="categories" class="mb-2 d-block">Select a Category <span class="requiredFiels ms-3">Required *</span></label>
                       <select name="category" class="p-1 w-100 text-center"  id="categories" required>
                         <option value="Uniform">Uniform</option>
                         <option value="Strength Machines">Strength Machines</option>

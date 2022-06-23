@@ -27,13 +27,20 @@
     <div class=" d-flex flex-column align-items-center">
         <h3 id="greetingHead">Welcome <?php  echo strtoupper($_SESSION['user_name']); ?></h3>
         <div id="AdminImage">
-            <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="AdminImage" width="250" height="250"/>
+          <?php
+          if($data -> imgNameAd != null) {
+            $imgExt = explode('.' , $data -> imgNameAd) ;
+           echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $data -> imgNameAd .'" alt="Admin Profile Image" width="300" height="300">';
+          } else {
+            echo '<img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="AdminImage" width="250" height="250"/>';
+          }
+            ?>
         </div>
     </div>
     <div>
         <div class="mt-5">
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
-            <h4>Username</h4>
+            <h4>Adminname</h4>
             <span><?php echo strtoupper($_SESSION['user_name']); ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
@@ -41,7 +48,7 @@
             <span><?php echo $_SESSION['inscription_date']; ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
-            <h4>User Email</h4>
+            <h4>Admin Email</h4>
             <span><?php echo $_SESSION['user_email']; ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
@@ -61,11 +68,11 @@
                   <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo URLROOT ; ?>/profilesDash/editProfile" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 <div class="mb-3">
                     <label for="image" class="form-label">Choose Image (jpg , jpeg , png)</label>
-                    <input type="file" name="admin_image" class="form-control" id="image">
+                    <input type="file" accept="image/png, image/jpg, image/jpeg" name="admin_image" class="form-control" id="image">
                     <div class="input-group my-3">
                     <label for="adminName" class="input-group-text">Admin Name</label>
                     <input type="text" name="adminName" value="<?php echo $data-> user_name ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>

@@ -98,7 +98,7 @@ td > img {
               echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";
           }      
             ?>            
-          <span><?php echo $value-> user_name ;?></span>
+          <span class="ms-3"><?php echo $value-> user_name ;?></span>
           </th>
           <td><?php echo $value-> Email ;?></td>
           <td><?php echo $value-> Password ; ?></td>

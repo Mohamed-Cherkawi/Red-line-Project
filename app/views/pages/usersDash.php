@@ -38,22 +38,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-           <form action="<?php echo URLROOT; ?>/UsersDash/addUser" method="POST">     
+           <form action="<?php echo URLROOT; ?>/UsersDash/addUser" method="POST" enctype="multipart/form-data">     
           <div class="input-group">
-            <input type="file" name="userImage" class="form-control" id="inputGroupFile02">
+            <input type="file" name="userImage" accept="image/png, image/jpg, image/jpeg" class="form-control" id="inputGroupFile02">
             <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
           </div>
           <div class="input-group my-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
           </div>
           <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Email</span>
-            <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
-          </div>
-          <div class="input-group my-3">
-            <span class="input-group-text" id="basic-addon1">Password</span>
-            <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
           </div>
               </div>
               <div class="modal-footer">
@@ -70,7 +66,6 @@
         <tr>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
-          <th scope="col">Password</th>
           <th scope="col">Sign-up Date</th>
         </tr>
       </thead>
@@ -81,11 +76,17 @@
       ?>
         <tr class="trCss">
           <th >
-            <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" width="50" height="50"/>
-            <span><?php echo $value-> user_name ;?></span>
+          <?php 
+             if ($value -> imgNameUs != null) {
+              echo '<img src="'.URLROOT.'/uploads'.$value-> imgNameUs.'" width="100" height="100" alt="Trainer Image">';
+          } else {
+              // if we don't have any photo set
+              echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50' alt='defaultUserImg'>";
+          }      
+            ?>
+            <span class="ms-3"><?php echo $value-> user_name ;?></span>
           </th>
           <td><?php echo $value-> Email ;?></td>
-          <td><?php echo $value-> Password ;?></td>
           <td><?php echo $value-> Date_inscription ;?></td>
           <td>  
                           <!-- Trigger/Open The Modal -->
@@ -101,10 +102,10 @@
                   <span class="close-update">×</span>
                   </div>
                   <div class="modal-body-update">
-                  <form action="<?php echo URLROOT; ?>/UsersDash/editUser" method="POST">
+                  <form action="<?php echo URLROOT; ?>/UsersDash/editUser" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="user_id" value="<?php echo $value-> user_id ;?>">     
                   <div class="input-group">
-                    <input type="file" name="userImage" class="form-control" id="inputGroupFile02">
+                    <input type="file" name="userImage" accept="image/png, image/jpg, image/jpeg" class="form-control" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
                   </div>
                   <div class="input-group my-3">
@@ -115,10 +116,6 @@
                     <span class="input-group-text" id="basic-addon1">Email</span>
                     <input type="email" name="email" value="<?php echo $value-> Email ;?>" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
                   </div>
-                  <div class="input-group my-3">
-                    <span class="input-group-text" id="basic-addon1">Password</span>
-                    <input type="password" name="password" value="<?php echo $value-> Password ;?>" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-                  </div>
                 </div>
                 <div class="modal-footer-update">
                 <button type="submit" name="editUser" class="btn btn-primary w-100">Update User</button>
@@ -128,11 +125,10 @@
 
               </div>
           </td>
-          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteUser?id=<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
+          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteUser/<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
           <th></th>
-          <td></td>
           <td></td>
           <td></td>
           <td></td>

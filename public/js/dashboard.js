@@ -1,3 +1,8 @@
+  // Prevent Form Resubmission
+  if(window.history.replaceState) {
+    window.history.replaceState(null , null ,window.location.href);
+  }
+
 const  toggle = document.getElementById("header-toggle")
 const  nav = document.getElementById("nav-bar")
 const  bodypd = document.getElementById("body-pd")

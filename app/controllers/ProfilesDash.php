@@ -8,8 +8,10 @@ class ProfilesDash extends Controller {
     public function showProfile() {
 
         if($this->isLoggedIn()) {
-            $adminUser = $_SESSION['user_id'] ; 
-            $adminProfile = $this->AdminProfileModel->showAdminProfile($adminUser) ;
+            $adminId = $_SESSION['user_id'] ; 
+            $adminProfile = $this->AdminProfileModel->showAdminProfile($adminId) ;
+            $_SESSION['user_name'] = $adminProfile -> user_name ;
+            $_SESSION['user_email'] = $adminProfile -> Email ;
             $this->view('pages/profile',$adminProfile);
         } else {
             redirect('pages/index');
@@ -70,7 +72,7 @@ class ProfilesDash extends Controller {
                                   $fileDestination = UPLOADFOLDER ."/" . $fileNameNew ;
                                   move_uploaded_file($fileTmpName,$fileDestination);
                                   $data['imgFullName'] = $fileNameNew;
-                                  if($this->trainerDashModel->editAdminProfile($data)) {
+                                  if($this->AdminProfileModel->editAdminProfile($data)) {
                                       redirect('ProfilesDash/showProfile');
                                   } else {
                                       die('Something went wrong');
@@ -87,14 +89,29 @@ class ProfilesDash extends Controller {
                           echo "You can not upload files of this type !";
                       }
                   }
+                  $adminProfileimgPath = "/adminsProfile/profile".$data['id'];
+                  if(file_exists(UPLOADFOLDER . $adminProfileimgPath .".jpg")) {
+                    $data['imgFullName'] = $adminProfileimgPath . ".jpg" ;
+                  }
+                  else if(file_exists(UPLOADFOLDER . $adminProfileimgPath .".jpeg")) {
+                    $data['imgFullName'] = $adminProfileimgPath . ".jpeg" ;
+                  }
+                  else if(file_exists(UPLOADFOLDER . $adminProfileimgPath .".png")) {
+                    $data['imgFullName'] = $adminProfileimgPath . ".png" ;
+                  }
       
-                      if($this->trainerDashModel->editAdminProfile($data)) {
-                          redirect('pages/trainersDash');
+                      if($this->AdminProfileModel->editAdminProfile($data)) {
+                          redirect('ProfilesDash/showProfile');
                       } else {
                           die('Something went wrong');
                       }
       }
     }
+
+    public function deleteAdminProfile() {
+
+    }
+    
     public function isLoggedIn(){
         if(isset($_SESSION['user_id'])){
           return true;

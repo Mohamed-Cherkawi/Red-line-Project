@@ -86,7 +86,7 @@ td > img {
           <th>
             <?php 
              if ($value-> imgFullName != null) {
-              echo '<img src="'.URLROOT.'/uploads/trainersProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="no photo found">';
+              echo '<img src="'.URLROOT.'/uploads/trainersProfile/profile'.$value-> trainer_id.'.jpg" width="100" height="100" alt="Trainer Image">';
           } else {
               // if we don't have any photo set
               echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50' alt='defaultUserImg'>";

@@ -71,3 +71,6 @@ width: 0;
 #deleteProfileButt{
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(236,16,16,1) 100%);
 }
+.AdminProfileImg{
+  border-radius: 50%;
+}
