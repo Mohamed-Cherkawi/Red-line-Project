@@ -25,9 +25,10 @@ class ProfilesDash extends Controller {
                           return $data;
                       }
                       $data =[
-                          'id' => filter_inputF($_POST['trainer_id']),
+                          'id' => $_SESSION['user_id'],
                           'adminName' => filter_inputF($_POST['adminName']),
                           'email' => filter_inputF($_POST['adminEmail']),
+                          'password' => filter_inputF($_POST['adminPassword']),
                           'imgFullName' => null
                       ];
       
@@ -69,7 +70,7 @@ class ProfilesDash extends Controller {
                                   $fileDestination = UPLOADFOLDER ."/" . $fileNameNew ;
                                   move_uploaded_file($fileTmpName,$fileDestination);
                                   $data['imgFullName'] = $fileNameNew;
-                                  if($this->trainerDashModel->editTrainer($data)) {
+                                  if($this->trainerDashModel->editAdminProfile($data)) {
                                       redirect('ProfilesDash/showProfile');
                                   } else {
                                       die('Something went wrong');
@@ -87,7 +88,7 @@ class ProfilesDash extends Controller {
                       }
                   }
       
-                      if($this->trainerDashModel->editTrainer($data)) {
+                      if($this->trainerDashModel->editAdminProfile($data)) {
                           redirect('pages/trainersDash');
                       } else {
                           die('Something went wrong');

@@ -12,6 +12,6 @@ echo '  <header class="header d-flex" id="header">
   <div class="userImageC me-4">
     <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" width="40" height="40"/>
   </div>
-  <span>' . $_SESSION['user_name'] .'</span>
+  <span>' . strtoupper($_SESSION['user_name']) .'</span>
 </div>
 </header>';

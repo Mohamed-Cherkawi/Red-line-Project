@@ -25,7 +25,7 @@
   
   <section class="d-flex flex-column flex-xl-row justify-content-around align-items-center container mb-5 position-relative">
     <div class=" d-flex flex-column align-items-center">
-        <h3 id="greetingHead">Welcome <?php  echo $_SESSION['user_name']; ?></h3>
+        <h3 id="greetingHead">Welcome <?php  echo strtoupper($_SESSION['user_name']); ?></h3>
         <div id="AdminImage">
             <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="AdminImage" width="250" height="250"/>
         </div>
@@ -34,7 +34,7 @@
         <div class="mt-5">
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Username</h4>
-            <span><?php echo $_SESSION['user_name']; ?></span>
+            <span><?php echo strtoupper($_SESSION['user_name']); ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
             <h4>Sign-up Date</h4>
