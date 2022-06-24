@@ -72,6 +72,10 @@
       redirect('pages/index'); 
       }
     }
+    public function editProductPage($productId) {
+     $productData =  $this->productModel->getProductById($productId);
+      $this->view('pages/editProductPage',$productData);
+    }
 
     public function isLoggedIn(){
       if(isset($_SESSION['user_id'])){

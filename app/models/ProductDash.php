@@ -55,10 +55,15 @@
           }
         }
 
-        // public function gettingMaxid(){
-        //   $this->db->query('SELECT MAX(product_id) AS maxid FROM products');
-        //   $row = $this->db->single();
-        //   return $row;
-        // }
+        public function getProductById($product_id) {
+          $this->db->query('SELECT * FROM products WHERE product_id = :id');
+          $this->db->bind(':id', $product_id);
+
+          if($this->db->execute()){
+            return true;
+          } else {
+            return false;
+          }
+        }
           
     }
