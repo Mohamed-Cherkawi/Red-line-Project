@@ -88,11 +88,17 @@
         public function editUser() {
             
             if(isset($_POST['editUser'])) {
+             // filter input function that removes html special charct and whitespace from both sides of the string
+             function filter_inputF($data) {
+                 $data = trim($data);
+                 $data = htmlspecialchars($data);
+                 return $data;
+             }
                 $data =[
-                    'id' => $_POST['user_id'],
-                    'userName' => $_POST['username'],
-                    'email' => $_POST['email'],
-                    'userImg' => null
+                    'id' => filter_inputF($_POST['user_id']),
+                    'userName' => filter_inputF($_POST['username']),
+                    'email' => filter_inputF($_POST['email']),
+                    'userImg' => $_POST['userImage']
                 ];
 
                // if this condition is not true than it means a file has uploaded , not an empty field file input .
@@ -118,6 +124,8 @@
                       if($fileError == 0){
               
                           if($fileSize < 6000000){
+                            unlink(UPLOADFOLDER . $data['userImg']) ;
+
                               /* Before we upload the file we have to make sure that when we do upload the file it gets
                               a proper name because for example a file called test.JPEG to uploads folder and someone 
                               else later on uploads a image that has the exact same name test.JPEG it will actually 
@@ -148,13 +156,7 @@
                       echo "You can not upload files of this type !";
                   }
               }
-              $imageState = $this->userDashModel->getuserImageState($data['id']) ;
-              if($imageState -> imgNameUs != null) {
-              $adminProfileimgPath = $imageState -> imgNameUs;
-              if(file_exists(UPLOADFOLDER . $adminProfileimgPath)) {
-                $data['userImg'] = $adminProfileimgPath ;
-              }
-            }
+
                 if($this->userDashModel->editUser($data)) {
                     redirect('pages/usersDash');
                 } else {
@@ -164,6 +166,10 @@
         }
 
         public function deleteUser($id) {
+            if(isset($_GET['userImage'])) {
+                $imageName = $_GET['userImage'] ;
+                unlink(UPLOADFOLDER . $imageName);
+            }
 
             if($this->userDashModel->deleteUser($id)) {
                   redirect('pages/usersDash');

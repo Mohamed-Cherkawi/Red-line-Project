@@ -10,9 +10,10 @@ class ProfilesDash extends Controller {
         if($this->isLoggedIn()) {
             $adminId = $_SESSION['user_id'] ; 
             $adminProfile = $this->AdminProfileModel->showAdminProfile($adminId) ;
+            $emptyData = '';
             $_SESSION['user_name'] = $adminProfile -> user_name ;
             $_SESSION['user_email'] = $adminProfile -> Email ;
-            $this->view('pages/profile',$adminProfile);
+            $this->view('pages/profile',$emptyData,$adminProfile);
         } else {
             redirect('pages/index');
         }
@@ -31,7 +32,7 @@ class ProfilesDash extends Controller {
                           'adminName' => filter_inputF($_POST['adminName']),
                           'email' => filter_inputF($_POST['adminEmail']),
                           'password' => filter_inputF($_POST['adminPassword']),
-                          'imgFullName' => null
+                          'imgFullName' => $_POST['profile_image']
                       ];
       
                       
@@ -60,6 +61,8 @@ class ProfilesDash extends Controller {
                           if($fileError == 0){
                   
                               if($fileSize < 6000000){
+                                // We should unlik the first image so we can free up some space : 
+                                 unlink(UPLOADFOLDER . $data['imgFullName']) ;
                                   /* Before we upload the file we have to make sure that when we do upload the file it gets
                                   a proper name because for example a file called test.JPEG to uploads folder and someone 
                                   else later on uploads a image that has the exact same name test.JPEG it will actually 
@@ -68,8 +71,8 @@ class ProfilesDash extends Controller {
                                   create a unique id wich gets inserted and replaced with the actual name of the file when
                                   it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                                   bunch of numbers .JPEG */
-                                  $fileNameNew = "adminsProfile/profile".$data['id'].".". $fileActualExt;
-                                  $fileDestination = UPLOADFOLDER ."/" . $fileNameNew ;
+                                  $fileNameNew = "/adminsProfile/profile". uniqid() . ".". $fileActualExt;
+                                  $fileDestination = UPLOADFOLDER . $fileNameNew ;
                                   move_uploaded_file($fileTmpName,$fileDestination);
                                   $data['imgFullName'] = $fileNameNew;
                                   if($this->AdminProfileModel->editAdminProfile($data)) {
@@ -88,16 +91,6 @@ class ProfilesDash extends Controller {
                       } else {
                           echo "You can not upload files of this type !";
                       }
-                  }
-                  $adminProfileimgPath = "/adminsProfile/profile".$data['id'];
-                  if(file_exists(UPLOADFOLDER . $adminProfileimgPath .".jpg")) {
-                    $data['imgFullName'] = $adminProfileimgPath . ".jpg" ;
-                  }
-                  else if(file_exists(UPLOADFOLDER . $adminProfileimgPath .".jpeg")) {
-                    $data['imgFullName'] = $adminProfileimgPath . ".jpeg" ;
-                  }
-                  else if(file_exists(UPLOADFOLDER . $adminProfileimgPath .".png")) {
-                    $data['imgFullName'] = $adminProfileimgPath . ".png" ;
                   }
       
                       if($this->AdminProfileModel->editAdminProfile($data)) {

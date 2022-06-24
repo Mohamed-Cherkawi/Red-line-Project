@@ -30,11 +30,13 @@
         }
 
         public function editProduct($data){
-          $this->db->query('UPDATE users SET user_name = :adminName, Email = :email, Password = :password, imgNameAd = :imgName WHERE user_id = :id');
-          $this->db->bind(':adminName', $data['adminName']);
-          $this->db->bind(':email', $data['email']);
-          $this->db->bind(':password', $data['password']);
-          $this->db->bind(':imgName', $data['imgFullName']);
+          $this->db->query('UPDATE products SET product_name = :productName, product_original_price = :productOriginalP, product_offer_price = :productOfferP, product_category = :ProductCategory , product_description = :ProductDesc , product_img_name = :productImg WHERE product_id = :id');
+          $this->db->bind(':productName', $data['productName']);
+          $this->db->bind(':productOriginalP', $data['pRegularPrice'] ." $");
+          $this->db->bind(':productOfferP', $data['pOfferPrice']);
+          $this->db->bind(':ProductCategory', $data['category']);
+          $this->db->bind(':ProductDesc', $data['productDescription']);
+          $this->db->bind(':productImg', $data['productImage']);
           $this->db->bind(':id', $data['id']);
 
           if ($this->db->execute()) {
@@ -59,11 +61,16 @@
           $this->db->query('SELECT * FROM products WHERE product_id = :id');
           $this->db->bind(':id', $product_id);
 
-          if($this->db->execute()){
-            return true;
-          } else {
-            return false;
-          }
-        }
+          $row = $this->db->single();
+          return $row;
           
     }
+
+    public function getAdminprofileBySessionId(){
+      $this->db->query('SELECT imgNameAd FROM users WHERE user_id = :admin_id');
+      $this->db->bind(':admin_id' ,$_SESSION['user_id']);
+
+      $row = $this->db->single();
+      return $row ;
+    }
+  }

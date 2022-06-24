@@ -89,9 +89,9 @@
             }
         }
 
-        public function editProduct() {
+        public function editProduct($product_id) {
             
-            if(isset($_POST['editTrainer'])) {
+            if(isset($_POST['editProduct'])) {
 
                 // filter input function that removes html special charct and whitespace from both sides of the string
                 function filter_inputF($data) {
@@ -100,10 +100,13 @@
                     return $data;
                 }
                 $data =[
+                    'id' => $product_id ,
                     'productName' => filter_inputF($_POST['productName']),
                     'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
-                    'pOriginalrPrice' => filter_inputF($_POST['pOriginalrPrice']),
-                    'imgFullName' => null
+                    'pOfferPrice' => filter_inputF($_POST['pOriginalrPrice']),
+                    'category' => filter_inputF($_POST['category']),
+                    'productDescription' => filter_inputF($_POST['productDescription']),
+                    'productImage' => $_POST['product_imageName']
                 ];
 
                 
@@ -131,7 +134,7 @@
                     // if the file error is equal to 0 that means that we had no erros uploading this file 
                     if($fileError == 0){
             
-                        if($fileSize < 5000000){
+                        if($fileSize < 6000000){
                             /* Before we upload the file we have to make sure that when we do upload the file it gets
                             a proper name because for example a file called test.JPEG to uploads folder and someone 
                             else later on uploads a image that has the exact same name test.JPEG it will actually 
@@ -140,11 +143,11 @@
                             create a unique id wich gets inserted and replaced with the actual name of the file when
                             it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                             bunch of numbers .JPEG */
-                            $fileNameNew = "/productsProfile/product".$data['id'].".". $fileActualExt;
+                            $fileNameNew = "/productsProfile/product".uniqid().".". $fileActualExt;
                             $fileDestination = UPLOADFOLDER  . $fileNameNew ;
                             move_uploaded_file($fileTmpName,$fileDestination);
-                            $data['imgFullName'] = $fileNameNew;
-                            if($this->productDashModel->addProduct($data)) {
+                            $data['productImage'] = $fileNameNew;
+                            if($this->productDashModel->editProduct($data)) {
                                 redirect('pages/productsDash');
                             } else {
                                 die('Something went wrong');
@@ -162,12 +165,17 @@
                 }
             }
 
-                if($this->productDashModel->addProduct($data)) {
+                if($this->productDashModel->editProduct($data)) {
                     redirect('pages/productsDash');
+                    return ;
                 } else {
                     die('Something went wrong');
                 }
             }
+
+            $productData =  $this->productDashModel->getProductById($product_id);
+            $this->view('pages/editProductPage',$productData);
+
         }
         
 

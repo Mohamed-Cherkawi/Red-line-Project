@@ -45,7 +45,7 @@
                     'adminName' => filter_inputF($_POST['adminName']),
                     'email' => filter_inputF($_POST['email']),
                     'password' => filter_inputF($_POST['password']),
-                    'imgFullName' => null
+                    'imgFullName' => $_POST['image_admin']
                 ];
                
                 // if this condition is not true than it means a file has uploaded , not an empty field file input .
@@ -71,16 +71,18 @@
                     // if the file error is equal to 0 that means that we had no erros uploading this file 
                     if($fileError == 0){
             
-                        if($fileSize < 2000000){
+                        if($fileSize < 8000000){
+                            // We should unlik the first image so we can free up some space : 
+                            unlink(UPLOADFOLDER . $data['imgFullName']) ;
                             /* Before we upload the file we have to make sure that when we do upload the file it gets
-                            a proper name because for example a file called test.JPEG to uploads folder and someone 
+                            a proper name because for example a file called test.JPEG has uploaded and someone 
                             else later on uploads a image that has the exact same name test.JPEG it will actually 
                             overwrite the existing image inside the uploads folder meaning that the other user who
                             upload an image will get his image deleted so in order to prevent that we're going to 
                             create a unique id wich gets inserted and replaced with the actual name of the file when
                             it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                             bunch of numbers .JPEG */
-                            $fileNameNew = "/adminsProfile/profile".$data['id'].".". $fileActualExt;
+                            $fileNameNew = "/adminsProfile/profile".uniqid().".". $fileActualExt;
                             $fileDestination = UPLOADFOLDER . $fileNameNew ;
                             move_uploaded_file($fileTmpName,$fileDestination);
                             $data['imgFullName'] = $fileNameNew;
@@ -114,17 +116,13 @@
         }
 
         
-        public function deleteAdmin() {
-            if(isset($_GET['id'])) {
+        public function deleteAdmin($adminId) {
 
-                $id = $_GET['id'];
-
-                if($this->adminDashModel->deleteAdmin($id)) {
-                    unlink(UPLOADFOLDER . "/adminsProfile/profile".$id.".jpg");
+                if($this->adminDashModel->deleteAdmin($adminId)) {
                     redirect('pages/adminsDash');
                 } else {
                     die('Something went wrong');
                 }
-            }
+            
         }
  }  

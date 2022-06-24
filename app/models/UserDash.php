@@ -57,21 +57,6 @@
         }
           }
 
-          // public function editAdmin($data) {
-          //   $this->db->query("UPDATE users SET user_name=:name, Email=:email , Password=:password WHERE user_id=:user_id");
-
-          //   $this->db->bind(':name', $data['adminName']);  
-          //   $this->db->bind(':email', $data['email']);     
-          //   $this->db->bind(':password', $data['password']);
-          //   $this->db->bind(':user_id', $data['id']);
-
-          //   if ($this->db->execute()) {
-          //     return true;
-          //   } else {
-          //     return false;
-          // }
-          // }
-
           public function deleteUser($id) {
             $this->db->query('DELETE FROM users WHERE user_id = :id');
             // Bind values
@@ -93,5 +78,13 @@
             // Execute 
             $row = $this->db->single();
             return $row;
+          }
+
+          public function getAdminprofileBySessionId(){
+            $this->db->query('SELECT imgNameAd FROM users WHERE user_id = :admin_id');
+            $this->db->bind(':admin_id' ,$_SESSION['user_id']);
+      
+            $row = $this->db->single();
+            return $row ;
           }
     }

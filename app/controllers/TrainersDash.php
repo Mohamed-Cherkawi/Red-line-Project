@@ -111,10 +111,7 @@
         }
         
 
-             public function deleteTrainer() {
-                if(isset($_GET['id'])) {
-
-                    $id = $_GET['id'];
+             public function deleteTrainer($id) {
 
                     if($this->trainerDashModel->deleteTrainer($id)) {
                         unlink(UPLOADFOLDER . "/trainersProfile/profile".$id.".jpg");
@@ -122,7 +119,7 @@
                     } else {
                         die('Something went wrong');
                     }
-                }
+                
             }
         }
        

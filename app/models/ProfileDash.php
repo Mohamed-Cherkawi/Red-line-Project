@@ -11,8 +11,8 @@ class ProfileDash {
     public function showAdminProfile($id){
       $this->db->query('SELECT * FROM users WHERE user_id = :admin_id');
       $this->db->bind(':admin_id',$id);  
-      $rows = $this->db->single();
-      return $rows;
+      $row = $this->db->single();
+      return $row;
     }
 
 
@@ -23,12 +23,11 @@ class ProfileDash {
       $this->db->bind(':password', $data['password']);
       $this->db->bind(':imgName', $data['imgFullName']);
       $this->db->bind(':id', $data['id']);
-
+      
       if ($this->db->execute()) {
         return true;
       } else {
         return false;
       }
     }
-
 }

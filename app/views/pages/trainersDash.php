@@ -132,7 +132,7 @@ td > img {
                 </div>
               </div>
           </td> 
-          <td><a href="<?php echo URLROOT ; ?>/TrainersDash/deleteTrainer?id=<?php echo $value-> trainer_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
+          <td><a href="<?php echo URLROOT ; ?>/TrainersDash/deleteTrainer/<?php echo $value-> trainer_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
           <th></th>

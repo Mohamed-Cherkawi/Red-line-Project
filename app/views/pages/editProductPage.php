@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,27 +11,30 @@
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/products.css" />
-    <title>Edit Admin</title>
+    <title>Edit Product</title>
 </head>
-<body>
-    <form action="<?php echo URLROOT ?>/ProductsDash/editProduct" class="container mt-5 d-flex flex-column align-items-center" method="POST" enctype="multipart/form-data">
-                <div class="mb-3 w-50 ">
+<body class="d-flex align-items-center vh-100">
+    <form action="<?php echo URLROOT ;?>/ProductsDash/editProduct/<?php echo  $data -> product_id ; ?>" class="container-fluid" method="POST" enctype="multipart/form-data">
+          <div class="d-flex flex-column flex-md-row align-items-center justify-content-around shadow-lg">
+            <div>
+              <div><input type="hidden" name="product_imageName" value="<?php echo $data -> product_img_name ; ?>"></div>
+                <div class="mb-3 w-100 ">
                     <label for="image" class="form-label">Choose Image (jpg , jpeg , png)</label>
-                    <input type="file" name="product_image" class="form-control" id="image" required>
+                    <input type="file" name="product_image" class="form-control" id="image">
                   </div>
-                  <div class="mb-3 w-50 ">
+                  <div class="mb-3 w-100 ">
                     <label for="productName" class="form-label">Product Name <span class="requiredFiels ms-3">Required *</span></label>
                     <input type="text" name="productName" class="form-control" value="<?php echo  $data -> product_name ; ?>" id="productName" required>
                   </div>
-                  <div class="mb-3 w-50 ">
+                  <div class="mb-3 w-100 ">
                     <label for="productRprice" class="form-label">Product Regular Price (Currency : $)<span class="requiredFiels ms-3">Required *</span></label>
-                    <input type="number" name="pRegularPrice" class="form-control" value="<?php echo  $data -> 	product_original_price ; ?>" id="productRprice" required>
+                    <input type="number" name="pRegularPrice" class="form-control" value="<?php echo  intval($data -> product_original_price) ; ?>" id="productRprice" required>
                   </div>
-                  <div class="mb-3 w-50 ">
+                  <div class="mb-3 w-100 ">
                     <label for="productOprice" class="form-label">Product Offer Price</label>
-                    <input type="number" name="pOriginalrPrice" class="form-control" value="<?php echo  $data -> product_offer_price ; ?>" id="productOprice">
+                    <input type="number" name="pOriginalrPrice" class="form-control" value="<?php echo  intval($data -> product_offer_price); ?>" id="productOprice">
                   </div>
-                  <div class="form-group mb-3 w-50 ">
+                  <div class="form-group mb-3 w-100 ">
                       <label for="categories" class="mb-2 d-block">Select a Category <span class="requiredFiels ms-3">Required *</span></label>
                       <select name="category" class="p-1 w-100 text-center"  id="categories" required>
                         <option value="Uniform">Uniform</option>
@@ -43,16 +45,22 @@
                         <option value="Accessories">Accessories</option>
                       </select>
                   </div>
-                  
-                  <div class="form-group  w-75">
+          
+            </div>
+                  <div class="form-group  w-50" id="descConta">
                     <label for="productDescription" class="mb-2">Description<span class="requiredFiels ms-3">Required *</span></label>
-                    <textarea class="form-control" name="productDescription" value="<?php echo  $data -> product_description ; ?>" placeholder="Please write some infos for this product" id="productDescription" rows="10" required></textarea>
+                    <textarea class="form-control" name="productDescription" value="<?php echo  $data -> product_description ; ?>" placeholder="Please write some infos for this product" id="productDescription" rows="10" required><?php echo  $data -> product_description ; ?></textarea>
                   </div>
-                
-                <div class="mt-3 w-75  text-center">
-                  <button type="submit" name="editProduct" class="btn btn-primary w-75">Save changes</button>
+          </div>   
+                <div class="mt-3 w-100  text-center">
+                  <button type="submit" name="editProduct" class="btn btn-primary w-50">Save changes</button>
                 </div>
     </form>
-
+  <script>
+      // Prevent Form Resubmission
+  if(window.history.replaceState) {
+    window.history.replaceState(null , null ,window.location.href);
+  }
+  </script>
 </body>
 </html>

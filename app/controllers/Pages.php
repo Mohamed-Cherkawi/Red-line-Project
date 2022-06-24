@@ -26,7 +26,8 @@
     public function adminsDash(){
       if($this->isLoggedIn()){
       $admins = $this->adminModel->showAdmins();
-      $this->view('pages/adminsDash',$admins);
+      $adminImage = $this->adminModel->getAdminprofileBySessionId();
+      $this->view('pages/adminsDash',$admins ,$adminImage);
       }else{
         redirect('pages/index');
       }
@@ -37,13 +38,15 @@
       $totalAdmins = $this->mainModel->totalAdmins();
       $totalTrainers = $this->mainModel->totalTrainers();
       $totalProducts = $this->mainModel->totalProducts();
+      $adminImageName = $this->mainModel->getAdminprofileBySessionId();
+      $data2 = $adminImageName ;
       $data = [
         'totalUsers' => $totalUsers -> totalUsers ,
         'totalTrainers' => $totalAdmins -> totalAdmins ,
         'totalAdmins' =>   $totalTrainers -> totalTrainers ,
-        'totalProducts' => $totalProducts -> totalProducts
+        'totalProducts' => $totalProducts -> totalProducts ,
       ];
-      $this->view('pages/dashboard',$data);
+      $this->view('pages/dashboard',$data ,$data2);
     } else {
       redirect('pages/index');
     }
@@ -51,7 +54,8 @@
     public function usersDash(){
       if($this->isLoggedIn()){
         $users = $this->userModel->showUsers();
-        $this->view('pages/usersDash',$users);
+        $adminImage = $this->userModel->getAdminprofileBySessionId();
+        $this->view('pages/usersDash',$users,$adminImage);
       } else {
       redirect('pages/index');
       }
@@ -59,7 +63,8 @@
     public function trainersDash(){
         if($this->isLoggedIn()){
           $trainers = $this->trainerModel->showTrainers();
-          $this->view('pages/trainersDash',$trainers);
+          $adminImage = $this->trainerModel->getAdminprofileBySessionId();
+          $this->view('pages/trainersDash',$trainers ,$adminImage);
         } else {
         redirect('pages/index');
         }
@@ -67,14 +72,11 @@
     public function productsDash() {
       if($this->isLoggedIn()){
         $products = $this->productModel->showProducts();
-        $this->view('pages/productsDash',$products);
+        $adminImage = $this->productModel->getAdminprofileBySessionId();
+        $this->view('pages/productsDash',$products ,$adminImage);
       } else {
       redirect('pages/index'); 
       }
-    }
-    public function editProductPage($productId) {
-     $productData =  $this->productModel->getProductById($productId);
-      $this->view('pages/editProductPage',$productData);
     }
 
     public function isLoggedIn(){

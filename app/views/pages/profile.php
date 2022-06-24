@@ -28,9 +28,8 @@
         <h3 id="greetingHead">Welcome <?php  echo strtoupper($_SESSION['user_name']); ?></h3>
         <div id="AdminImage">
           <?php
-          if($data -> imgNameAd != null) {
-            $imgExt = explode('.' , $data -> imgNameAd) ;
-           echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $data -> imgNameAd .'" alt="Admin Profile Image" width="300" height="300">';
+          if($data2 -> imgNameAd != null) {
+           echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $data2 -> imgNameAd .'" alt="Admin Profile Image" width="400" height="400">';
           } else {
             echo '<img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="AdminImage" width="250" height="250"/>';
           }
@@ -40,7 +39,7 @@
     <div>
         <div class="mt-5">
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
-            <h4>Adminname</h4>
+            <h4>AdminName</h4>
             <span><?php echo strtoupper($_SESSION['user_name']); ?></span>
         </div>
         <div class="d-flex justify-content-between align-items-center ProfileInfosC">
@@ -71,19 +70,20 @@
                 <form action="<?php echo URLROOT ; ?>/profilesDash/editProfile" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 <div class="mb-3">
+                  <div><input type="hidden" name="profile_image" value="<?php echo $data2 -> imgNameAd ; ?>"></div>
                     <label for="image" class="form-label">Choose Image (jpg , jpeg , png)</label>
                     <input type="file" accept="image/png, image/jpg, image/jpeg" name="admin_image" class="form-control" id="image">
                     <div class="input-group my-3">
                     <label for="adminName" class="input-group-text">Admin Name</label>
-                    <input type="text" name="adminName" value="<?php echo $data-> user_name ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
+                    <input type="text" name="adminName" value="<?php echo $data2-> user_name ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
                   </div>
                   <div class="input-group my-3">
                     <label for="email" class="input-group-text">Email</label>
-                    <input type="email" name="adminEmail" value="<?php echo $data-> Email ;?>" class="form-control"  aria-label="email" aria-describedby="basic-addon1" id="email" required>
+                    <input type="email" name="adminEmail" value="<?php echo $data2-> Email ;?>" class="form-control"  aria-label="email" aria-describedby="basic-addon1" id="email" required>
                   </div>
                   <div class="input-group my-3">
                     <label for="adminName" class="input-group-text">Change Password</label>
-                    <input type="text" name="adminPassword" value="<?php echo $data-> Password ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
+                    <input type="text" name="adminPassword" value="<?php echo $data2-> Password ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
                   </div>
                 </div>
                 </div>

@@ -103,6 +103,7 @@
                   </div>
                   <div class="modal-body-update">
                   <form action="<?php echo URLROOT; ?>/UsersDash/editUser" method="POST" enctype="multipart/form-data">
+                  <input type="hidden" name="userImage" value="<?php echo $value-> imgNameUs ;?>">
                     <input type="hidden" name="user_id" value="<?php echo $value-> user_id ;?>">     
                   <div class="input-group">
                     <input type="file" name="userImage" accept="image/png, image/jpg, image/jpeg" class="form-control" id="inputGroupFile02">
@@ -125,7 +126,7 @@
 
               </div>
           </td>
-          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteUser/<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
+          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteUser/<?php echo $value-> user_id ; ?>?userImage=<?php echo $value -> imgNameUs ;?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
           <th></th>

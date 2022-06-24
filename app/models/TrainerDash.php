@@ -65,4 +65,11 @@
             }
           }
 
+          public function getAdminprofileBySessionId(){
+            $this->db->query('SELECT imgNameAd FROM users WHERE user_id = :admin_id');
+            $this->db->bind(':admin_id' ,$_SESSION['user_id']);
+      
+            $row = $this->db->single();
+            return $row ;
+          }
     }
