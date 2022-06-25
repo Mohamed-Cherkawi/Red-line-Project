@@ -2,9 +2,9 @@
   class Pages extends Controller {
 
     public function __construct(){
-    $this->adminModel = $this->model('AdminDash');
      $this->userModel = $this->model('UserDash');
      $this->trainerModel = $this->model('TrainerDash');
+     $this->athleteModel = $this->model('AthleteDash');
      $this->mainModel = $this->model('MainDash');
      $this->productModel = $this->model('ProductDash');
     }
@@ -25,8 +25,8 @@
     }
     public function adminsDash(){
       if($this->isLoggedIn()){
-      $admins = $this->adminModel->showAdmins();
-      $adminImage = $this->adminModel->getAdminprofileBySessionId();
+      $admins = $this->userModel->showAdmins();
+      $adminImage = $this->userModel->getAdminprofileBySessionId();
       $this->view('pages/adminsDash',$admins ,$adminImage);
       }else{
         redirect('pages/index');
@@ -63,7 +63,7 @@
     public function trainersDash(){
         if($this->isLoggedIn()){
           $trainers = $this->trainerModel->showTrainers();
-          $adminImage = $this->trainerModel->getAdminprofileBySessionId();
+          $adminImage = $this->userModel->getAdminprofileBySessionId();
           $this->view('pages/trainersDash',$trainers ,$adminImage);
         } else {
         redirect('pages/index');
@@ -72,8 +72,17 @@
     public function productsDash() {
       if($this->isLoggedIn()){
         $products = $this->productModel->showProducts();
-        $adminImage = $this->productModel->getAdminprofileBySessionId();
+        $adminImage = $this->userModel->getAdminprofileBySessionId();
         $this->view('pages/productsDash',$products ,$adminImage);
+      } else {
+      redirect('pages/index'); 
+      }
+    }
+    public function athletesDash() {
+      if($this->isLoggedIn()){
+        $athletes = $this->athleteModel->showAthletes();
+        $adminImage = $this->userModel->getAdminprofileBySessionId();
+        $this->view('pages/athletesDash',$athletes ,$adminImage);
       } else {
       redirect('pages/index'); 
       }

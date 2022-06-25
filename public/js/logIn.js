@@ -65,7 +65,7 @@ function validatePassword() {
 
 function validateForm() {
   if (!validatePassword() || !validateEmail()) {
-    submitError.innerText = "Please Fix Error To Submit";
+    submitError.innerText = "Please Fill up all the fields before Submiting";
     setTimeout(function () {
       submitError.style.display = "none";
     }, 2500);

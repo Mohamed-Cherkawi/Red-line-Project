@@ -13,37 +13,7 @@
   />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
-  <style>
-    section {
-      margin-top: 10rem;
-    }
-.cardsC{
-    padding: 2rem;
-    box-shadow: 0px 3px 18px 0px ;
-    flex-basis: 25em;
-    border-radius: 15px;
-    position: relative;
-}
-.statics {
-  font-size: 60px;
-  font-weight: bolder;
-  color: grey;
-}
-.iconsC{
-  position: absolute;
-  top: 30%;
-  left: 65%;
-}
-@media only screen and (max-width: 991px) {
-    section{
-        padding: 0;
-        margin-top: 5rem;
-    }
-    .cardsC {
-        flex-basis: auto;
-    }
-}
-  </style>
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/dashboard.css" />
 </head>
 <body id="body-pd">
 

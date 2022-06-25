@@ -14,10 +14,11 @@
         }
 
         public function addTrainer($data){
-            $this->db->query('INSERT INTO trainers (trainer_name, Sport) VALUES(:name, :sport)');
+            $this->db->query('INSERT INTO trainers (trainer_name, Sport , imgFullName) VALUES(:name, :sport , :imgName)');
             // Bind values
             $this->db->bind(':name', $data['trainerName']);
-            $this->db->bind(':sport',$data['sport']);      
+            $this->db->bind(':sport',$data['sport']);
+            $this->db->bind(':imgName',$data['trainerImg']);           
             // Execute
             if($this->db->execute()){
               return true;
@@ -31,7 +32,7 @@
             $this->db->bind(':name', $data['trainerName']);  
             $this->db->bind(':sport', $data['sport']);                 
             $this->db->bind(':trainer_id', $data['id']);
-            $this->db->bind(':imgFullName', $data['imgFullName']);
+            $this->db->bind(':imgFullName', $data['trainerImg']);
           if ($this->db->execute()) {
             return true;
           } else {
@@ -65,11 +66,4 @@
             }
           }
 
-          public function getAdminprofileBySessionId(){
-            $this->db->query('SELECT imgNameAd FROM users WHERE user_id = :admin_id');
-            $this->db->bind(':admin_id' ,$_SESSION['user_id']);
-      
-            $row = $this->db->single();
-            return $row ;
-          }
     }

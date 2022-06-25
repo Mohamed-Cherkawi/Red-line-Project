@@ -7,6 +7,7 @@
             $this->db = new Database;
         }
 
+        /***************************** User Section ****************************************/
         public function showUsers(){
           $this->db->query('SELECT * FROM users WHERE Role = "User"');
           $rows = $this->db->resultSet();
@@ -27,21 +28,7 @@
               return false;
             }
           }
-          // public function addAdmin($data){
-          //   $this->db->query('INSERT INTO users (user_name, Email , Password , Role) VALUES(:name, :email , :password , :role)');
-          //   // Bind values
-          //   $this->db->bind(':name', $data['adminName']);
-          //   $this->db->bind(':email',$data['email']);
-          //   $this->db->bind(':password',$data['password']);
-          //   $this->db->bind(':role',"Admin");
-      
-          //   // Execute
-          //   if($this->db->execute()){
-          //     return true;
-          //   } else {
-          //     return false;
-          //   }
-          // }
+
           public function editUser($data) {
             $this->db->query("UPDATE users SET user_name=:name, Email=:email , imgNameUs=:img_name WHERE user_id=:user_id");
 
@@ -78,6 +65,57 @@
             // Execute 
             $row = $this->db->single();
             return $row;
+          }
+          
+            /***************************** Admin Section ****************************************/
+
+          public function showAdmins(){
+            $this->db->query('SELECT * FROM users WHERE Role = :admin');
+            $this->db->bind(':admin', 'Admin');
+            $rows = $this->db->resultSet();
+            return $rows;
+          }
+  
+          public function addAdmin($data){
+            $this->db->query('INSERT INTO users (user_name, Email, Password ,imgNameAd, Role) VALUES (:adminName, :email, :password, :imgName, :role)');
+            $this->db->bind(':adminName', $data['adminName']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':imgName', $data['adminImage']);
+            $this->db->bind(':role', 'Admin');
+  
+  
+            if($this->db->execute()){
+              return true;
+            } else {
+              return false;
+            }
+          }
+  
+          public function editAdmin($data){
+            $this->db->query('UPDATE users SET user_name = :adminName, Email = :email, Password = :password, imgNameAd = :imgName WHERE user_id = :id');
+            $this->db->bind(':adminName', $data['adminName']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':imgName', $data['imgFullName']);
+            $this->db->bind(':id', $data['id']);
+  
+            if ($this->db->execute()) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+  
+          public function deleteAdmin($id){
+            $this->db->query('DELETE FROM users WHERE user_id = :id');
+            $this->db->bind(':id', $id);
+  
+            if($this->db->execute()){
+              return true;
+            } else {
+              return false;
+            }
           }
 
           public function getAdminprofileBySessionId(){

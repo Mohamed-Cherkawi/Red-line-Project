@@ -14,20 +14,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/modal.css" />
-  <style>
-section h1 {
-    margin-top: 6rem ;
-    letter-spacing: 5px;
-    font-weight: bolder;
-}
-.trCss{
-    border: 1px solid gray;
-    vertical-align: middle;
-}
-td > img {
-    cursor: pointer;
-}
-  </style>
 </head>
 <body id="body-pd">
 <?php 
@@ -51,7 +37,11 @@ td > img {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-           <form action="<?php echo URLROOT; ?>/AdminsDash/addAdmin" method="POST">     
+           <form action="<?php echo URLROOT; ?>/UsersDash/addAdmin" method="POST" enctype="multipart/form-data">
+           <div class="input-group">
+              <input type="file" name="admin_image" accept="image/png, image/jpg, image/jpeg" class="form-control" id="inputGroupFile02">
+              <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
+          </div>     
           <div class="input-group my-3">
             <span class="input-group-text" id="basic-addon1">Admin</span>
             <input type="text" name="adminName" class="form-control" placeholder="adminName" aria-label="adminName" aria-describedby="basic-addon1">
@@ -92,7 +82,7 @@ td > img {
           <th >
           <?php 
              if ($value-> imgNameAd != null) {
-              echo '<img src="'.URLROOT.'/uploads'.$value-> imgNameAd.'" width="100" height="100" alt="no photo found">';
+              echo '<img src="'.URLROOT.'/uploads'.$value-> imgNameAd.'" width="100" height="100" alt="no photo found" style="border-radius:50%;">';
           } else {
               // if we don't have any photo set
               echo "<img src='https://img.icons8.com/fluency-systems-regular/96/undefined/user.png' width='50' height='50'>";
@@ -117,11 +107,11 @@ td > img {
                   <span class="close-update">×</span>
                   </div>
                   <div class="modal-body-update">
-                  <form action="<?php echo URLROOT; ?>/AdminsDash/editAdmin" method="POST" enctype="multipart/form-data">
+                  <form action="<?php echo URLROOT; ?>/UsersDash/editAdmin" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="image_admin" value="<?php echo $value-> imgNameAd ;?>">
                     <input type="hidden" name="admin_id" value="<?php echo $value-> user_id ;?>">     
                   <div class="input-group">
-                    <input type="file" name="admin_image" class="form-control" id="inputGroupFile02">
+                    <input type="file" name="admin_image" accept="image/png, image/jpg, image/jpeg" class="form-control" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Choose Image</label>
                   </div>
                   <div class="input-group my-3">
@@ -145,7 +135,7 @@ td > img {
 
               </div>
           </td>
-          <td><a href="<?php echo URLROOT ; ?>/AdminsDash/deleteAdmin/<?php echo $value-> user_id ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
+          <td><a href="<?php echo URLROOT ; ?>/UsersDash/deleteAdmin/<?php echo $value-> user_id ?>?adminImg=<?php echo $value-> imgNameAd ?>" onclick="return confirm('Are you sure');"><img src="<?php echo URLROOT ?>/icons/trashSvg.svg" alt="TrashIcon"></a></td>
         </tr>
         <tr>
           <th></th>
