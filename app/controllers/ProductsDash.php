@@ -16,14 +16,13 @@
                         return $data;
                     }
                     // Checking if product offer input is empty or not
-                    if(empty($_POST['productOffer'])) {
+                    if(empty($_POST['pOfferPrice'])) {
                         $productOffer = "none";
                     } else {
-                        $productOffer = filter_inputF($_POST['productOffer']) . "$";
+                        $productOffer = filter_inputF($_POST['pOfferPrice']) . "$";
                     }
                     $data =[
                         'productName' => filter_inputF($_POST['productName']),
-                        'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
                         'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
                         'pOfferPrice' => $productOffer,
                         'category' => filter_inputF($_POST['category']),
@@ -99,11 +98,17 @@
                     $data = htmlspecialchars($data);
                     return $data;
                 }
+                     // Checking if product offer input is empty or not
+                     if(empty($_POST['pOfferPrice'])) {
+                         $productOffer = "none";
+                     } else {
+                         $productOffer = filter_inputF($_POST['pOfferPrice']) . "$";
+                     }
                 $data =[
                     'id' => $product_id ,
                     'productName' => filter_inputF($_POST['productName']),
                     'pRegularPrice' => filter_inputF($_POST['pRegularPrice']),
-                    'pOfferPrice' => filter_inputF($_POST['pOriginalrPrice']),
+                    'pOfferPrice' => $productOffer,
                     'category' => filter_inputF($_POST['category']),
                     'productDescription' => filter_inputF($_POST['productDescription']),
                     'productImage' => $_POST['product_imageName']
@@ -143,8 +148,8 @@
                             create a unique id wich gets inserted and replaced with the actual name of the file when
                             it was uploaded so instead of it being named test.JPEG coul actually get named something like 
                             bunch of numbers .JPEG */
-                            $fileNameNew = "/productsProfile/product".uniqid().".". $fileActualExt;
-                            $fileDestination = UPLOADFOLDER  . $fileNameNew ;
+                            $fileNameNew = "product".uniqid().".". $fileActualExt;
+                            $fileDestination = UPLOADFOLDER  . "/productsFolder/" . $fileNameNew ;
                             move_uploaded_file($fileTmpName,$fileDestination);
                             $data['productImage'] = $fileNameNew;
                             if($this->productDashModel->editProduct($data)) {

@@ -87,7 +87,7 @@
         <tr class="trCss">
           <td>
           <?php 
-              echo '<img src="'.URLROOT.'/uploads'.$value-> athlete_img	.'" width="100" height="100" alt="no photo found" style="border-radius:50%;">';      
+              echo '<img src="'.URLROOT.'/uploads'.$value-> athlete_img	.'" width="100" height="100" alt="Athlete image" style="border-radius:50%;">';      
             ?>            
           </td>
           <th><span class="ms-3"><?php echo $value-> athlete_name	 ;?></span></th>
@@ -157,6 +157,13 @@
       </tbody>
     </table>
   </section>
+  <script>
+    let dashboardLink = document.querySelector(".DASHBOARD");
+    let athletesLink = document.querySelector(".ATHLETESDASH");
+
+    dashboardLink.classList.remove('active');
+    athletesLink.classList.add('active');
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo URLROOT; ?>/js/dashboard.js"></script>
   <script src="<?php echo URLROOT; ?>/js/modal.js"></script>

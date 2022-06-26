@@ -20,9 +20,8 @@
             return $totalTrainers;
         }
 
-        public function totalAdmins() {
-            $this->db->query('SELECT COUNT(Role) AS "totalAdmins" FROM users WHERE Role = :admin');
-            $this->db->bind(':admin', 'Admin');
+        public function totalAthletes() {
+            $this->db->query('SELECT COUNT(athlete_id) AS "totalAthletes" FROM athletes');
             $totalAdmins = $this->db->single();
             return $totalAdmins;
         }

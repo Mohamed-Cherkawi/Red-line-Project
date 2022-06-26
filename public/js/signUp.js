@@ -116,6 +116,8 @@ function validateForm() {
   }
 }
 
+// code js for the eye icon
+
 eyeCp.classList.add('bi','bi-eye','passw-eye');
 eyeCp.setAttribute("onclick","toogleEyePassword()");
 eyeMaskCp.classList.add('bi','bi-eye-slash','passw-mask-eye');

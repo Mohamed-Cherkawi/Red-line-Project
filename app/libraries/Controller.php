@@ -14,7 +14,7 @@
     }
 
     // Load view
-    public function view($view, $data = [] , $data2 = []){
+    public function view($view, $data = [] , $data2 = [], $data3 = null){
       // Check for view file
       if(file_exists('../app/views/' . $view . '.php')){
         require_once '../app/views/' . $view . '.php';

@@ -12,7 +12,7 @@
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/sidebarNav.css" />
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/products.css" />
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/adminProducts.css" />
 </head>
 <body id="body-pd">
 <?php 
@@ -51,17 +51,17 @@
                   </div>
                   <div class="mb-3">
                     <label for="productOprice" class="form-label">Product Offer Price</label>
-                    <input type="number" name="pOriginalrPrice" class="form-control" id="productOprice">
+                    <input type="number" name="pOfferPrice" class="form-control" id="productOprice">
                   </div>
                   <div class="form-group">
                       <label for="categories" class="mb-2 d-block">Select a Category <span class="requiredFiels ms-3">Required *</span></label>
                       <select name="category" class="p-1 w-100 text-center"  id="categories" required>
                         <option value="Uniform">Uniform</option>
                         <option value="Strength Machines">Strength Machines</option>
-                        <option value="Strength Machines">Strength Machines</option>
+                        <option value="Cardio Machines">Cardio Machines</option>
                         <option value="Free Weight Machines">Free Weight Machines</option>
                         <option value="Alimentation">Alimentation</option>
-                        <option value="Accessories">Accessories</option>
+                        <option value="Accessoires">Accessories</option>
                       </select>
                   </div>
                   </div>
@@ -104,7 +104,14 @@
        <?php endforeach ; ?> 
       </section>
 
-   </main>         
+   </main>
+   <script>
+    let dashboardLink = document.querySelector(".DASHBOARD");
+    let athletesLink = document.querySelector(".PRODUCTSDASH");
+
+    dashboardLink.classList.remove('active');
+    athletesLink.classList.add('active');
+  </script>   
   <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

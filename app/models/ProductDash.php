@@ -66,4 +66,37 @@
           
     }
 
+      public function showProductsByCategorie($category) {
+        $this->db->query('SELECT * FROM products WHERE product_category = :category');
+        $this->db->bind(':category', $category);
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+
+      public function showAllOldestProducts() {
+        $this->db->query('SELECT * FROM products  ORDER BY product_id');
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+
+      public function showAllNewestProducts() {
+        $this->db->query('SELECT * FROM products  ORDER BY product_id DESC');
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+      public function showAllAlphabeticalOrderProducts() {
+        $this->db->query('SELECT * FROM products  ORDER BY product_name');
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+      public function showAllDescAlphabeticalOrderProducts() {
+        $this->db->query('SELECT * FROM products  ORDER BY product_name DESC');
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
   }

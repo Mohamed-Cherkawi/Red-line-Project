@@ -149,6 +149,13 @@
       </tbody>
     </table>
   </section>
+  <script>
+    let dashboardLink = document.querySelector(".DASHBOARD");
+    let athletesLink = document.querySelector(".ADMINSDASH");
+
+    dashboardLink.classList.remove('active');
+    athletesLink.classList.add('active');
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo URLROOT; ?>/js/dashboard.js"></script>
   <script src="<?php echo URLROOT; ?>/js/modal.js"></script>

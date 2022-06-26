@@ -11,6 +11,10 @@ const emailError = document.getElementById("emaiError");
 const passwordError = document.getElementById("passwordError");
 const submitError = document.getElementById("submitError");
 
+// Creating two icons and adding to them some classes and one attribute
+let eyeCp = document.createElement('i');
+let eyeMaskCp = document.createElement('i');
+
 // onload event , focuses on username input
 window.onload = function () {
   email.focus();
@@ -74,3 +78,26 @@ function validateForm() {
     return true;
   }
 }
+
+// code js for the eye icon
+
+eyeCp.classList.add('bi','bi-eye','passw-eye');
+eyeCp.setAttribute("onclick","toogleEyePassword()");
+eyeMaskCp.classList.add('bi','bi-eye-slash','passw-mask-eye');
+eyeMaskCp.setAttribute("onclick","toogleEyePassword()");
+
+//First value in state is false :
+let state = false ;
+    function toogleEyePassword(){
+            if(state){
+                document.getElementById('password').setAttribute("type","password");
+                 document.querySelector('.passw-eye').remove();
+                 document.getElementById('CopasswordContaSignUp').append(eyeMaskCp);
+                state = false ;
+            }else{
+                document.getElementById('password').setAttribute("type","text");
+                document.querySelector('.passw-mask-eye').remove();
+                document.getElementById('CopasswordContaSignUp').append(eyeCp);
+                state = true;
+            }
+    }

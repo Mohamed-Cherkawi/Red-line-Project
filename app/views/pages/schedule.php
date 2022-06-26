@@ -10,7 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     /> 
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/navbar.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/header.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/schedule.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css" />
     <title>Gym Edge</title>

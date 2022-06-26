@@ -23,9 +23,6 @@ echo '
               <a class="nav-link active fw-bolder" href="'. URLROOT .'/pages/index">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ABOUT</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">CLASSES</a>
             </li>
             <li class="nav-item">
@@ -35,8 +32,11 @@ echo '
               <a class="nav-link" href="#">TRAINERS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">STORE</a>
+              <a class="nav-link" href="'. URLROOT .'/pages/products/All">STORE</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">ABOUT</a>
+          </li>
           </ul>
           <form class="d-flex flex-column flex-lg-row">
             <div

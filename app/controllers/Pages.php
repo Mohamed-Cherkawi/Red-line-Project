@@ -17,6 +17,54 @@
       $this->view('pages/schedule');
     }
 
+    public function products($productCategory) {
+      if($productCategory == "All") {
+        $products = $this->productModel->showProducts();
+        $this->view('pages/products',$products,$productCategory);
+        return ;
+      }
+      if($productCategory == "Strength") {
+        $productCategory.= " " . "Machines";
+      }else if($productCategory == "Cardio") {
+        $productCategory.= " " . "Machines";
+      }else if($productCategory == "Free") {
+        $productCategory.= " " . "Weight" . " " . "Machines";
+      }
+        $products = $this->productModel->showProductsByCategorie($productCategory);
+        $this->view('pages/products',$products,$productCategory);
+    }
+
+    public function productsFilterBy($filterMethod,$Category) {
+      if($Category == "All") {
+        if($filterMethod == "Oldest") {
+          $products = $this->productModel->showAllOldestProducts();
+          $filterMethod = "Filtred by Oldest";
+          $this->view('pages/products',$products,$Category,$filterMethod);
+          return ;
+        }
+        if($filterMethod == "Newest") {
+          $products = $this->productModel->showAllNewestProducts();
+          $filterMethod = "Filtred by Newest";
+          $this->view('pages/products',$products,$Category,$filterMethod);
+          return ;
+        }
+        if($filterMethod == "AlphabeticalAsc") {
+          $products = $this->productModel->showAllAlphabeticalOrderProducts();
+          $filterMethod = "Filtred by Alphabetical Order";
+          $this->view('pages/products',$products,$Category,$filterMethod);
+          return ;
+        }
+        if($filterMethod == "AlphabeticalDesc") {
+          $products = $this->productModel->showAllDescAlphabeticalOrderProducts();
+          $filterMethod = "Filtred by Descendant Alphabetical Order";
+          $this->view('pages/products',$products,$Category,$filterMethod);
+          return ;
+        }
+      }
+      if($filterMethod == "Oldest") {
+
+      }
+    }
       public function signUp(){
       $this->view('pages/signUp');
     }
@@ -35,15 +83,15 @@
     public function dashboard(){
       if($this->isLoggedIn()){
       $totalUsers = $this->mainModel->totalUsers();
-      $totalAdmins = $this->mainModel->totalAdmins();
+      $totalAthletes = $this->mainModel->totalAthletes();
       $totalTrainers = $this->mainModel->totalTrainers();
       $totalProducts = $this->mainModel->totalProducts();
       $adminImageName = $this->mainModel->getAdminprofileBySessionId();
       $data2 = $adminImageName ;
       $data = [
         'totalUsers' => $totalUsers -> totalUsers ,
-        'totalTrainers' => $totalAdmins -> totalAdmins ,
-        'totalAdmins' =>   $totalTrainers -> totalTrainers ,
+        'totalAthletes' => $totalAthletes -> totalAthletes ,
+        'totalTrainers' =>   $totalTrainers -> totalTrainers ,
         'totalProducts' => $totalProducts -> totalProducts ,
       ];
       $this->view('pages/dashboard',$data ,$data2);

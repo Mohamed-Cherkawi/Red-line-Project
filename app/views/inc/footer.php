@@ -1,6 +1,6 @@
 <?php
 echo '<footer class="mt-5">
-<div class="d-flex flex-column flex-lg-row justify-content-between align-items-center p-5">
+<div class="d-flex flex-column flex-lg-row justify-content-between align-items-center p-5 footerContentC">
   <h4>Made With 🧡 By Mohamed Cherkaoui</h4>
   <div class="d-flex justify-content-evenly my-3 my-md-0">
     <div class="iconsContainer">

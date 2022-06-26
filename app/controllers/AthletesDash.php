@@ -129,15 +129,6 @@
               
                           if($fileSize < 6000000){
                             unlink(UPLOADFOLDER . $data['athleteImg']) ;
-
-                              /* Before we upload the file we have to make sure that when we do upload the file it gets
-                              a proper name because for example a file called test.JPEG to uploads folder and someone 
-                              else later on uploads a image that has the exact same name test.JPEG it will actually 
-                              overwrite the existing image inside the uploads folder meaning that the other user who
-                              upload an image will get his image deleted so in order to prevent that we're going to 
-                              create a unique id wich gets inserted and replaced with the actual name of the file when
-                              it was uploaded so instead of it being named test.JPEG coul actually get named something like 
-                              bunch of numbers .JPEG */
                               $fileNameNew = "/athletesFolder/profile". uniqid() .".". $fileActualExt;
                               $fileDestination = UPLOADFOLDER  . $fileNameNew ;
                               move_uploaded_file($fileTmpName,$fileDestination);

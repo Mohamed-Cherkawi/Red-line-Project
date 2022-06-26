@@ -10,7 +10,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/products.css" />
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/adminProducts.css" />
     <title>Edit Product</title>
 </head>
 <body class="d-flex align-items-center vh-100">
@@ -32,14 +32,14 @@
                   </div>
                   <div class="mb-3 w-100 ">
                     <label for="productOprice" class="form-label">Product Offer Price</label>
-                    <input type="number" name="pOriginalrPrice" class="form-control" value="<?php echo  intval($data -> product_offer_price); ?>" id="productOprice">
+                    <input type="number" name="pOfferPrice" class="form-control" value="<?php echo  intval($data -> product_offer_price); ?>" id="productOprice">
                   </div>
                   <div class="form-group mb-3 w-100 ">
                       <label for="categories" class="mb-2 d-block">Select a Category <span class="requiredFiels ms-3">Required *</span></label>
                       <select name="category" class="p-1 w-100 text-center"  id="categories" required>
                         <option value="Uniform">Uniform</option>
                         <option value="Strength Machines">Strength Machines</option>
-                        <option value="Strength Machines">Strength Machines</option>
+                        <option value="Cardio Machines">Cardio Machines</option>
                         <option value="Free Weight Machines">Free Weight Machines</option>
                         <option value="Alimentation">Alimentation</option>
                         <option value="Accessories">Accessories</option>

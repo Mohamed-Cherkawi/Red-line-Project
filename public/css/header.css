@@ -3,6 +3,15 @@
     --white-color : #FFFFFF;
     --black-color : #0F0E0D;
     --grey-color : #796F69;
+    --header-color : #e9e9e9 ;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.headerC {
+    background-color: var(--header-color);
 }
 /* Styling the navbar of the Landing Page */
 .search {
