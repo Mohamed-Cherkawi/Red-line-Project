@@ -127,7 +127,7 @@
               alt="PeopleCycling"
             />
             <div class="card-body">
-              <h3 class="card-title">Cycling</h3>
+              <h3 class="card-title">Yoga</h3>
               <div class="d-flex align-items-center mt-4">
                 <img class="coachIcon" src="<?php echo URLROOT ?>/img/coach.png" alt="coach Icon" />
                 <span class="ms-4 coaches"> Coach Abd l ilah ,Da Hmad</span>
@@ -157,7 +157,7 @@
               alt="PeopleCycling"
             />
             <div class="card-body">
-              <h3 class="card-title">Cycling</h3>
+              <h3 class="card-title">bodyBuilding</h3>
               <div class="d-flex align-items-center mt-4">
                 <img class="coachIcon" src="<?php echo URLROOT ?>/img/coach.png" alt="coach Icon" />
                 <span class="ms-4 coaches">Coach Nada , Khalid</span>

@@ -32,7 +32,7 @@
                     <li><a class="fw-bold my-3 d-block text-decoration-none text-dark" href="<?php echo URLROOT; ?>/pages/products/Cardio">Cardio Machines</a></li>
                     <li><a class="fw-bold my-3 d-block text-decoration-none text-dark" href="<?php echo URLROOT; ?>/pages/products/Free">Free Weight Machines</a></li>
                     <li><a class="fw-bold my-3 d-block text-decoration-none text-dark" href="<?php echo URLROOT; ?>/pages/products/Alimentation">Alimentation</a></li>
-                    <li><a class="fw-bold my-3 d-block text-decoration-none text-dark" href="<?php echo URLROOT; ?>/pages/products/Accessories">Accessoires</a></li>
+                    <li><a class="fw-bold my-3 d-block text-decoration-none text-dark" href="<?php echo URLROOT; ?>/pages/products/Accessoires">Accessoires</a></li>
                 </ul>
                 </div>
                 <div id="headLinksSectionC" class="mt-5"><h4>Filter By </h4></div>
@@ -60,7 +60,6 @@
                       <span class="mt-3 mb-3"><span class="fw-bold me-3">Product Name :</span><?php echo $value -> product_name ; ?></span>
                       <span class="d-flex productPrice fw-bolder"><span class="fw-bold me-3 text-dark">Product Price :</span><?php if($value -> product_offer_price != "none") {echo '<div class="d-flex align-items-center"><del class="text-secondary">'.$value -> product_offer_price.'</del><div class="triangle-right ms-3 me-3"></div></div>';} echo $value -> product_original_price ; ?></span>
                       <span class="mt-3 "><span class="fw-bold me-3">Product Category :</span><?php echo $value -> product_category ; ?></span>
-                      <span class="mt-3 "><span class="fw-bold me-3">Product Description :</span><?php echo $value -> product_description ; ?></span>
                       <span class="mt-3 "><span class="fw-bold me-3">Added in :</span><?php echo $value -> added_date ; ?></span>
                       <a href="<?php echo URLROOT; ?>/pages/productSheet/<?php echo $value -> product_id; ?>"><button class="fw-bold mt-4 w-100" id="addToCartButt">Inspect Product</button></a>
                     </div>
@@ -72,11 +71,6 @@
       </main>
 
       <?php  require_once APPROOT."/views/inc/footer.php" ; ?>
-<script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-crossorigin="anonymous"
-></script>
       <script>
         // Toggling the search bar icon js Code .
             const icon = document.querySelector(".searchIcon");

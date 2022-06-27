@@ -99,4 +99,32 @@
         $row = $this->db->resultSet();
         return $row;
       }
+      public function filterProductsWhereCategoriesOldest($category) {
+        $this->db->query('SELECT * FROM products WHERE product_category = :category ORDER BY product_id');
+        $this->db->bind(':category', $category);
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+      public function filterProductsWhereCategoriesNewest($category) {
+        $this->db->query('SELECT * FROM products WHERE product_category = :category ORDER BY product_id DESC');
+        $this->db->bind(':category', $category);
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+      public function filterProductsWhereCategoriesAlphabeticalOrder($category) {
+        $this->db->query('SELECT * FROM products WHERE product_category = :category ORDER BY product_name');
+        $this->db->bind(':category', $category);
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
+      public function filterProductsWhereCategoriesAlphabeticalDescOrder($category) {
+        $this->db->query('SELECT * FROM products WHERE product_category = :category ORDER BY product_name DESC');
+        $this->db->bind(':category', $category);
+
+        $row = $this->db->resultSet();
+        return $row;
+      }
   }

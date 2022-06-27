@@ -17,6 +17,9 @@
       $this->view('pages/schedule');
     }
 
+    public function aboutUs() {
+      $this->view('pages/aboutUs');
+    }
     public function products($productCategory) {
       if($productCategory == "All") {
         $products = $this->productModel->showProducts();
@@ -61,9 +64,42 @@
           return ;
         }
       }
-      if($filterMethod == "Oldest") {
-
+      if($Category == "Strength") {
+        $Category.= " " . "Machines";
+      }else if($Category == "Cardio") {
+        $Category.= " " . "Machines";
+      }else if ($Category == "Free") {
+        $Category.= " " . "Weight" . " " . "Machines";
       }
+      if($filterMethod == "Oldest") {
+        $products = $this->productModel->filterProductsWhereCategoriesOldest($Category);
+        $filterMethod = "Filtred by Oldest";
+        $this->view('pages/products',$products,$Category,$filterMethod);
+        return ;
+      }
+      if($filterMethod == "Newest") {
+        $products = $this->productModel->filterProductsWhereCategoriesNewest($Category);
+        $filterMethod = "Filtred by Newest";
+        $this->view('pages/products',$products,$Category,$filterMethod);
+        return ;
+      }
+      if($filterMethod == "AlphabeticalAsc") {
+        $products = $this->productModel->filterProductsWhereCategoriesAlphabeticalOrder($Category);
+        $filterMethod = "Filtred by Alphabetical Order";
+        $this->view('pages/products',$products,$Category,$filterMethod);
+        return ;
+      }
+      if($filterMethod == "AlphabeticalDesc") {
+        $products = $this->productModel->filterProductsWhereCategoriesAlphabeticalDescOrder($Category);
+        $filterMethod = "Filtred by Descendant Alphabetical Order";
+        $this->view('pages/products',$products,$Category,$filterMethod);
+        return ;
+      }
+    }
+    
+    public function productSheet($productId) {
+      $product = $this->productModel->getProductById($productId);
+      $this->view('pages/productSheet',$product);
     }
       public function signUp(){
       $this->view('pages/signUp');

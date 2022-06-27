@@ -23,19 +23,19 @@ echo '
               <a class="nav-link active fw-bolder" href="'. URLROOT .'/pages/index">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">CLASSES</a>
+              <a class="nav-link" href="#">Classes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="'. URLROOT .'/pages/schedule">SCHEDULE</a>
+              <a class="nav-link" href="'. URLROOT .'/pages/schedule">Schedule</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">TRAINERS</a>
+              <a class="nav-link" href="#">Trainers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="'. URLROOT .'/pages/products/All">STORE</a>
+              <a class="nav-link" href="'. URLROOT .'/pages/products/All">Store</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">ABOUT</a>
+            <a class="nav-link" href="'. URLROOT .'/pages/aboutUs">About</a>
           </li>
           </ul>
           <form class="d-flex flex-column flex-lg-row">

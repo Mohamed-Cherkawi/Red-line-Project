@@ -1,0 +1,43 @@
+.iframeC{
+    overflow-y: hidden !important;
+}
+.contactInputs{
+padding-bottom: 0.3rem;
+background-color: transparent;
+border: none;
+font-size: 15px;
+outline: 0;
+}
+.contactInputs:focus  {
+ border-bottom: 1px solid var(--orange-color);
+}
+.contactInputs:focus::placeholder {
+    color: var(--orange-color);
+}
+#contactTextera{
+    padding: 1rem;
+    border: none;
+    height: 250px;
+}
+#contactTextera:focus {
+    outline-color: var(--orange-color);
+    
+}
+button {
+    letter-spacing: 5px;
+    padding: 15px 30px;
+    white-space: nowrap;
+    font-family: "Questrial Bold", sans-serif;
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: #FF6600;
+    color: white;
+  }
+  button:hover {
+    transform: scale(0.9);
+  }
