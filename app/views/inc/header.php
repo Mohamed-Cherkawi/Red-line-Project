@@ -38,7 +38,7 @@ echo '
             <a class="nav-link" href="'. URLROOT .'/pages/aboutUs">About</a>
           </li>
           </ul>
-          <form class="d-flex flex-column flex-lg-row">
+          <form class="d-flex flex-column align-items-center flex-lg-row">
             <div
               class="search d-flex justify-content-center align-items-center"
             >
@@ -80,13 +80,25 @@ echo '
                 <input type="text" placeholder="Search .." id="mysearch" />
               </div>
             </div>
-            <div id="separator" class="ms-2 me-2"></div>
+            <div class="separator" class="ms-2 me-2"></div>
             <br class="d-block d-lg-none" />
-            <a href="#">
+            <a href="#" class="mx-md-3">
               <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADLElEQVRoge2YT0gUURzHP88VxaSDRXSSKOsQBHapsENHg7oUFNIpEcLoDwRljglhha27FkZiQXWwq0Ydw8hbh0qIoiAkysIuEaKIWFa7vw7rn9lxZva92ZmNcD+nne+b93vf3/7m7fvNQpEiKxu18EEsUkCJyz1zKKpVnO+Fs6WP3bB43FOO0FgIM0HQSQDgpBwmFrWZIOgmsIHN7I3aTBCU14BY9ANHC+jFi09As+riqdug26ZdGLkZlSNDNiHc8Rr0TEBd5RUwEoklU0pIew/5cytkK8EQbnsNee4BADlNOZWMA+tsMxpVnPvhuXOsafEQOLgkMMYsW1Uvc273+1ZgflK/Qz6Rr0kvpI064IBDtrzMQ+5HCGL0AamlVdgpFjsCevREQCFcI/upeEGCQb95ORNQnXwBhhxy+FVo5QiwO0sTzin/80mjAgCKPofSIG2sNfHnh3RQRgmXs0UeqATPcs3VSyDOY+CDTalAaDIx6cscZxBqbMov0lzQmaqVwHwZ7zrkUPojsagCWh1yn+rO+sI80atAhnvArO06nP5IcQlhzeK1MIWiU3e6dgKqi0lgIEuU/DaztFCD0OxwdEXFmdCNYVIBKKHXoeyTFrYYxbAToxsoW7wWxphZ9oPhi+9J7IZYvITwz4FMcBpUwlHlHJhVIINnZ5gnz3MdWm6YJyCRvNhMk6Yp16HlhlEC0sp+FIdMF/EOyBTwCMUuleR9kBDae0A6WMUP3qHYaJNH+EidGrT1SgVGvwI/uegw/wfh2L80D5oJyHlWA6eyRW6oBG+iMGWCXgVibAMqbco3UnRE4siQUq270sw6dst6SpkRKwpLGVSX3v7Uq0AFb4HP+RiKCr1utIM0wnHgd8R+jNFv5hIMkWYP8ASYjs5Skf8Lo25U2qkmRQ9QnxEYRrBUktEgi4cRT7+VaKeaNK+z3p4yTBKjVnUyrhsrzHj6rUSKHpfFAKpIcV07TsjxTLrRep+xIC12KPGCvNC4YdzHhxVPPwFh2HNMLfvnrmDxTBKwgEmXkQlSnNWOE3I8/ZM4ySgxaoFBMifxNIoB0mxXSb7qxokqXpEiK5W/f0fh1nanwqoAAAAASUVORK5CYII="
               />
             </a>
+            <div class="separator" class="ms-2 me-2"></div>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" height="70" width="75">
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="'.URLROOT.'/UsersDash/userProfile">Profile</a></li>
+                  <li><a class="dropdown-item" href="'.URLROOT.'/pages/basket">My Cart</a></li>
+                  <li><a class="dropdown-item" href="'.URLROOT.'/pages/logout" onclick="return confirm(\'Are you sure\')">Log out</a></li>
+                </ul>
+              </div>
           </form>
         </div>
       </div>

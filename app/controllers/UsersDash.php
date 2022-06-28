@@ -7,7 +7,19 @@
         }
 
                 /***************************** User Section ****************************************/
+                public function userProfile() {
 
+                    if($this->isLoggedIn()) {
+                        $userId = $_SESSION['user_id'] ; 
+                        $userProfile = $this->userDashModel->showUserProfile($userId) ;
+                        $emptyData = '';
+                        $_SESSION['user_name'] = $userProfile -> user_name ;
+                        $_SESSION['user_email'] = $userProfile -> Email ;
+                        $this->view('pages/userProfile',$emptyData,$userProfile);
+                    } else {
+                        redirect('pages/logIn');
+                    }
+                }
         public function addUser() {
 
             if(isset($_POST['addUser'])) {
@@ -335,4 +347,12 @@
             }
         
     }
+
+    public function isLoggedIn(){
+        if(isset($_SESSION['user_id'])){
+          return true;
+        } else {
+          return false;
+        }
+      }
     }

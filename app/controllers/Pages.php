@@ -7,6 +7,7 @@
      $this->athleteModel = $this->model('AthleteDash');
      $this->mainModel = $this->model('MainDash');
      $this->productModel = $this->model('ProductDash');
+     $this->cartModel = $this->model('Cart');
     }
     
     public function index(){     
@@ -19,6 +20,44 @@
 
     public function aboutUs() {
       $this->view('pages/aboutUs');
+    }
+
+    public function addToCart() {
+      if($this->isLoggedIn()) {
+      if(isset($_POST['addProductToCart'])) {
+           // filter input function that removes html special charct and whitespace from both sides of the string
+           function filter_inputF($data) {
+             $data = trim($data);
+             $data = htmlspecialchars($data);
+             return $data;
+         }
+        $data = [
+          'userId' => $_SESSION['user_id'],
+          'productImg' => filter_inputF($_POST['product_img']),
+          'productName' => filter_inputF($_POST['product_name']),
+          'productRegular' => filter_inputF($_POST['product_regular']),
+          'productQuantity' => filter_inputF($_POST['product_quantity'])
+        ] ;
+         $this->cartModel->addProductToCart($data);
+        //  $addedMessage = "<div class=\"alert alert-secondary text-center\" role=\"alert\"> Product Added Successfuly To your Cart</div>";
+        //   $data2 = [
+        //     'addedMessage' =>$addedMessage
+        //   ];
+          redirect('pages/index');
+      }
+
+    } else {
+      redirect('pages/logIn');
+    }
+    }
+    
+    public function basket() {
+      if($this->isLoggedIn()) {
+        $products = $this->cartModel->showCartProducts($_SESSION['user_id']);
+        $this->view('pages/basket',$products);
+      } else {
+        redirect('pages/logIn');
+      }
     }
     public function products($productCategory) {
       if($productCategory == "All") {

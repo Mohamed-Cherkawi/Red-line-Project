@@ -1,0 +1,32 @@
+.PanierContentC{
+    overflow-y: hidden;
+    width: 1260px;
+    border-bottom: 1px solid rgb(222, 222, 222);
+}
+#contShoopingButt , #ProceedButt {
+border: none;
+color: white;
+background-color: #FF5235;
+padding: 1.1rem;
+width: 260px;
+font-weight: bold;
+transition: 0.3s ease;
+
+}
+#contShoopingButt:hover , #ProceedButt:hover {
+    transform: scale(0.9);
+}
+@media only screen and (min-width: 1400px){
+    #panierFsection{
+        overflow-x: hidden !important;
+    }
+}
+#contShoopingButt{
+    width: 300px;
+    padding: 1rem;
+}
+@media only screen and (max-width: 575px){
+    .secondSectPanier{
+        align-items: center !important;
+    }
+}

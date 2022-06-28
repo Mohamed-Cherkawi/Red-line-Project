@@ -67,6 +67,16 @@
             return $row;
           }
           
+          public function showUserProfile($userId) {
+            $this->db->query('SELECT * FROM users WHERE user_id = :user_id');
+            // Bind Values :
+            $this->db->bind(':user_id',$userId);
+
+            // Execute 
+            $row = $this->db->single();
+            return $row;
+          }
+          
             /***************************** Admin Section ****************************************/
 
           public function showAdmins(){

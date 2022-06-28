@@ -33,14 +33,14 @@
                 <div id="stepperC" class="d-flex align-items-center">
                         <span class="plusMin" id="minus">-</span><span class="mx-4" id="quantity">1</span><span class="plusMin" id="plus">+</span>
                 </div>
-                <form action="" method="POST"></form>
+                <form action="<?php echo URLROOT ;?>/pages/addToCart" method="POST">
                 <input type="hidden" name="product_img" value="<?php echo $data -> product_img_name; ?>">
                 <input type="hidden" name="product_name" value="<?php echo $data -> product_name; ?>">
                 <input type="hidden" name="product_category" value="<?php echo $data -> product_category; ?>">
-                <?php if($data -> product_offer_price != "none") { echo '<input type="hidden" name="product_offer" value="'.$data -> product_offer_price.'">';}?>
                 <input type="hidden" name="product_regular" value="<?php echo $data -> product_original_price; ?>">
                 <input type="hidden" id="quantityInput" name="product_quantity">
                 <button type="submit" name="addProductToCart" id="addToCart">ADD TO CART</button>
+                </form>
                 </div>
                 </div>
             </div>
