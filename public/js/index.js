@@ -1,3 +1,7 @@
+  // Form Resubmission
+  if(window.history.replaceState) {
+    window.history.replaceState(null , null ,window.location.href);
+  }
 // Toggling the search bar icon js Code .
 const icon = document.querySelector(".searchIcon");
 const search = document.querySelector(".search");
@@ -33,7 +37,7 @@ function CalculBmi() {
 
   // Adding some style to the element
   BodyMass.classList.add('text-dark');
-  // i used the toFixed function because i just need to numbers after the semicolon .
+  // i used the toFixed function because i just need one number after the semicolon .
   BodyMass.innerText = bmi.toFixed(1);
   
   BodyState.classList.add('text-dark');

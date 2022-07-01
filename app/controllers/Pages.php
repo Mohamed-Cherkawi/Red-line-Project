@@ -10,7 +10,13 @@
      $this->cartModel = $this->model('Cart');
     }
     
-    public function index(){     
+    public function index($page){
+      if($this->isLoggedIn()) {
+        if($page == "userProfile") {
+          $this->view('pages/userProfile');
+          return ;
+        }
+      }   
       $this->view('pages/index');
     }
 
@@ -23,7 +29,7 @@
     }
 
     public function addToCart() {
-      if($this->isLoggedIn()) {
+      if($this->isLoggedIn()) { 
       if(isset($_POST['addProductToCart'])) {
            // filter input function that removes html special charct and whitespace from both sides of the string
            function filter_inputF($data) {
@@ -33,22 +39,24 @@
          }
         $data = [
           'userId' => $_SESSION['user_id'],
-          'productImg' => filter_inputF($_POST['product_img']),
-          'productName' => filter_inputF($_POST['product_name']),
-          'productRegular' => filter_inputF($_POST['product_regular']),
+          'productId' => filter_inputF($_POST['product_id']),
           'productQuantity' => filter_inputF($_POST['product_quantity'])
         ] ;
-         $this->cartModel->addProductToCart($data);
-        //  $addedMessage = "<div class=\"alert alert-secondary text-center\" role=\"alert\"> Product Added Successfuly To your Cart</div>";
-        //   $data2 = [
-        //     'addedMessage' =>$addedMessage
-        //   ];
-          redirect('pages/index');
+       $product =  $this->cartModel->checkIfProductExistInCart($data['productId']);
+       if($product) {
+        redirect('pages/productSheet/'.$data['productId'].'?addedMess=none'); // if the user reached this line means that the product is alraedy added to the Cart .
+
+       } else {
+        $this->cartModel->addProductToCart($data);
+        redirect('pages/productSheet/'.$data['productId'].'?addedMess=true'); // Here the Product gets added 
+       }
+
       }
 
     } else {
-      redirect('pages/logIn');
+      redirect('pages/productSheet/'.$_SESSION['user_id'].'?addedMess=false');
     }
+
     }
     
     public function basket() {
@@ -143,8 +151,8 @@
       public function signUp(){
       $this->view('pages/signUp');
     }
-    public function logIn(){
-      $this->view('pages/logIn');
+    public function logIn($page){
+      $this->view('pages/logIn',$page);
     }
     public function adminsDash(){
       if($this->isLoggedIn()){

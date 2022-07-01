@@ -15,10 +15,8 @@
           }
 
       public function addProductToCart($data) {
-        $this->db->query('INSERT INTO carts (Product_name, Product_price , Product_img , Product_quantity , fk_user) VALUES (:productName, :productPrice, :productImg, :productQuantity , :fkuser)');
-        $this->db->bind(':productName', $data['productName']);
-        $this->db->bind(':productPrice', $data['productRegular']." $");
-        $this->db->bind(':productImg', $data['productImg']);
+        $this->db->query('INSERT INTO carts (Product_foreign , Product_quantity , fk_user) VALUES (:productForeign, :productQuantity , :fkuser)');
+        $this->db->bind(':productForeign', $data['productId']);
         $this->db->bind(':productQuantity', $data['productQuantity']);
         $this->db->bind(':fkuser', $data['userId']);
 
@@ -27,5 +25,13 @@
         } else {
           return false;
         }
+      }
+
+      public function checkIfProductExistInCart($productId) {
+        $this->db->query('SELECT * FROM carts WHERE Product_foreign = :product_id');
+        $this->db->bind(':product_id', $productId);
+
+        $row = $this->db->single();
+        return $row;
       }
   }

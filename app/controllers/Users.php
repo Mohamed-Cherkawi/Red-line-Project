@@ -41,7 +41,7 @@ class Users extends Controller {
       }
     }
 
-    public function login(){
+    public function login($page){
       // Check for POST
       if(isset($_POST['logIn'])){
         
@@ -63,7 +63,9 @@ class Users extends Controller {
         // Check for user/email
         if(!$this->userModel->findUserByEmail($data['email'])){
           // User not found
-          $data['email_err'] = 'No user found or ';
+          $data['email_err'] = 'No User Found With Such An Email';
+          $this->view('pages/logIn', $data);
+          return ;
         } 
           // Check and set logged in 
           
@@ -73,7 +75,7 @@ class Users extends Controller {
               // Create Session
               date_default_timezone_set("Africa/Casablanca");
               $Currentdate = date(" Y-m-d  H:i A");
-              $this->createUserSession($loggedInUser , $Currentdate); 
+              $this->createUserSession($loggedInUser , $Currentdate , $page); 
           } else {
               $data['password_err'] = 'Password incorrect';
               $this->view('pages/logIn', $data);
@@ -89,15 +91,18 @@ class Users extends Controller {
       }
     }
 
-    public function createUserSession($user , $lastLogin){
+    public function createUserSession($user , $lastLogin , $page){
       $_SESSION['user_id'] = $user->user_id;
       $_SESSION['user_email'] = $user->Email;
       $_SESSION['user_name'] = $user->user_name;
       $_SESSION['inscription_date'] = $user->Date_inscription;
       $_SESSION['user_email'] = $user-> Email ;
       $_SESSION['login_date'] = $lastLogin ;
+      $_SESSION['user_img'] = $user -> imgNameUs ;
+      $_SESSION['admin_img'] = $user -> imgNameAd ;
+      $_SESSION['user_Pass'] = $user -> Password ;
       if($user->Role == 'User'){
-        redirect('pages/index');
+        redirect('pages/index/'.$page.'');
       } else {
         redirect('pages/dashboard');
       }
@@ -111,7 +116,7 @@ class Users extends Controller {
       unset($_SESSION['user_email']);
       unset($_SESSION['login_date']);
       session_destroy();
-      redirect('pages/index');
+      redirect('pages/index/main');
     }
 
 

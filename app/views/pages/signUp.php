@@ -42,7 +42,7 @@
                     <div class="d-flex flex-column justify-content-evenly align-items-center h-100 w-50">
                         <span>Already have an account ?</span>
                         <div id="separator1"></div>
-                        <a href="<?php echo URLROOT ?>/pages/logIn" class="text-dark fw-bolder">Log in here</a>
+                        <a href="<?php echo URLROOT ?>/pages/logIn/normal" class="text-dark fw-bolder">Log in here</a>
                     </div>
                     <div id="separator2">.</div>
                     <div class="d-flex flex-column justify-content-around align-items-center w-50">

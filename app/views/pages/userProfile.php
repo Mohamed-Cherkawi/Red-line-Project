@@ -28,9 +28,12 @@
         <h3 id="greetingHead">Welcome <?php  echo strtoupper($_SESSION['user_name']); ?></h3>
         <div id="AdminImage">
           <?php
-          if($data2 -> imgNameUs != null) {
-           echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $data2 -> imgNameUs .'" alt="User Profile Image" width="400" height="400">';
+          if($_SESSION['user_img'] != null) {
+            echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $_SESSION['user_img'] .'" alt="User Profile Image" width="400" height="400">';
           } else {
+            echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $_SESSION['admin_img'] .'" alt="User Profile Image" width="400" height="400">';
+          }
+          if($_SESSION['user_img'] == null && $_SESSION['admin_img'] == null) {
             echo '<img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="UserImage" width="250" height="250"/>';
           }
             ?>
@@ -70,20 +73,20 @@
                 <form action="<?php echo URLROOT ; ?>/UsersDash/editProfile" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 <div class="mb-3">
-                  <div><input type="hidden" name="profile_image" value="<?php echo $data2 -> imgNameUs ; ?>"></div>
+                  <div><input type="hidden" name="profile_image" value="<?php echo $_SESSION['user_img'] ; ?>"></div>
                     <label for="image" class="form-label">Choose Image (jpg , jpeg , png)</label>
                     <input type="file" accept="image/png, image/jpg, image/jpeg" name="admin_image" class="form-control" id="image">
                     <div class="input-group my-3">
                     <label for="adminName" class="input-group-text">Admin Name</label>
-                    <input type="text" name="userName" value="<?php echo $data2-> user_name ;?>" class="form-control"  aria-label="UserName" id="UserName" aria-describedby="basic-addon1" required>
+                    <input type="text" name="userName" value="<?php echo $_SESSION['user_name'] ;?>" class="form-control"  aria-label="UserName" id="UserName" aria-describedby="basic-addon1" required>
                   </div>
                   <div class="input-group my-3">
                     <label for="email" class="input-group-text">Email</label>
-                    <input type="email" name="userEmail" value="<?php echo $data2-> Email ;?>" class="form-control"  aria-label="email" aria-describedby="basic-addon1" id="email" required>
+                    <input type="email" name="userEmail" value="<?php echo $_SESSION['user_email'] ;?>" class="form-control"  aria-label="email" aria-describedby="basic-addon1" id="email" required>
                   </div>
                   <div class="input-group my-3">
                     <label for="adminName" class="input-group-text">Change Password</label>
-                    <input type="text" name="userPassword" value="<?php echo $data2-> Password ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
+                    <input type="text" name="userPassword" value="<?php echo $_SESSION['user_Pass'] ;?>" class="form-control"  aria-label="adminName" id="adminName" aria-describedby="basic-addon1" required>
                   </div>
                 </div>
                 </div>

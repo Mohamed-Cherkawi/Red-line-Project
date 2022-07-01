@@ -8,16 +8,10 @@
 
                 /***************************** User Section ****************************************/
                 public function userProfile() {
-
                     if($this->isLoggedIn()) {
-                        $userId = $_SESSION['user_id'] ; 
-                        $userProfile = $this->userDashModel->showUserProfile($userId) ;
-                        $emptyData = '';
-                        $_SESSION['user_name'] = $userProfile -> user_name ;
-                        $_SESSION['user_email'] = $userProfile -> Email ;
-                        $this->view('pages/userProfile',$emptyData,$userProfile);
+                        $this->view('pages/userProfile');
                     } else {
-                        redirect('pages/logIn');
+                         redirect('pages/logIn/userProfile');
                     }
                 }
         public function addUser() {

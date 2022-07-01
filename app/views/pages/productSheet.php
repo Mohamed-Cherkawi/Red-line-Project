@@ -12,8 +12,18 @@
     <title>Fiche Sheet</title>
 </head>
 <body>
-<?php  require_once APPROOT."/views/inc/header.php" ; ?>
-
+<?php  require_once APPROOT."/views/inc/header.php" ; 
+    if(isset($_GET['addedMess'])) {
+        if($_GET['addedMess'] == "true") {
+        echo "<div class='alert alert-success text-center' role='alert'> Product Added Successfuly To your Cart</div>";
+        } else if($_GET['addedMess'] == "false") {
+        echo "<div class='alert alert-danger text-center' role='alert'> Product Not Added Please Try Again</div>";
+        } else {
+            echo "<div class='alert alert-secondary text-center' role='alert'> Product Already Added To Your Cart</div>";
+        }
+    }
+?>
+    
     <main class="container mt-5 mb-5">
         <section class="d-flex flex-column flex-md-row justify-content-evenly mb-5">
             <div id="ProductImage"><img src="<?php echo URLROOT; ?>/uploads/productsFolder/<?php echo $data -> product_img_name; ?>" alt="Product Image" width="500" height="450"></div>
@@ -34,11 +44,8 @@
                         <span class="plusMin" id="minus">-</span><span class="mx-4" id="quantity">1</span><span class="plusMin" id="plus">+</span>
                 </div>
                 <form action="<?php echo URLROOT ;?>/pages/addToCart" method="POST">
-                <input type="hidden" name="product_img" value="<?php echo $data -> product_img_name; ?>">
-                <input type="hidden" name="product_name" value="<?php echo $data -> product_name; ?>">
-                <input type="hidden" name="product_category" value="<?php echo $data -> product_category; ?>">
-                <input type="hidden" name="product_regular" value="<?php echo $data -> product_original_price; ?>">
-                <input type="hidden" id="quantityInput" name="product_quantity">
+                <input type="hidden" name="product_id" value="<?php echo $data -> product_id; ?>">
+                <input type="hidden" id="quantityInput" name="product_quantity" value="1">
                 <button type="submit" name="addProductToCart" id="addToCart">ADD TO CART</button>
                 </form>
                 </div>
