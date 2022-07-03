@@ -10,11 +10,16 @@
      $this->cartModel = $this->model('Cart');
     }
     
-    public function index($page){
+    public function index($page , $optionnalParam = ''){
       if($this->isLoggedIn()) {
         if($page == "userProfile") {
           $this->view('pages/userProfile');
-          return ;
+        } else if($page == "addToCart") {
+          $this->view('pages/productSheet');
+        } elseif($page == "productSheet") {
+          redirect('pages/productSheet'.$optionnalParam.'');
+        } else if($page == "basket") {
+          redirect('pages/basket');
         }
       }   
       $this->view('pages/index');
@@ -28,7 +33,7 @@
       $this->view('pages/aboutUs');
     }
 
-    public function addToCart() {
+    public function addToCart($product_id) {
       if($this->isLoggedIn()) { 
       if(isset($_POST['addProductToCart'])) {
            // filter input function that removes html special charct and whitespace from both sides of the string
@@ -39,22 +44,26 @@
          }
         $data = [
           'userId' => $_SESSION['user_id'],
-          'productId' => filter_inputF($_POST['product_id']),
-          'productQuantity' => filter_inputF($_POST['product_quantity'])
+          'productId' => intval($product_id),
+          'productQuantity' => $_POST['product_quantity']
         ] ;
-       $product =  $this->cartModel->checkIfProductExistInCart($data['productId']);
+       $product =  $this->cartModel->checkIfProductExistInCart($data);
        if($product) {
         redirect('pages/productSheet/'.$data['productId'].'?addedMess=none'); // if the user reached this line means that the product is alraedy added to the Cart .
+        return ;
 
        } else {
         $this->cartModel->addProductToCart($data);
         redirect('pages/productSheet/'.$data['productId'].'?addedMess=true'); // Here the Product gets added 
+        return ;
        }
 
+       redirect('pages/productSheet/'.$data['productId'].'?addedMess=false');
+       return ;
       }
 
     } else {
-      redirect('pages/productSheet/'.$_SESSION['user_id'].'?addedMess=false');
+      redirect('pages/logIn/productSheet/'.$product_id.'');
     }
 
     }
@@ -64,7 +73,7 @@
         $products = $this->cartModel->showCartProducts($_SESSION['user_id']);
         $this->view('pages/basket',$products);
       } else {
-        redirect('pages/logIn');
+        redirect('pages/logIn/basket');
       }
     }
     public function products($productCategory) {
@@ -145,14 +154,19 @@
     }
     
     public function productSheet($productId) {
+
       $product = $this->productModel->getProductById($productId);
       $this->view('pages/productSheet',$product);
     }
       public function signUp(){
       $this->view('pages/signUp');
     }
-    public function logIn($page){
-      $this->view('pages/logIn',$page);
+    public function logIn($page  , $secondParam = ''){
+      $data = [
+        'page' => $page ,
+        'secondParam' => $secondParam
+      ] ;
+      $this->view('pages/logIn',$data);
     }
     public function adminsDash(){
       if($this->isLoggedIn()){

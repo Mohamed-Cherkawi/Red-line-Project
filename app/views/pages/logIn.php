@@ -20,7 +20,7 @@
             <div class="imageContainerLog d-none d-xxl-block"></div>
             <div class="p-4 firstDiv firstDivLog">
                 <a href="<?php echo URLROOT; ?>/pages/index"><img src="<?php echo URLROOT; ?>/img/logo.png" alt="Logo" width="140"></a>
-                <form action="<?php echo URLROOT ?>/Users/login/<?php echo $data ; ?>" method="POST" class="d-flex flex-column mt-3">
+                <form action="<?php echo URLROOT ?>/Users/login/<?php echo $data['page'] ?>/<?php echo $data['secondParam'] ; ?>" method="POST" class="d-flex flex-column mt-3">
                     <h3>Log to your account</h3>
                     <div class="alert text-center <?php if(isset($data['email_err']) || isset($data['password_err']) || isset($data['query_error'])) { echo "alert-danger" ;}?>" role="alert"><?php if(isset($data['email_err'])) { echo $data['email_err'] ;} if(isset($data['password_err'])) { echo $data['password_err'] ;} if(isset($data['query_error'])) { echo $data['query_error'] ;}?></div>
                     <label for="email" class="mt-3">Email<span class="ms-5 errorMessagesCont" id="emailError"></span></label>

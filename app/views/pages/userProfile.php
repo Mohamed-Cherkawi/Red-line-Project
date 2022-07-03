@@ -23,7 +23,7 @@
   ?>
 <main>
   
-  <section class="d-flex flex-column flex-xl-row justify-content-around align-items-center container mb-5 position-relative">
+  <section class="d-flex flex-column flex-xl-row justify-content-around align-items-center container mb-5 position-relative mt-4">
     <div class=" d-flex flex-column align-items-center">
         <h3 id="greetingHead">Welcome <?php  echo strtoupper($_SESSION['user_name']); ?></h3>
         <div id="AdminImage">
@@ -97,7 +97,7 @@
               </div>
             </div>
           </div>
-          <a href="<?php echo  URLROOT; ?>/Users/logout" onclick="return confirm('Log out ?')"><button class="profileButtons mx-3 my-3 my-md-0">Logout</button></a>
+          <a href="<?php echo  URLROOT; ?>/users/logout" onclick="return confirm('Log out ?')"><button class="profileButtons mx-3 my-3 my-md-0">Logout</button></a>
           <button id="deleteProfileButt" class="profileButtons">Delete</button>
         </div>
     </div>

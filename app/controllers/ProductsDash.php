@@ -19,7 +19,7 @@
                     if(empty($_POST['pOfferPrice'])) {
                         $productOffer = "none";
                     } else {
-                        $productOffer = filter_inputF($_POST['pOfferPrice']) . "$";
+                        $productOffer = filter_inputF($_POST['pOfferPrice']) . " $";
                     }
                     $data =[
                         'productName' => filter_inputF($_POST['productName']),
@@ -102,7 +102,7 @@
                      if(empty($_POST['pOfferPrice'])) {
                          $productOffer = "none";
                      } else {
-                         $productOffer = filter_inputF($_POST['pOfferPrice']) . "$";
+                         $productOffer = filter_inputF($_POST['pOfferPrice']) . " $";
                      }
                 $data =[
                     'id' => $product_id ,

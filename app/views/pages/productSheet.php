@@ -19,7 +19,7 @@
         } else if($_GET['addedMess'] == "false") {
         echo "<div class='alert alert-danger text-center' role='alert'> Product Not Added Please Try Again</div>";
         } else {
-            echo "<div class='alert alert-secondary text-center' role='alert'> Product Already Added To Your Cart</div>";
+            echo "<div class='alert alert-secondary text-center' role='alert'> Product Already Added To Your Cart !</div>";
         }
     }
 ?>
@@ -41,10 +41,9 @@
                 <div class="d-flex justify-content-between mt-5">
                     
                 <div id="stepperC" class="d-flex align-items-center">
-                        <span class="plusMin" id="minus">-</span><span class="mx-4" id="quantity">1</span><span class="plusMin" id="plus">+</span>
+                        <span class="plusMin ms-2" id="minus">-</span><span class="mx-4" id="quantity">1</span><span class="plusMin me-1" id="plus">+</span>
                 </div>
-                <form action="<?php echo URLROOT ;?>/pages/addToCart" method="POST">
-                <input type="hidden" name="product_id" value="<?php echo $data -> product_id; ?>">
+                <form action="<?php echo URLROOT ;?>/pages/addToCart/<?php echo $data -> product_id; ?>" method="POST">
                 <input type="hidden" id="quantityInput" name="product_quantity" value="1">
                 <button type="submit" name="addProductToCart" id="addToCart">ADD TO CART</button>
                 </form>

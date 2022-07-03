@@ -3,7 +3,7 @@ echo '
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
-        <a class="navbar-brand w-25" href="'. URLROOT .'/pages/index"
+        <a class="navbar-brand w-25" href="'. URLROOT .'/pages/index/main"
           ><img src="'. URLROOT .'/img/logo.png" class="ms-4" alt="logo" width="150"
         /></a>
         <button

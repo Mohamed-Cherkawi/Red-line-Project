@@ -41,7 +41,7 @@ class Users extends Controller {
       }
     }
 
-    public function login($page){
+    public function login($page ,$secondParam = ""){
       // Check for POST
       if(isset($_POST['logIn'])){
         
@@ -75,7 +75,7 @@ class Users extends Controller {
               // Create Session
               date_default_timezone_set("Africa/Casablanca");
               $Currentdate = date(" Y-m-d  H:i A");
-              $this->createUserSession($loggedInUser , $Currentdate , $page); 
+              $this->createUserSession($loggedInUser , $Currentdate , $page , $secondParam); 
           } else {
               $data['password_err'] = 'Password incorrect';
               $this->view('pages/logIn', $data);
@@ -91,7 +91,7 @@ class Users extends Controller {
       }
     }
 
-    public function createUserSession($user , $lastLogin , $page){
+    public function createUserSession($user , $lastLogin , $page , $optionnalParam = ""){
       $_SESSION['user_id'] = $user->user_id;
       $_SESSION['user_email'] = $user->Email;
       $_SESSION['user_name'] = $user->user_name;
@@ -102,7 +102,7 @@ class Users extends Controller {
       $_SESSION['admin_img'] = $user -> imgNameAd ;
       $_SESSION['user_Pass'] = $user -> Password ;
       if($user->Role == 'User'){
-        redirect('pages/index/'.$page.'');
+        redirect('pages/index/'. $page .'/'. $optionnalParam .'');
       } else {
         redirect('pages/dashboard');
       }

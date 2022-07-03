@@ -5,10 +5,10 @@
         search.classList.toggle("active");
     };
     // getting the Plus and the Minus Sign Elements , and the product quantity wanted .
-    const minus = document.getElementById("minus");
-    const plus = document.getElementById("plus");
-    const quantity = document.getElementById("quantity");
-    const quantityHidden = document.getElementById("quantityInput");
+    const minus = document.querySelectorAll(".minus");
+    const plus = document.querySelectorAll(".plus");
+    const quantity = document.querySelectorAll(".quantity");
+    // const quantityHidden = document.getElementById("quantityInput");
     let quantityValue = quantity.innerText ;
 
     // Changing the value from string to an int :
@@ -18,17 +18,20 @@
 
     function addOne() {
        if(quantityValue < 20) {
-        quantity.innerText = ++quantityValue;
-        quantityHidden.setAttribute("value",quantityValue);
+        quantityValue = ++quantityValue;
+        // quantityHidden.setAttribute("value",quantityValue);
        } else {
         return ;
        }
     }
+    quantity.forEach((e) => {
+        console.log("Is it working ");
+    })
     function subOne() {
         if(quantityValue > 1) {
 
-        quantity.innerText = --quantityValue;
-        quantityHidden.setAttribute("value",quantityValue);
+        quantityValue = --quantityValue;
+        // quantityHidden.setAttribute("value",quantityValue);
 
         } else {
             return ;

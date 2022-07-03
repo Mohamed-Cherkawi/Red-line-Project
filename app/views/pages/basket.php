@@ -14,48 +14,55 @@
 <?php  require_once APPROOT."/views/inc/header.php" ; ?>
 
     <main class="container mt-5">
-        <h4 class="text-center">My basket</h4>
+        <h4 class="text-center fw-bolder">My basket</h4>
         <section class="overflow-scroll" id="panierFsection">
-        <div class="d-flex PanierContentC mt-5 mb-3 pb-3">
-            <div class="w-50"><span>PRODUCT NAME</span></div>
-            <div class="d-flex justify-content-around w-50"><span>PRICE</span><span>QUANTITY</span><span>TOTAL</span></div>
+        <div class="d-flex justify-content-between PanierContentC mt-5 mb-3 pb-3">
+            <div><span>PRODUCT NAME</span></div>
+            <div class="invisible">ddhddkh</div>
+            <div><span>PRICE</span></div>
+            <div><span>QUANTITY</span></div>
         </div>
         <?php 
         $quantity = 0 ;
+        $Total = 0 ;
         foreach($data as $value) : 
+            $quantity = $value -> Product_quantity ;
+            if($value -> product_offer_price == "none") {
+                $productPrice = floatval($value -> product_original_price);
+            } else {
+                $productPrice = floatval($value -> product_offer_price);
+            }
+            $Total += ($quantity * $productPrice);
         ?>
         <div class="d-flex justify-content-between align-items-center PanierContentC mb-3 pb-3">
-            <img src="<?php echo APPROOT ?>/productsFolder/<?php echo $value -> Product_img ; ?>" alt="imageX" height="150">
-            <span><?php echo $value -> Product_name ; ?></span>
-            <span><?php echo $value -> Product_price ; ?></span>
+            <img src="<?php echo URLROOT ; ?>/uploads/productsFolder/<?php echo $value -> product_img_name ; ?>" alt="imageX" width="150" height="150">
+            <span><?php echo $value -> product_name ; ?></span>
+            <span class="productPrice"><?php 
+            if($value -> product_offer_price == "none") {
+                echo $value -> product_original_price ; 
+            } else {
+                echo $value -> product_offer_price ; 
+            }
+            ?></span>
             <div id="stepperC" class="d-flex align-items-center">
-                <span class="plusMin">-</span><span class="mx-4"><?php echo $value -> Product_quantity ; ?></span><span class="plusMin">+</span>
+                <span class="mx-4"><?php echo $value -> Product_quantity ; ?></span>
             </div>
-            <span class="active"><?php echo $quantity.= $value -> Product_quantity ; ?></span>
         </div>
         <?php endforeach ; ?>
 
     </section>
-    <div class="text-end mt-4"><button id="contShoopingButt">CONTINUE SHOPPING</button></div>
+    <div class="text-end mt-4"><a href="<?php echo URLROOT ; ?>/pages/products/All"><button id="contShoopingButt">CONTINUE SHOPPING</button></a></div>
     <section class="d-flex flex-column align-items-end mt-4 mb-5 secondSectPanier">
-        <div class="w-50">
+        <div class="w-50" id="totalCardC">
         <div class="mb-4">
             <h4 class="fw-bolder pb-2 PanierContentC w-100">Cart total</h4>
         </div>
-        <div class="d-flex flex-column flex-sm-row justify-content-between mt-2 my-3"><span>GRAND TOTAL</span><span class="fw-bold">$48.00</span></div>
+        <div class="d-flex flex-column flex-sm-row justify-content-between mt-2 my-3"><span>GRAND TOTAL</span><span class="fw-bold">$<?php echo " " . $Total ; ?></span></div>
         <button class="w-100" id="ProceedButt">PROCEED TO CHECKOUT</button>
         </div>
     </section>
     </main>
     <?php  require_once APPROOT."/views/inc/footer.php" ; ?>
-    <script>
-        // Toggling the search bar icon js Code .
-            const icon = document.querySelector(".searchIcon");
-            const search = document.querySelector(".search");
-            icon.onclick = function () {
-                search.classList.toggle("active");
-            };
-
-      </script>
+    <script src="<?php echo URLROOT ; ?>/js/basket.js"></script>
 </body>
 </html>
