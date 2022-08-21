@@ -10,19 +10,29 @@
      $this->cartModel = $this->model('Cart');
     }
     
-    public function index($page , $optionnalParam = ''){
-      if($this->isLoggedIn()) {
-        if($page == "userProfile") {
+    public function index($page = 'main', $optionnalParam = ''){
+      if($this->isLoggedIn()) :
+        if($page == "main") {
+          $this->view('pages/index');
+          return ;
+        }
+        else if($page == "userProfile") {
           $this->view('pages/userProfile');
+          return ;
         } else if($page == "addToCart") {
           $this->view('pages/productSheet');
+          return ;
         } elseif($page == "productSheet") {
           redirect('pages/productSheet'.$optionnalParam.'');
         } else if($page == "basket") {
           redirect('pages/basket');
+        } else {
+          $this -> view('pages/errorPage');
+          return ;
         }
-      }   
-      $this->view('pages/index');
+       else :
+        redirect('pages/index/main');
+      endif ;
     }
 
     public function schedule(){
@@ -60,6 +70,8 @@
 
        redirect('pages/productSheet/'.$data['productId'].'?addedMess=false');
        return ;
+      } else {
+        redirect('pages/index/main');
       }
 
     } else {
@@ -70,7 +82,11 @@
     
     public function basket() {
       if($this->isLoggedIn()) {
-        $products = $this->cartModel->showCartProducts($_SESSION['user_id']);
+        if($this -> isAdminProfile()) {
+          redirect('pages/logIn/basket');
+        } else {
+          $products = $this->cartModel->showCartProducts($_SESSION['user_id']);
+        }
         $this->view('pages/basket',$products);
       } else {
         redirect('pages/logIn/basket');
@@ -170,15 +186,20 @@
     }
     public function adminsDash(){
       if($this->isLoggedIn()){
+      if($this-> isAdminProfile()) :
       $admins = $this->userModel->showAdmins();
       $adminImage = $this->userModel->getAdminprofileBySessionId();
       $this->view('pages/adminsDash',$admins ,$adminImage);
+      else :
+        redirect('pages/index/main');
+      endif ;
       }else{
-        redirect('pages/index');
+        redirect('pages/index/main');
       }
     }
     public function dashboard(){
       if($this->isLoggedIn()){
+      if($this-> isAdminProfile()) :
       $totalUsers = $this->mainModel->totalUsers();
       $totalAthletes = $this->mainModel->totalAthletes();
       $totalTrainers = $this->mainModel->totalTrainers();
@@ -192,44 +213,63 @@
         'totalProducts' => $totalProducts -> totalProducts ,
       ];
       $this->view('pages/dashboard',$data ,$data2);
+      else :
+        redirect('pages/index/main');
+     endif ;
     } else {
-      redirect('pages/index');
+      redirect('pages/index/main');
     }
   } 
     public function usersDash(){
       if($this->isLoggedIn()){
+        if($this-> isAdminProfile()) :
         $users = $this->userModel->showUsers();
         $adminImage = $this->userModel->getAdminprofileBySessionId();
         $this->view('pages/usersDash',$users,$adminImage);
+        else :
+          redirect('pages/index/main');
+        endif ;
       } else {
-      redirect('pages/index');
+      redirect('pages/index/main');
       }
     }
     public function trainersDash(){
         if($this->isLoggedIn()){
+          if($this-> isAdminProfile()) :
           $trainers = $this->trainerModel->showTrainers();
           $adminImage = $this->userModel->getAdminprofileBySessionId();
           $this->view('pages/trainersDash',$trainers ,$adminImage);
+          else :
+            redirect('pages/index/main');
+          endif ;
         } else {
-        redirect('pages/index');
+        redirect('pages/index/main');
         }
     }
     public function productsDash() {
       if($this->isLoggedIn()){
+        if($this-> isAdminProfile()) :
         $products = $this->productModel->showProducts();
         $adminImage = $this->userModel->getAdminprofileBySessionId();
         $this->view('pages/productsDash',$products ,$adminImage);
+        else :
+          redirect('pages/index/main');
+        endif ;
       } else {
-      redirect('pages/index'); 
+      redirect('pages/index/main'); 
       }
     }
     public function athletesDash() {
       if($this->isLoggedIn()){
+        if($this-> isAdminProfile()) :
         $athletes = $this->athleteModel->showAthletes();
         $adminImage = $this->userModel->getAdminprofileBySessionId();
         $this->view('pages/athletesDash',$athletes ,$adminImage);
+        else :
+          redirect('pages/index/main');
+        endif ;
       } else {
-      redirect('pages/index'); 
+      redirect('pages/index/main'); 
       }
     }
 
@@ -238,6 +278,14 @@
         return true;
       } else {
         return false;
+      }
+    }
+
+    public function isAdminProfile(){
+      if($_SESSION['user_Role'] == "Admin") {
+          return true ;
+      } else {
+          return false ;
       }
     }
 
