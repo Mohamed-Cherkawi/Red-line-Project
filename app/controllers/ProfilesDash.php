@@ -8,12 +8,16 @@ class ProfilesDash extends Controller {
     public function showProfile() {
 
         if($this->isLoggedIn()) {
+            if($this -> isAdminProfile()) :
             $adminId = $_SESSION['user_id'] ; 
             $adminProfile = $this->AdminProfileModel->showAdminProfile($adminId) ;
             $emptyData = '';
             $_SESSION['user_name'] = $adminProfile -> user_name ;
             $_SESSION['user_email'] = $adminProfile -> Email ;
             $this->view('pages/profile',$emptyData,$adminProfile);
+            else :
+                redirect('pages/index/main');
+            endif ;    
         } else {
             redirect('pages/index');
         }
@@ -34,8 +38,8 @@ class ProfilesDash extends Controller {
                           'password' => filter_inputF($_POST['adminPassword']),
                           'imgFullName' => $_POST['profile_image']
                       ];
-      
                       
+                                          
                       // if this condition is not true than it means a file has uploaded , not an empty field file input .
                       if(!($_FILES['admin_image']['error'] == UPLOAD_ERR_NO_FILE)) {
       
@@ -63,14 +67,6 @@ class ProfilesDash extends Controller {
                               if($fileSize < 6000000){
                                 // We should unlik the first image so we can free up some space : 
                                  unlink(UPLOADFOLDER . $data['imgFullName']) ;
-                                  /* Before we upload the file we have to make sure that when we do upload the file it gets
-                                  a proper name because for example a file called test.JPEG to uploads folder and someone 
-                                  else later on uploads a image that has the exact same name test.JPEG it will actually 
-                                  overwrite the existing image inside the uploads folder meaning that the other user who
-                                  upload an image will get his image deleted so in order to prevent that we're going to 
-                                  create a unique id wich gets inserted and replaced with the actual name of the file when
-                                  it was uploaded so instead of it being named test.JPEG coul actually get named something like 
-                                  bunch of numbers .JPEG */
                                   $fileNameNew = "/adminsProfile/profile". uniqid() . ".". $fileActualExt;
                                   $fileDestination = UPLOADFOLDER . $fileNameNew ;
                                   move_uploaded_file($fileTmpName,$fileDestination);
@@ -110,6 +106,14 @@ class ProfilesDash extends Controller {
           return true;
         } else {
           return false;
+        }
+      }
+
+      public function isAdminProfile(){
+        if($_SESSION['user_Role'] == "Admin") {
+            return true ;
+        } else {
+            return false ;
         }
       }
 }
