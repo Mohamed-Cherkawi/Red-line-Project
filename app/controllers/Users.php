@@ -101,7 +101,8 @@ class Users extends Controller {
       $_SESSION['user_img'] = $user -> imgNameUs ;
       $_SESSION['admin_img'] = $user -> imgNameAd ;
       $_SESSION['user_Pass'] = $user -> Password ;
-      if($user->Role == 'User'){
+      $_SESSION['user_Role'] = $user -> Role ;
+      if($_SESSION['user_Role'] == 'User'){
         redirect('pages/index/'. $page .'/'. $optionnalParam .'');
       } else {
         redirect('pages/dashboard');
