@@ -21,7 +21,7 @@
                         'sport' => filter_inputF($_POST['athlete_sport']),
                         'athletePhone' => filter_inputF($_POST['athlete_phone']),
                         'athleteCIN' => filter_inputF($_POST['athlete_CIN']),
-                        'athleteImg' => ''
+                        'athleteImg' => $_POST['athleteImage']
                       ];
                     
                 // if this condition is not true than it means a file has uploaded , not an empty field file input .
@@ -125,9 +125,9 @@
               
                   if(in_array($fileActualExt , $allowed)) {
                       // if the file error is equal to 0 that means that we had no erros uploading this file 
-                      if($fileError == 0){
-              
+                      if($fileError == 0){                       
                           if($fileSize < 6000000){
+                             // We should unlik the first image so we can free up some space : 
                             unlink(UPLOADFOLDER . $data['athleteImg']) ;
                               $fileNameNew = "/athletesFolder/profile". uniqid() .".". $fileActualExt;
                               $fileDestination = UPLOADFOLDER  . $fileNameNew ;
