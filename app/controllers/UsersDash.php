@@ -9,10 +9,15 @@
                 /***************************** User Section ****************************************/
                 public function userProfile() {
                     if($this->isLoggedIn()) {
-                        $this->view('pages/userProfile');
+                        if ($this -> isAdminProfile()) {
+                            redirect('ProfilesDash/showprofile');
+                        } else {
+                            $this->view('pages/userProfile');
+                        }
                     } else {
-                         redirect('pages/logIn/userProfile');
+                        redirect('pages/logIn/userProfile');
                     }
+
                 }
         public function addUser() {
 
@@ -349,4 +354,13 @@
           return false;
         }
       }
+
+      public function isAdminProfile(){
+        if($_SESSION['user_Role'] == "Admin") {
+            return true ;
+        } else {
+            return false ;
+        }
+      }
+
     }
