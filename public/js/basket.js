@@ -24,9 +24,9 @@
         return ;
        }
     }
-    quantity.forEach((e) => {
-        console.log("Is it working ");
-    })
+    // quantity.forEach((e) => {
+    //     console.log("Is it working ");
+    // })
     function subOne() {
         if(quantityValue > 1) {
 
