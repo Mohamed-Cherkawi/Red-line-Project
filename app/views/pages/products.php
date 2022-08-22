@@ -12,9 +12,10 @@
   />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/userProducts.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/header.css">
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css"/>    
-
-    <title>Products Page</title>
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css"/> 
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/all.min.css"/>    
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontawesome.css"/>     
+   <title>Products Page</title>
 </head>
 <body>
 <?php  require_once APPROOT."/views/inc/header.php" ; ?>

@@ -12,7 +12,9 @@
     />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/header.css"/>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/landing.css"/>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css"/>    
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css"/>  
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/all.min.css"/>    
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontawesome.css"/>      
     <title>Gym Edge</title>
 </head>
 <body>

@@ -31,7 +31,7 @@
           return ;
         }
        else :
-        redirect('pages/index/main');
+        $this->view('pages/index');
       endif ;
     }
 

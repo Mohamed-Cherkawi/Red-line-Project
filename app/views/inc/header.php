@@ -42,7 +42,7 @@ echo '
             <div
               class="search d-flex justify-content-center align-items-center"
             >
-             <img class="searchIcon" src="'.URLROOT.'/icons/searchNav.png" alt="Search Icon">
+            <i class="fa-solid fa-magnifying-glass searchIcon"></i>
               <div class="input d-flex align-items-center">
                 <input type="text" placeholder="Search .." id="mysearch" />
               </div>
@@ -53,15 +53,17 @@ echo '
             <div class="dropdown me-5 ms-2">
                 <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">';
                 if((isset($_SESSION['user_img'])) || (isset($_SESSION['admin_img']))) {
-                  $logout = true ;
                 if($_SESSION['user_img'] != null) {
                   echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $_SESSION['user_img'] .'" alt="User Profile Image" width="40" height="45" style="border-radius:50%;">';
                 } else {
                   echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $_SESSION['admin_img'] .'" alt="User Profile Image" width="40" height="45" style="border-radius:50%;">';
                 }
               } else {
-                  $logout = false ;
-                  echo '<img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="UserImage" width="45" height="45"/>';
+                if(isset($_SESSION['user_id'])):
+                  echo '<i class="fa-solid fa-user-pen text-dark userIcon"></i>' ;
+                  else :
+                    echo '<i class="fa-regular fa-user text-dark userIcon"></i>' ;
+                endif;
                 }
                echo '
                 </a>
@@ -69,7 +71,7 @@ echo '
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <li><a class="dropdown-item" href="'.URLROOT.'/UsersDash/userProfile">Profile</a></li>
                   <li><a class="dropdown-item" href="'.URLROOT.'/pages/basket">My Cart</a></li>';
-                  if($logout == true) {
+                  if(isset($_SESSION['user_id'])) {
                     echo '<li><a class="dropdown-item" href="'.URLROOT.'/users/logout" onclick="return confirm(\'Are you sure\')">Log out</a></li>';
                   }
                   echo '

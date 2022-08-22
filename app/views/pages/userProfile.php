@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile Page</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -14,7 +13,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/header.css">
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css"/> 
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/footer.css"/>
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/all.min.css"/>    
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/fontawesome.css"/>
+  <title>Profile Page</title>   
 </head>
 <body id="body-pd">
 
@@ -31,10 +33,7 @@
           if($_SESSION['user_img'] != null) {
             echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $_SESSION['user_img'] .'" alt="User Profile Image" width="400" height="400">';
           } else {
-            echo '<img class="AdminProfileImg" src="'.URLROOT.'/uploads'. $_SESSION['admin_img'] .'" alt="User Profile Image" width="400" height="400">';
-          }
-          if($_SESSION['user_img'] == null && $_SESSION['admin_img'] == null) {
-            echo '<img src="https://img.icons8.com/fluency-systems-regular/96/undefined/user.png" alt="UserImage" width="250" height="250"/>';
+            echo '<i class="fa-regular fa-user text-dark userIcon userIconProfile"></i>' ;
           }
             ?>
         </div>
@@ -70,7 +69,7 @@
                   <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="<?php echo URLROOT ; ?>/UsersDash/editProfile" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo URLROOT ; ?>/ProfilesDash/editProfile" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 <div class="mb-3">
                   <div><input type="hidden" name="profile_image" value="<?php echo $_SESSION['user_img'] ; ?>"></div>
